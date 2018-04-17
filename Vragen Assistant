@@ -1,0 +1,17 @@
+Moeten we voor iedere huizenvariant (20, 40, 60) een ander algoritme maken?
+Is de vrijstand ook diagonaal?
+In hoeverre moet de oplossing optimaal zijn? Is de meest optimale oplossing een must?
+Voor de matrix, is het de bedoeling dat we de grid area x2 doen. Dit omdat twee huisvormen een diepte van 7.5m en 10.5m hebben en je kan niet indexen op decimale cijfers.
+Mogen we gebruik van extra ruimtes in decimalen en levert dat ook wat op?
+
+Restricties:
+
+- Genoeg verplichte vrijstand tussen objecten, ook van de grens van het grondgebied
+
+- Meeste vrijstand voor de grootste/duurste huizen (maisons)
+
+- Verplichte vrijstand verschillende soorten huizen hetzelfde cijfer geven.
+
+
+
+
