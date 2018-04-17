@@ -88,3 +88,10 @@ totalHouses = 20
 totalEengezins = totalHouses * 0.6
 totalBungalow = totalHouses * 0.25
 totalMaison = totalHouses * 0.15    
+
+one = eengezins()
+if(one.checkIfEmpty(2,2)):
+    one.placeObject(2,2)
+    
+for row in ground:
+    print row
