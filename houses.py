@@ -62,13 +62,8 @@ class house:
             for meterLength in range(positionY - self.freeSpace, self.length + self.freeSpace * 2 + positionY):
 
                 if(meterLength > 50 - self.freeSpace or meterWidth > 50 - self.freeSpace): 
-                    return
+                    return 
                 elif(ground[meterLength][meterWidth] != 0):
-                        return False
-        
-
-                if(ground[meterLength][meterWidth] != 0):
-                    print("false")
                     return False
 
         return True
