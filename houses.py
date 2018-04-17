@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 totalHouses = 20
 totalEengezins = int(totalHouses * 0.6)
 totalBungalow = int(totalHouses * 0.25)
@@ -7,9 +5,6 @@ totalMaison = int(totalHouses * 0.15)
 print totalEengezins
 print totalBungalow
 print totalMaison
-=======
-#hallo
->>>>>>> c38b4b540d73731a07c644878f7d9af6983c5f77
 ground = []
 houses = []
 
@@ -65,18 +60,17 @@ class house:
         # check if there's enough space for the house. If not, return from function.
         for meterWidth in range(positionX - self.freeSpace, self.width + self.freeSpace * 2 + positionX):
             for meterLength in range(positionY - self.freeSpace, self.length + self.freeSpace * 2 + positionY):
-<<<<<<< HEAD
+
                 if(meterLength > 50 - self.freeSpace or meterWidth > 50 - self.freeSpace): 
                     return
                 elif(ground[meterLength][meterWidth] != 0):
                         return False
         
-=======
+
                 if(ground[meterLength][meterWidth] != 0):
                     print("false")
                     return False
 
->>>>>>> c38b4b540d73731a07c644878f7d9af6983c5f77
         return True
 
     # place object on given coordinates
@@ -136,11 +130,9 @@ class water(house):
             raise ValueError
         self.width = width
         self.length = length
-<<<<<<< HEAD
         
 if __name__ == "__main__":
     main()
-=======
 
 totalHouses = 20
 totalEengezins = totalHouses * 0.6
@@ -153,4 +145,3 @@ if(one.checkIfEmpty(2,2)):
 
 for row in ground:
     print row
->>>>>>> c38b4b540d73731a07c644878f7d9af6983c5f77
