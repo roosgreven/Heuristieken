@@ -1,3 +1,4 @@
+#hallo
 ground = []
 
 # create grid for the neighbourhood
@@ -6,48 +7,48 @@ for i in range(30):
     for j in range(32):
         ground[i].append(0)
 
-# class for houses. Contains functions to calculate total value of house and to place a house if there's enough space. 
+# class for houses. Contains functions to calculate total value of house and to place a house if there's enough space.
 class house:
-    
-    # calculate extra value and with that the total value 
+
+    # calculate extra value and with that the total value
     def values(self, extraFreeSpace):
         self.totalExtraValue = self.extraValue * extraFreeSpace
         self.totalValue = self.basicValue + self.totalExtraValue
-    
+
     # check if the spot at the given coordinates is empty
     def checkIfEmpty(self, positionX, positionY):
-        
+
         # check if there's enough space for the house. If not, return from function.
         for meterWidth in range(positionX - self.freeSpace, self.width + self.freeSpace * 2 + positionX):
             for meterLength in range(positionY - self.freeSpace, self.length + self.freeSpace * 2 + positionY):
                 if(ground[meterLength][meterWidth] != 0):
                     print("false")
                     return False
-        
+
         return True
-    
+
     # place object on given coordinates
-    def placeObject(self, positionX, positionY):        
+    def placeObject(self, positionX, positionY):
         # place house on grid
         for meterWidth in range(positionX, self.width + positionX):
             for meterLength in range(positionY, self.length + positionY):
                 ground[meterLength][meterWidth] = self.theType
-                
+
         # place free space at north and south sides of the house
         for meters in range(self.width):
             for metersFreeSpace in range(self.freeSpace):
                 ground[positionY + self.length + metersFreeSpace][meters + positionX] = self.freeSpaceType
                 if((positionY - (metersFreeSpace + 1)) >= 0):
                     ground[positionY - (metersFreeSpace + 1)][meters + positionX] = self.freeSpaceType
-                
-        
+
+
         # place free space at east and west sides of the house
         for meters in range(self.length):
             for metersFreeSpace in range(self.freeSpace):
-                ground[positionY + meters][positionX + self.width + metersFreeSpace] = self.freeSpaceType 
+                ground[positionY + meters][positionX + self.width + metersFreeSpace] = self.freeSpaceType
                 if((positionX - 1 - metersFreeSpace) >= 0):
                     ground[positionY + meters][positionX - 1 - metersFreeSpace] = self.freeSpaceType
-                    
+
 
 class eengezins(house):
     theType = 1
@@ -83,15 +84,15 @@ class water(house):
             raise ValueError
         self.width = width
         self.length = length
-        
+
 totalHouses = 20
 totalEengezins = totalHouses * 0.6
 totalBungalow = totalHouses * 0.25
-totalMaison = totalHouses * 0.15    
+totalMaison = totalHouses * 0.15
 
 one = eengezins()
 if(one.checkIfEmpty(2,2)):
     one.placeObject(2,2)
-    
+
 for row in ground:
     print row
