@@ -1,8 +1,18 @@
+Datastructuur opdelen in files (classes)
+Goede README, duidelijk voor iemand die niks van het project weet
+meer dingen in init, moeten dingen gebeuren bij aanmaken class. laat een huis weten of hij al geplaatst is.
+Alles in classes
+
+
 Moeten we voor iedere huizenvariant (20, 40, 60) een ander algoritme maken?
+Voor iedere variant een optimaal werkend algoritme die op alle varianten toepasbaar is
 Is de vrijstand ook diagonaal?
+Ja, dus niet alleen rechte hoeken
 In hoeverre moet de oplossing optimaal zijn? Is de meest optimale oplossing een must?
+Beetje van beide, bedenk een paar leuke algoritmes met redelijke oplossingen
 Voor de matrix, is het de bedoeling dat we de grid area x2 doen. Dit omdat twee huisvormen een diepte van 7.5m en 10.5m hebben en je kan niet indexen op decimale cijfers.
 Mogen we gebruik van extra ruimtes in decimalen en levert dat ook wat op?
+Ja, mogen we zelf weten, is wel optimaler als je het wel doet
 
 Restricties:
 
@@ -12,6 +22,10 @@ Restricties:
 
 - Verplichte vrijstand verschillende soorten huizen hetzelfde cijfer geven.
 
+
+Mogelijke datastructuur:
+Formule om afstand tot alle grenzen te bepalen. Hierdoor weet je de locatie van het huis.
+Vergelijken afstanden van verschillende huizen om te zien of ze in elkaar staan.
 
 
 
