@@ -1,1 +1,5 @@
-# Heuristieken
+# Heuristieken: Amstelhaege
+Jitse Schol, Nathalie van Sterkenburg en Roos Greven
+
+De casus: Er wordt een nieuwe wijk gebouwd: Amstelhaege, van 160 bij 180 meter groot. Hier wil de gemeente huizen plaatsen die samen zoveel mogelijk waarde hebben. Er zijn drie soorten huizen: eengezinswoningen, bungalows en maisons. Elk huis heeft een standaardgrootte, een minimale vrijstand voor om het huis heen en een standaard waarde. Huizen kunnen echter meer waard worden: door de vrijstand rondom een huis te vergroten, wordt een huis meer waard. De gemeente wil nu weten met welke indeling de wijk het meest waard wordt. Ze twijfelen nog tussen het plaatsen van 20, 40 of 60 huizen. In deze casus zoeken we dus voor elke situatie uit hoeveel de wijk maximaal waard kan zijn. Een extra moeilijkheid is dat de gemeente water in deze wijk wil hebben. Minstens 20% van de oppervlakte moet uit water bestaan. Deze watertjes mogen geen sloten worden: de verhouding moet minstens 1 op 4 zijn. Daarnaast mogen er slechts maximaal 4 wateren zijn. 
+
