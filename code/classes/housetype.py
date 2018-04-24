@@ -1,4 +1,4 @@
-from houses import house
+from classes.houses import house
 
 class eengezins(house):
     
