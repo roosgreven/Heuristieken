@@ -1,13 +1,13 @@
 import classes.houses as hs
 import helpers.shortestdistance as sd
-import helpers.findtotalvalue as ftv
+import helpers.findclosesthouse as fch
 import random
 import matplotlib.pyplot as plt
 
 def main():
     
     houses = []
-    houseValues = []
+    totalHouseValues = []
     numberOfHouses = 20
     i = 0
     overlaps = 0
@@ -19,24 +19,16 @@ def main():
         
         houses.append(hs.maison(x, y))
 
-        if not(ftv.findTotalValue(houses, hs.maison(x, y))):
-            print("overlap")
-            overlaps += 1
+        if not(fch.findClosestHouse(houses, hs.maison(x, y))):
+
             houses = houses[:-1]
 
         else:
+            totalHouseValues.append(houses[i].value(fch.findClosestHouse(houses, houses[i])))
             i += 1
-
-
-    print("length houses: ", len(houses))
-    print("# overlaps: ", overlaps)
-
-    #houseValues.append(ftv.findTotalValue(houses, houses[i]))
 
     xlist = [house.x1 for house in houses]
     ylist = [house.y1 for house in houses]
-    print(xlist)
-    print(ylist)
 
     plt.figure()
     plt.plot(xlist, ylist, 'bo')

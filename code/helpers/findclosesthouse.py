@@ -1,6 +1,6 @@
 import helpers.shortestdistance as sd
 
-def findTotalValue(houses, chosenHouse):
+def findClosestHouse(houses, chosenHouse):
 
     distance = 160
     for i in range(len(houses)):
