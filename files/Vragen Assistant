@@ -30,4 +30,9 @@ Vergelijken afstanden van verschillende huizen om te zien of ze in elkaar staan.
 Idee algoritme:
 Greedy - Zet steeds één huis neer en kijk waar dit huis de meeste vrijstand heeft, houd geen rekening met huizen die al geplaatst zijn.
 
+Vragen Assistent Meeting 3:
+- Is greedy goed?
+- handmatig plaatsen eerste huizen?
+- Is datastructuur goed?
+
 
