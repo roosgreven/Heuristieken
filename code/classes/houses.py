@@ -16,8 +16,8 @@ class house:
         """ Calculates the value of a house for the given shortest distance. """
         
         extraFreeSpace = distance - self.freeSpace
-        
         self.totalValue = self.basicValue + self.extraValue * extraFreeSpace
+        return self.totalValue
         
     def coordinates(self, x1, y1):
         """ Calculates the houses coordinates. """
