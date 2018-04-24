@@ -35,4 +35,14 @@ Vragen Assistent Meeting 3:
 - handmatig plaatsen eerste huizen?
 - Is datastructuur goed?
 
+comments:
+readme niet compleet en niet zoals het eruit moet zien
+.gitignore (voor gecompilede bestanden)
+main.py niet dieper dan laag 1
+houses een bestand
+comments en style guide
+ipv lijst, een classe met een lijst
+visualisatie afmaken
+functie schrijven die overlap checkt/voorkomt
+eerst random zonder overlap algoritme, dan greedy.
 
