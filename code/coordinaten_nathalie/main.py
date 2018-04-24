@@ -8,9 +8,11 @@ def findClosestHouse(houses, chosenHouse):
     closestHouse = houses[0]
     
     for i in range(len(houses)):
-        if i == closestHouse:
+        if i == chosenHouse:
             print('hallo')
+            return
         if(sd.Shortest(chosenHouse, houses[i]) < distance):
+            print(i)
             distance = sd.Shortest(chosenHouse, houses[i])
             closestHouse = houses[i]
             
@@ -42,4 +44,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-    
