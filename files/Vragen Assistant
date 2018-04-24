@@ -2,7 +2,7 @@ Datastructuur opdelen in files (classes)
 Goede README, duidelijk voor iemand die niks van het project weet
 meer dingen in init, moeten dingen gebeuren bij aanmaken class. laat een huis weten of hij al geplaatst is.
 Alles in classes
-
+.
 
 Moeten we voor iedere huizenvariant (20, 40, 60) een ander algoritme maken?
 Voor iedere variant een optimaal werkend algoritme die op alle varianten toepasbaar is
@@ -45,4 +45,3 @@ ipv lijst, een classe met een lijst
 visualisatie afmaken
 functie schrijven die overlap checkt/voorkomt
 eerst random zonder overlap algoritme, dan greedy.
-
