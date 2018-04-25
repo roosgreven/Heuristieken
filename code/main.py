@@ -6,12 +6,19 @@ import matplotlib.pyplot as plt
 import helpers.overlap as ov
 
 def main():
-    
-    houses = []
-    totalHouseValues = []
-    numberOfHouses = 20
-    i = 0
 
+    numberOfHouses = 20
+    numberOfEengezins = numberOfHouses * 0.6
+    currentEengezins = 0
+    currentBungalows = 0
+    currentMaisons = 0
+    numberOfBungalows = numberOfHouses * 0.25
+    numberOfMaisons = numberOfHouses * 0.15
+    houses = []
+
+    i = 0
+    totalValue = 0
+    totalHouseValues = []
     # loop over houses
     while i < numberOfHouses:
 
@@ -19,17 +26,30 @@ def main():
         x = round(random.random() * 160, 1)
         y = round(random.random() * 180, 1)
 
-        randomHouse = hs.Maison(x, y)
+        if len(houses) < numberOfEengezins:
+            randomHouse = hs.Eengezins(x, y)
+            currentEengezins += 1
+        elif len(houses) < numberOfEengezins + numberOfBungalows:
+            randomHouse = hs.Bungalow(x, y)
+            currentBungalows += 1
+        else:
+            randomHouse = hs.Maison(x, y)
+            currentMaisons += 1
+
 
         # check if there's overlap, if so, delete house from array and try again
         if ov.noOverlap(houses, randomHouse):
 
-            # add house placed randomly
+            # add placed randomly house
             houses.append(randomHouse)
+            print(type(randomHouse))
             i += 1
+
 
     for house in houses:
         totalHouseValues.append(house.value(fch.findClosestHouse(houses, house)))
+        totalValue += house.value(fch.findClosestHouse(houses, house))
+    #print(currentEengezins, numberOfEengezins)
 
     # add coordinates of houses to list
     xlist = [house.x1 for house in houses]
