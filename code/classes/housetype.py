@@ -1,6 +1,6 @@
 from classes.houses import house
 
-class eengezins(house):
+class Eengezins(house):
     
     def __init__(self, x1, y1):
         
@@ -9,9 +9,9 @@ class eengezins(house):
         self.basicValue = 285000
         self.freeSpace = 2
         self.extraValue = 0.03 * self.basicValue
-        house.__init__(self, x1, y1)
+        House.__init__(self, x1, y1)
 
-class bungalow(house):
+class Bungalow(house):
     
     def __init__(self, x1, y1):
         
@@ -20,9 +20,9 @@ class bungalow(house):
         self.basicValue = 399000
         self.freeSpace = 3
         self.extraValue = 0.04 * self.basicValue
-        house.__init__(self, x1, y1)
+        House.__init__(self, x1, y1)
         
-class maison(house):
+class Maison(house):
     
     def __init__(self, x1, y1):
         
@@ -31,4 +31,4 @@ class maison(house):
         self.basicValue = 610000
         self.freeSpace = 6
         self.extraValue = 0.06 * self.basicValue
-        house.__init__(self, x1, y1)
+        House.__init__(self, x1, y1)

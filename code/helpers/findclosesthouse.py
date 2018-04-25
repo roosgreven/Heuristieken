@@ -13,24 +13,19 @@ def findClosestHouse(houses, chosenHouse):
     distance = 160
 
     # loop over all houses
-    for i in range(len(houses)):
+    for house in houses:
 
         # check if house is not chosen house
-        if(chosenHouse.x1 != houses[i].x1 and chosenHouse.x2 != houses[i].x2):
+        if chosenHouse.x1 != house.x1 and chosenHouse.x2 != house.x2:
 
-            # check for overlap
-            if(sd.Shortest(chosenHouse, houses[i]) > chosenHouse.freeSpace):
+            # check if distance between two houses is smaller than previous smallest distance
+            if sd.shortest(chosenHouse, house) < distance:
 
-                # check if distance between two houses is smaller than previous smallest distance
-                if(sd.Shortest(chosenHouse, houses[i]) < distance):
-
-                    # save new smallest distance
-                    distance = sd.Shortest(chosenHouse, houses[i])
-                    closestHouse = houses[i]
-
-            # return false if there's overlap
-            else:
-                return False
+                # save new smallest distance
+                distance = sd.shortest(chosenHouse, house)
+                closestHouse = house
 
     # return smallest distance
-    return(distance)
+    return distance
+
+

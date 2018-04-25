@@ -4,7 +4,7 @@ subclasses for each housetype with specific values.  Each housetype inherits
 from the house class.
 """
 
-class house:
+class House:
     """ Keeps up with the coordinates and value of a house. """
     
     def __init__(self, x1, y1):
@@ -27,7 +27,7 @@ class house:
         self.y1 = y1
         self.y2 = y1 + self.length
         
-class eengezins(house):
+class Eengezins(House):
     """ Specifies the "eengezins" housetype. Inherits from house(). """
     
     width = 8
@@ -37,9 +37,9 @@ class eengezins(house):
     extraValue = 0.03 * basicValue
     
     def __init__(self, x1, y1):
-        house.__init__(self, x1, y1)
+        House.__init__(self, x1, y1)
 
-class bungalow(house):
+class Bungalow(House):
     """ Specifies the "bungalow" housetype. Inherits from house(). """
     
     width = 7.5
@@ -49,9 +49,9 @@ class bungalow(house):
     extraValue = 0.04 * basicValue
     
     def __init__(self, x1, y1):
-        house.__init__(self, x1, y1)
+        House.__init__(self, x1, y1)
         
-class maison(house):
+class Maison(House):
     """ Specifies the "maison" housetype. Inherits from house(). """
     
     width = 10.5
@@ -61,4 +61,4 @@ class maison(house):
     extraValue = 0.06 * basicValue
     
     def __init__(self, x1, y1):
-        house.__init__(self, x1, y1)
+        House.__init__(self, x1, y1)

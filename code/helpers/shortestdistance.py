@@ -1,4 +1,4 @@
-def Shortest(house1, house2):
+def shortest(house1, house2):
 
     x1h1 = house1.x1
     x1h2 = house2.x1

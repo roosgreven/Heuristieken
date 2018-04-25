@@ -1,26 +1,19 @@
 """
-Returns True when overlap of houses exists
+Returns True when no overlap of houses exists
 """
-def Overlap(house1, house2):
+import helpers.shortestdistance as sd
 
-    # X coordinates of house 1 and house 2
-    x1h1 = house1.x1
-    x1h2 = house2.x1
-    x2h1 = house1.x2
-    x2h2 = house2.x2
+def noOverlap(houseArray, chosenHouse):
 
-    # Y coordinates of house 1 and house 2
-    y1h1 = house1.y1
-    y1h2 = house2.y1
-    y2h1 = house1.y2
-    y2h2 = house2.y2
+    if len(houseArray) > 1:
 
-    # If x coordinates of houses are in same range
-    if x1h1 <= x1h2 <= x2h1 or x1h1 <= x2h2 <= x2h1:
+        # loop over all houses
+        for house in houseArray:
 
-        # Overlap
-        if y1h1 <= y1h2 <= y2h1 or y1h1 <= y2h2 <= y2h1:
-            return True
+            # check if house is not chosen house
+            if chosenHouse.x1 != house.x1 and chosenHouse.x2 != house.x2:
 
-    # No overlap
-    return False
+                # check for overlap
+                return sd.shortest(chosenHouse, house) > chosenHouse.freeSpace
+    else:
+        return True
