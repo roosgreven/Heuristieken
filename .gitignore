@@ -46,6 +46,7 @@ coverage.xml
 *.cover
 .hypothesis/
 *.xml
+*.iml
 
 # Translations
 *.mo
