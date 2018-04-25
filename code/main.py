@@ -23,14 +23,13 @@ def main():
 
         # check if there's overlap, if so, delete house from array and try again
         if ov.noOverlap(houses, randomHouse):
+
             # add house placed randomly
             houses.append(randomHouse)
-            #totalHouseValues.append(houses[i].value(fch.findClosestHouse(houses, houses[i])))
             i += 1
 
     for house in houses:
         totalHouseValues.append(house.value(fch.findClosestHouse(houses, house)))
-        print(round(house.value(fch.findClosestHouse(houses, house)),1))
 
     # add coordinates of houses to list
     xlist = [house.x1 for house in houses]

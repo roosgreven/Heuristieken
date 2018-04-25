@@ -10,10 +10,12 @@ def noOverlap(houseArray, chosenHouse):
         # loop over all houses
         for house in houseArray:
 
-            # check if house is not chosen house
-            if chosenHouse.x1 != house.x1 and chosenHouse.x2 != house.x2:
+            # check for overlap
+            if sd.shortest(chosenHouse, house) < chosenHouse.freeSpace:
+                return False
 
-                # check for overlap
-                return sd.shortest(chosenHouse, house) > chosenHouse.freeSpace
+        return True
+
+    # no overlap when there's only one house
     else:
         return True

@@ -24,7 +24,7 @@ def findClosestHouse(houses, chosenHouse):
                 # save new smallest distance
                 distance = sd.shortest(chosenHouse, house)
                 closestHouse = house
-
+    print(distance)
     # return smallest distance
     return distance
 
