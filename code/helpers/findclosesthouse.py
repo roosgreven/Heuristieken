@@ -18,8 +18,6 @@ def findClosestHouse(houses, chosenHouse):
         # check if house is not chosen house
         if chosenHouse.x1 != house.x1 and chosenHouse.x2 != house.x2:
 
-            print(sd.shortest(chosenHouse, house))
-
             # check if distance between two houses is smaller than previous smallest distance
             if sd.shortest(chosenHouse, house) < distance:
 

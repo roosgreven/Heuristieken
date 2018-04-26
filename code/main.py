@@ -19,6 +19,7 @@ def main():
     i = 0
     totalValue = 0
     totalHouseValues = []
+
     # loop over houses
     while i < numberOfHouses:
 
@@ -36,20 +37,12 @@ def main():
             randomHouse = hs.Maison(x, y)
             currentMaisons += 1
 
-
         # check if there's overlap, if so, delete house from array and try again
         if ov.noOverlap(houses, randomHouse):
 
             # add placed randomly house
             houses.append(randomHouse)
-            print(type(randomHouse))
             i += 1
-
-
-    for house in houses:
-        totalHouseValues.append(house.value(fch.findClosestHouse(houses, house)))
-        totalValue += house.value(fch.findClosestHouse(houses, house))
-    #print(currentEengezins, numberOfEengezins)
 
     # add coordinates of houses to list
     xlist = [house.x1 for house in houses]
@@ -58,7 +51,7 @@ def main():
     # plot visualisation
     plt.figure()
     plt.plot(xlist, ylist, 'bo')
-    #plt.show()
+    plt.show()
 
 
 if __name__ == "__main__":
