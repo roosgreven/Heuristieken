@@ -24,7 +24,7 @@ def noOverlap(houseArray, chosenHouse):
             for water in wt.ponds:
 
                 # Check if water is inside house
-                if sd.shortest(water, chosenhouse) < 0
+                if sd.shortest(water, chosenhouse) < 0:
 
                     return False
 

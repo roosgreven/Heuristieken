@@ -13,6 +13,8 @@ import classes.water as wt
 
 def RandomAlgorithm(houseNumber):
 
+    # j checks how many times the while loop of house placement has run
+    j = 0
     i = 0
     plan = FloorPlan(houseNumber)
     totalValue = 0
@@ -26,13 +28,13 @@ def RandomAlgorithm(houseNumber):
         y = round(random.random() * plan.length, 1)
 
         # Initiate random water pond
-        randomWaterPond = wt(x, y, 20, 72)
+        randomWaterPond = wt.Pond(x, y)
 
         # Append to ponds array
-        water.ponds.append(randomWaterPond)
+        plan.ponds.append(randomWaterPond)
 
-    # Loop over houses.
-    while i < plan.numberOfHouses:
+    # Loop over houses also check if while loop is not endless by using j
+    while i < plan.numberOfHouses or j > 4000:
 
         # Get random coordinates.
         x = round(random.random() * plan.width, 1)
@@ -48,6 +50,9 @@ def RandomAlgorithm(houseNumber):
         else:
             randomHouse = hs.Maison(x, y)
             plan.currentMaisons += 1
+
+        # Add 1 to while loop counter
+        j += 1
 
         # Check if there's overlap, if so, delete house from array and try again.
         if con.noOverlap(plan.houses, randomHouse) and con.checkBoundaries(plan, randomHouse):

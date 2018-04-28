@@ -20,10 +20,12 @@ class FloorPlan:
         self.numberOfBungalows = int(self.numberOfHouses * 0.25)
         self.numberOfMaisons = int(self.numberOfHouses * 0.15)
 
-        
+
 
         # The list of houses and the number of each type that are already placed.
         self.houses = []
         self.currentEengezins = 0
         self.currentBungalows = 0
         self.currentMaisons = 0
+
+        self.ponds =[]
