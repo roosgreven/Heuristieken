@@ -16,12 +16,13 @@ def RandomAlgorithm(houseNumber):
     # j checks how many times the while loop of house placement has run
     j = 0
     i = 0
+    k = 0
     plan = FloorPlan(houseNumber)
     totalValue = 0
     totalHouseValues = []
 
     # Place four water ponds
-    while i < 4:
+    while k < 4:
 
         # Random coordinates
         x = round(random.random() * plan.width, 1)
@@ -32,6 +33,8 @@ def RandomAlgorithm(houseNumber):
 
         # Append to ponds array
         plan.ponds.append(randomWaterPond)
+
+        k += 1
 
     # Loop over houses also check if while loop is not endless by using j
     while i < plan.numberOfHouses or j > 4000:
@@ -55,7 +58,7 @@ def RandomAlgorithm(houseNumber):
         j += 1
 
         # Check if there's overlap, if so, delete house from array and try again.
-        if con.noOverlap(plan.houses, randomHouse) and con.checkBoundaries(plan, randomHouse):
+        if con.noOverlap(plan.houses, randomHouse, plan.ponds) and con.checkBoundaries(plan, randomHouse):
 
             # Add placed randomly house.
             plan.houses.append(randomHouse)
@@ -70,6 +73,7 @@ def RandomAlgorithm(houseNumber):
 
     # Visualisation of the floor plan.
     plt.figure()
+
 
     for house in plan.houses:
 

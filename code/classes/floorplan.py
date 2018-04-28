@@ -1,7 +1,7 @@
 """
 27 April 2018.
 
-Contains a class with the floorplan for the neighbourhood.   This includes a list
+Contains a class with the floorplan for the neighbourhood. This includes a list
 with houses and specifics for the neighbourhood.
 """
 

@@ -6,8 +6,9 @@ if there isn't enough free space for the house next to the neighbourhood boundar
 
 import helpers.shortestdistance as sd
 import classes.water as wt
+from classes.floorplan import FloorPlan
 
-def noOverlap(houseArray, chosenHouse):
+def noOverlap(houseArray, chosenHouse, ponds):
     """ Returns False if two houses overlap. """
 
     if len(houseArray) > 1:
@@ -21,19 +22,15 @@ def noOverlap(houseArray, chosenHouse):
                 return False
 
             # Check for each water pond
-            for water in wt.ponds:
+            for water in ponds:
 
                 # Check if water is inside house
-                if sd.shortest(water, chosenhouse) < 0:
+                if sd.shortest(water, chosenHouse) < 0:
 
                     return False
 
-        #print(chosenHouse)
-        return True
 
-    # No overlap when there's only one house.
-    else:
-        return True
+    return True
 
 def checkBoundaries(plan, house):
     """ Returns False if the house is too close to a boundary. """
