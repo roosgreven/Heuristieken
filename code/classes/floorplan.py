@@ -9,8 +9,20 @@ class FloorPlan:
     """ Has a list of houses and specifics for the neighbourhood. """
 
     # The area of the neighbourhood.
-    width = 160
-    length = 180
+    width = 160.
+    length = 180.
+    
+    eengezinsWidth = 8.
+    eengezinsLength = 8.
+    eengezinsFree = 2.
+    
+    bungalowWidth = 7.5
+    bungalowLength = 10.
+    bungalowFree = 3.
+
+    maisonWidth = 10.5
+    maisonLength = 11.
+    maisonFree = 6.
 
     def __init__(self, houseNumber):
 
@@ -29,3 +41,12 @@ class FloorPlan:
         self.currentMaisons = 0
 
         self.ponds =[]
+        
+    def createCoordinates(self):
+        
+        self.coordinates = []
+        
+        for x in range(int(self.eengezinsFree), int(self.width - self.eengezinsFree - self.eengezinsWidth + 1)):
+            for y in range(int(self.eengezinsFree), int(self.length - self.eengezinsFree - self.eengezinsLength + 1)):
+            
+                self.coordinates.append([x, y])

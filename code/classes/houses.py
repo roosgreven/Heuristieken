@@ -9,9 +9,9 @@ from the house class.
 class House:
     """ Keeps up with the coordinates and value of a house. """
 
-    def __init__(self, x1, y2):
+    def __init__(self, x1, y1):
 
-        self.coordinates(x1, y2)
+        self.coordinates(x1, y1)
         self.totalValue = self.basicValue
 
     def value(self, distance):
@@ -21,13 +21,13 @@ class House:
         self.totalValue = self.basicValue + self.extraValue * extraFreeSpace
         return self.totalValue
 
-    def coordinates(self, x1, y2):
+    def coordinates(self, x1, y1):
         """ Calculates the houses coordinates. """
 
         self.x1 = x1
         self.x2 = x1 + self.width
-        self.y2 = y2
-        self.y1 = y2 - self.length
+        self.y1 = y1
+        self.y2 = y1 + self.length
 
 class Eengezins(House):
     """ Specifies the "eengezins" housetype. Inherits from house(). """
