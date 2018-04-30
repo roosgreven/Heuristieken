@@ -5,24 +5,25 @@ Contains a house class for each house with coordinates and value.  Contains
 subclasses for each housetype with specific values.  Each housetype inherits
 from the house class.
 """
+import helpers.findclosesthouse as fch
 
 class House:
-    """ Keeps up with the coordinates and value of a house. """
+    """ Keeps up with the coordinates and value of a house """
 
     def __init__(self, x1, y1):
 
         self.coordinates(x1, y1)
         self.totalValue = self.basicValue
 
-    def value(self, distance):
-        """ Calculates the value of a house for the given shortest distance. """
+    def value(self, houseArray, house):
+        """ Calculates the value of a house for the given shortest distance """
 
+        distance = fch.findClosestHouse(houseArray, house)
         extraFreeSpace = distance - self.freeSpace
-        self.totalValue = self.basicValue + self.extraValue * extraFreeSpace
-        return self.totalValue
+        return self.basicValue + self.extraValue * extraFreeSpace
 
     def coordinates(self, x1, y1):
-        """ Calculates the houses coordinates. """
+        """ Calculates the houses coordinates """
 
         self.x1 = x1
         self.x2 = x1 + self.width
@@ -30,7 +31,7 @@ class House:
         self.y2 = y1 + self.length
 
 class Eengezins(House):
-    """ Specifies the "eengezins" housetype. Inherits from house(). """
+    """ Specifies the "eengezins" housetype. Inherits from house() """
 
     width = 8.
     length = 8.
@@ -42,7 +43,7 @@ class Eengezins(House):
         House.__init__(self, x1, y1)
 
 class Bungalow(House):
-    """ Specifies the "bungalow" housetype. Inherits from house(). """
+    """ Specifies the "bungalow" housetype. Inherits from house() """
 
     width = 7.5
     length = 10.
@@ -54,7 +55,7 @@ class Bungalow(House):
         House.__init__(self, x1, y1)
 
 class Maison(House):
-    """ Specifies the "maison" housetype. Inherits from house(). """
+    """ Specifies the "maison" housetype. Inherits from house() """
 
     width = 10.5
     length = 11.

@@ -31,82 +31,82 @@ def shortest(house1, house2):
     # can determine between which corners the shortest distance is located 
     # otherwise.
 
-    # Checks if the houses are above each other.
+    # Checks if the houses are above each other
     if x1h1 <= x1h2 <= x2h1 or x1h1 <= x2h2 <= x2h1 or x1h2 <= x1h1 <= x2h2 or x1h2 <= x2h1 <=x2h2:
 
-        # Checks if the houses are next to each other.
+        # Checks if the houses are next to each other
         if y1h1 <= y1h2 <= y2h1 or y1h1 <= y2h2 <= y2h1 or y1h2 <= y1h1 <= y2h2 or y1h2 <= y2h1 <=y2h2:
             
             # If they are both above and nest to each other, they must be inside
-            # each other, the total distance is returned as -1.
+            # each other, the total distance is returned as -1
             return -1
 
-        # Checks if house 2 is below house 1.
+        # Checks if house 2 is below house 1
         elif y1h1 > y2h2:
             
             # If so, the distance between the lower wall of house 1 and the upper
-            # wall of house 2 is returned.
+            # wall of house 2 is returned
             return y1h1 - y2h2
 
-        # Checks if house 2 is above house 1.
+        # Checks if house 2 is above house 1
         elif y2h1 < y1h2:
             
             # If so, the distance between the upper wall of house 1 and the lower
-            # wall of house 2 is returned.
+            # wall of house 2 is returned
             return y1h2 - y2h1
 
-    # Checks if the houses are next to each other.
+    # Checks if the houses are next to each other
     elif y1h1 <= y1h2 <= y2h1 or y1h1 <= y2h2 <= y2h1 or y1h2 <= y1h1 <= y2h2 or y1h2 <= y2h1 <=y2h2:
 
-        # Checks if house 2 is to the left of house 1.
+        # Checks if house 2 is to the left of house 1
         if x1h1 > x2h2:
             
             # If so, the distance between the left wall of house 1 and the right
-            # wall of house 2 is returned.
+            # wall of house 2 is returned
             return x1h1 - x2h2
 
-        # Checks if house 2 is to the right of house 1.
+        # Checks if house 2 is to the right of house 1
         elif x2h1 < x1h2:
             
             # If so, the distance between the right wall of house 1 and the left
-            # wall of house 2 is returned.
+            # wall of house 2 is returned
             return x1h2 - x2h1
 
     # The rest of the statements checks between which corners the shortest 
     # distance is located. This distance is calculated with Pythagoras, using
-    # the coordinates of the corners in question.
+    # the coordinates of the corners in question
 
-    # Checks if house 2 is to the left of house 1.
+    # Checks if house 2 is to the left of house 1
     elif x1h1 > x2h2:
 
-        # Checks if house 2 is below house 1.
+        # Checks if house 2 is below house 1
         if y1h1 > y2h2:
             
-            # House 2 is located to the bottom left of house 1.
+            # House 2 is located to the bottom left of house 1
             return ((y1h1 - y2h2) ** 2 + (x1h1 - x2h2) ** 2) ** 0.5
 
-        # Checks if house 2 is above house 1.
+        # Checks if house 2 is above house 1
         elif y2h1 < y1h2:
             
-            # House 2 is located to the top left of house 1.
+            # House 2 is located to the top left of house 1
             return ((y1h2 - y2h1) ** 2 + (x1h1 - x2h2) ** 2) ** 0.5
 
-    # Checks if house 2 is to the right of house 1.
+    # Checks if house 2 is to the right of house 1
     elif x2h1 < x1h2:
 
-        # Checks if house 2 is below house 1.
+        # Checks if house 2 is below house 1
         if y1h1 > y2h2:
             
-            # House 2 is located to the bottom right of house 1.
+            # House 2 is located to the bottom right of house 1
             return ((y1h1 - y2h2) ** 2 + (x1h2 - x2h1) ** 2) ** 0.5
 
-        # Checks if house 2 is above house 1.
+        # Checks if house 2 is above house 1
         elif y2h1 < y1h2:
             
-            # House is located to the top right of house 1.
+            # House is located to the top right of house 1
             return ((y1h2 - y2h1) ** 2 + (x1h2 - x2h1) ** 2) ** 0.5
 
-    # This should never occur, but it's here as a safety net.
+    # This should never occur, but it's here as a safety net
     else:
         print("error")
         return -2

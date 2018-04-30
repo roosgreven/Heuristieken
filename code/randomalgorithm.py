@@ -31,7 +31,7 @@ def RandomAlgorithm(houseNumber):
         # Initiate random water pond
         randomWaterPond = wt.Pond(x, y)
 
-        if con.waterBoundary(plan, randomWaterPond):
+        if con.waterCheck(plan, randomWaterPond):
             
             plan.ponds.append(randomWaterPond)
             k += 1
@@ -39,11 +39,11 @@ def RandomAlgorithm(houseNumber):
     # Loop over houses also check if while loop is not endless by using j
     while i < plan.numberOfHouses and j < 100000:
 
-        # Get random coordinates.
+        # Get random coordinates
         x = round(random.random() * plan.width, 1)
         y = round(random.random() * plan.length, 1)
 
-        # Decide what type of house will be placed.
+        # Decide what type of house will be placed
         if len(plan.houses) < plan.numberOfEengezins:
             randomHouse = hs.Eengezins(x, y)
             plan.currentEengezins += 1
@@ -58,10 +58,10 @@ def RandomAlgorithm(houseNumber):
         # Add 1 to while loop counter
         j += 1
 
-        # Check if there's overlap, if so, delete house from array and try again.
+        # Check if there's overlap, if so, delete house from array and try again
         if con.noOverlap(plan.houses, randomHouse, plan.ponds) and con.checkBoundaries(plan, randomHouse):
             
-            # Add placed randomly house.
+            # Add placed randomly house
             plan.houses.append(randomHouse)
             i += 1
             

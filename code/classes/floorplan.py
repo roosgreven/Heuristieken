@@ -6,9 +6,9 @@ with houses and specifics for the neighbourhood.
 """
 
 class FloorPlan:
-    """ Has a list of houses and specifics for the neighbourhood. """
+    """ Has a list of houses and specifics for the neighbourhood """
 
-    # The area of the neighbourhood.
+    # The area of the neighbourhood
     width = 160.
     length = 180.
     
@@ -26,15 +26,13 @@ class FloorPlan:
 
     def __init__(self, houseNumber):
 
-        # The total number of houses and number for each type.
+        # The total number of houses and number for each type
         self.numberOfHouses = houseNumber
         self.numberOfEengezins = int(self.numberOfHouses * 0.6)
         self.numberOfBungalows = int(self.numberOfHouses * 0.25)
         self.numberOfMaisons = int(self.numberOfHouses * 0.15)
 
-
-
-        # The list of houses and the number of each type that are already placed.
+        # The list of houses and the number of each type that are already placed
         self.houses = []
         self.currentEengezins = 0
         self.currentBungalows = 0
@@ -48,5 +46,4 @@ class FloorPlan:
         
         for x in range(int(self.eengezinsFree), int(self.width - self.eengezinsFree - self.eengezinsWidth + 1)):
             for y in range(int(self.eengezinsFree), int(self.length - self.eengezinsFree - self.eengezinsLength + 1)):
-            
                 self.coordinates.append([x, y])

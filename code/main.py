@@ -1,16 +1,17 @@
 """
 27 April 2018
 
-Runs the algorithms to solve Amstelhaege.
+Runs the algorithms to solve Amstelhaege
 """
 
 from randomalgorithm import RandomAlgorithm
+from greedy import greedy
 
 def main():
     
-    # Runs standard random placement algorithm.
-    for i in range(10):
-        RandomAlgorithm(60)
+    # Runs standard random placement algorithm
+    for i in range(1):
+        greedy(20)
         
 if __name__ == "__main__":
     main()

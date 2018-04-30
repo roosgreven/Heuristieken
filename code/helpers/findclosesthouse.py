@@ -6,26 +6,44 @@ Returns distance if there's no overlap.
 """
 
 import helpers.shortestdistance as sd
+from classes.floorplan import FloorPlan
 
 def findClosestHouse(houses, chosenHouse):
 
-    # Set distance to fake number.
-    distance = 160.
+    # Set distance to max
+    distance = FloorPlan.width / 2 - chosenHouse.width / 2 - chosenHouse.freeSpace
 
-    # Loop over all houses.
+
+    # Loop over all houses
     for house in houses:
 
-        # Check if house is not chosen house.
+        # Check if house is not chosen house
         if chosenHouse.x1 != house.x1 and chosenHouse.x2 != house.x2:
 
-            # Check if distance between two houses is smaller than previous smallest distance.
+            # Check if distance between two houses is smaller than previous smallest distance
             if sd.shortest(chosenHouse, house) < distance:
 
-                # Save new smallest distance.
+                # Save new smallest distance
                 distance = sd.shortest(chosenHouse, house)
-                closestHouse = house
 
-    # Return smallest distance.
+    # Check if distance between house and border is smaller than previous smallest distance.
+    if chosenHouse.x1 < distance:
+
+        distance = chosenHouse.x1
+
+    if FloorPlan.width - chosenHouse.x2 < distance:
+
+        distance = FloorPlan.width - chosenHouse.x2
+
+    if chosenHouse.y1 < distance:
+
+        distance = chosenHouse.y1
+
+    if FloorPlan.length - chosenHouse.y2 < distance:
+
+        distance = FloorPlan.length - chosenHouse.y2
+
+    # Return smallest distance
     return distance
 
 

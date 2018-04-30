@@ -6,7 +6,7 @@ contains a Pond class with the specifics for a pond.
 """
 
 class Water:
-    """ Contains the coordinates of a pond. """
+    """ Contains the coordinates of a pond """
     
     def __init__(self, x1, y1):
 
@@ -14,7 +14,7 @@ class Water:
 
 
     def coordinates(self, x1, y1):
-        """ Calculates the waters coordinates. """
+        """ Calculates the waters coordinates """
 
         self.x1 = x1
         self.x2 = x1 + self.width
@@ -22,7 +22,7 @@ class Water:
         self.y2 = y1 + self.length
 
 class Pond(Water):
-    """ Contains the specifics of a pond. """
+    """ Contains the specifics of a pond """
     
     width = 20.
     length = 72.
