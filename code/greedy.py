@@ -15,6 +15,7 @@ import helpers.constraints as con
 import classes.water as wt
 import helpers.output as output
 import random
+import numpy as np
 
 def greedy(houseNumber):
     
@@ -33,9 +34,11 @@ def greedy(houseNumber):
 
         # Create house
         house1 = hs.Maison(x, y)
+        
+        distance = fch.findClosestHouse(plan.houses, house1)
 
         # Check if coordinates don't cross boundaries
-        if con.checkBoundaries(plan, house1):
+        if distance > house1.freeSpace:
 
             # Save house with these coordinates
             plan.houses.append(house1)
@@ -78,17 +81,19 @@ def greedy(houseNumber):
             house.coordinates(x, y)
 
             # Check if it can be placed there
-            if con.checkBoundaries(plan, house):
-                if con.noOverlap(plan.houses, house, plan.ponds):
+            if con.noWater(house, plan.ponds):
 
-                    # Find closest distance to house or border
-                    newDistance = fch.findClosestHouse(plan.houses, house)
+                # Find closest distance to house or border
+                newDistance = fch.findClosestHouse(plan.houses, house)
 
-                    # If there's more freespace in this position, take over coordinates
-                    if newDistance > distance:
+                # If there's more freespace in this position, take over coordinates
+                if newDistance > distance:
 
-                        distance = newDistance
-                        bestX, bestY = x, y
+                    distance = newDistance
+                    bestX, bestY = x, y
+                    
+        if distance < house.freeSpace:
+            print("Error, no solution.")
                         
         house.coordinates(bestX, bestY)
         print("distance: ", distance)
@@ -97,14 +102,15 @@ def greedy(houseNumber):
 
         # All coordinates that have guaranteed become unavailable because of the
         # house that was just placed, are removed from the list of coordinates
-        for x in range(int(house.x1 - house.freeSpace - plan.eengezinsWidth + 1), int(house.x2 + house.freeSpace)):
-            for y in range(int(house.y1 - house.freeSpace - plan.eengezinsLength + 1), int(house.y2 + house.freeSpace)):
-
-                if [x, y] in plan.coordinates:
+        for x in np.arange(house.x1 - house.freeSpace - plan.eengezinsWidth + 1, house.x2 + house.freeSpace, 0.5):
+            for y in np.arange(house.y1 - house.freeSpace - plan.eengezinsLength + 1, house.y2 + house.freeSpace, 0.5):
+                try:
                     plan.coordinates.remove([x, y])
+                except ValueError:
+                    pass
 
     print("ready for output")
     output.Output(plan)   
 
 if __name__ == "__main__":
-    greedy(20)
+    greedy(40)

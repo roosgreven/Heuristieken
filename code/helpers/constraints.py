@@ -8,18 +8,8 @@ import helpers.shortestdistance as sd
 #import classes.water as wt
 #from classes.floorplan import FloorPlan
 
-def noOverlap(houseArray, chosenHouse, ponds):
+def noWater(chosenHouse, ponds):
     """ Returns False if two houses overlap. """
-
-    # Loop over all houses
-    for house in houseArray:
-
-        distance = sd.shortest(chosenHouse, house)
-
-        # Check for overlap
-        if distance < chosenHouse.freeSpace or distance < house.freeSpace:
-
-            return False
 
     # Check for overlap with each pond
     for water in ponds:
