@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import helpers.constraints as con
 import classes.water as wt
 
-def RandomAlgorithm(houseNumber):
+def randomAlgorithm(houseNumber):
 
     # j checks how many times the while loop of house placement has run
     j = 0
