@@ -11,7 +11,6 @@ import random
 import matplotlib.pyplot as plt
 import helpers.constraints as con
 import classes.water as wt
-import helpers.output as output
 
 def RandomAlgorithm(houseNumber):
 
@@ -49,7 +48,8 @@ def RandomAlgorithm(houseNumber):
 
     print("Number of times iterated through loop:")
     print(j)
-    output.Output(plan)
+
+    return plan
 
 """ Places water at random location """
 def water_placement(x, y, plan):
