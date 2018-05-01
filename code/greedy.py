@@ -16,16 +16,26 @@ import classes.water as wt
 import helpers.output as output
 import random
 import numpy as np
+import randomalgorithm as water
 
 def greedy(houseNumber):
     
     plan = FloorPlan(houseNumber)
 
     plan.createCoordinates()
+    
+    # Place four water ponds
+    while len(plan.ponds) < 4:
+
+        # Get random coordinates
+        x, y = water.random_coordinates(plan)
+
+        # Call water placement function
+        water.water_placement(x, y, plan)
 
     # First house hasn't been placed yet
     firstHouse = False
-
+    """
     while firstHouse == False:
 
         # Get random coordinates
@@ -43,9 +53,9 @@ def greedy(houseNumber):
             # Save house with these coordinates
             plan.houses.append(house1)
             firstHouse = True
-
+    """
     # Places the houses with a greedy algorithm
-    for i in range(houseNumber - 1):
+    for i in range(houseNumber):
         
         # Decide what type of house will be placed. A testhouse is also made to
         # check for each coordinate if it's better than the current one. If it is,
@@ -53,22 +63,16 @@ def greedy(houseNumber):
         
         bestX, bestY = 0, 0
         
-        if i < plan.numberOfMaisons - 1:
+        if i < plan.numberOfMaisons:
             
             house = hs.Maison(0, 0)
-            plan.currentMaisons += 1
-            print("maison")
 
-        elif i < plan.numberOfMaisons + plan.numberOfBungalows - 1:
+        elif i < plan.numberOfMaisons + plan.numberOfBungalows:
 
             house = hs.Bungalow(0, 0)
-            plan.currentBungalows += 1
-            print("bungalow")
 
         else:
             house = hs.Eengezins(0, 0)
-            plan.currentEengezins += 1
-            print("eengezins")
             
         distance = 0
 
@@ -113,4 +117,4 @@ def greedy(houseNumber):
     output.Output(plan)   
 
 if __name__ == "__main__":
-    greedy(40)
+    greedy(60)
