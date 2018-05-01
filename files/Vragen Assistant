@@ -32,7 +32,7 @@ Greedy - Zet steeds één huis neer en kijk waar dit huis de meeste vrijstand he
 
 Vragen Assistent Meeting 3:
 - Is greedy goed?
-- handmatig plaatsen eerste huizen?
+- Handmatig plaatsen eerste huizen?
 - Is datastructuur goed?
 
 comments:
@@ -45,3 +45,10 @@ ipv lijst, een classe met een lijst
 visualisatie afmaken
 functie schrijven die overlap checkt/voorkomt
 eerst random zonder overlap algoritme, dan greedy.
+
+Meeting 4:
+- 3 punten voor infra- en datastructuur
+- CSV bestand voor kenmerken van huizen maken, zodat het niet meer op twee plekken staat (floorplan en houses).
+- In greedy losse functies maken, het is nu een te groot blok. Bijv. loopen over de coordinaten heen.
+- Read me moet uitgebreider worden (wat gebeurt er als je runt, wat staat er waar?).
+- Twee if statements van boundary en overap kunnen weg, en dan doe je het in findclosesthouse.
