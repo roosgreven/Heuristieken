@@ -15,10 +15,10 @@ class House:
         self.coordinates(x1, y1)
         self.totalValue = self.basicValue
 
-    def value(self, houseArray, house):
+    def value(self, houseArray):
         """ Calculates the value of a house for the given shortest distance """
 
-        distance = fch.findClosestHouse(houseArray, house)
+        distance = fch.findClosestHouse(houseArray, self)
         extraFreeSpace = distance - self.freeSpace
         return self.basicValue + self.extraValue * extraFreeSpace
 

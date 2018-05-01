@@ -14,15 +14,13 @@ def noOverlap(houseArray, chosenHouse, ponds):
     # Loop over all houses
     for house in houseArray:
 
-        # Check if house is not chosen house
-        if chosenHouse.x1 != house.x1 and chosenHouse.x2 != house.x2:
-            distance = sd.shortest(chosenHouse, house)
+        distance = sd.shortest(chosenHouse, house)
 
-            # Check for overlap
-            if distance < chosenHouse.freeSpace or distance < house.freeSpace:
+        # Check for overlap
+        if distance < chosenHouse.freeSpace or distance < house.freeSpace:
 
 
-                return False
+            return False
 
     # Check for overlap with each pond
     for water in ponds:
@@ -52,17 +50,16 @@ def checkBoundaries(plan, house):
 def waterCheck(plan, water):
     """ Returns False if the water is outside a boundary or inside another pond. """
     
-    if len(plan.ponds) > 0:
         
-        # Loop over all ponds
-        for pond in plan.ponds:
+    # Loop over all ponds
+    for pond in plan.ponds:
             
-            distance = sd.shortest(water, pond)
+        distance = sd.shortest(water, pond)
             
-            # Check for overlap
-            if distance < 0:
+        # Check for overlap
+        if distance < 0:
                 
-                return False
+            return False
                 
     # Checks if water is within the neighbourhood boundaries. Since x1 and y1
     # are generated within the neighbourhood, water can only cross the right and

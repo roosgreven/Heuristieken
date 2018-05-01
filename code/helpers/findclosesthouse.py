@@ -11,7 +11,7 @@ from classes.floorplan import FloorPlan
 def findClosestHouse(houses, chosenHouse):
 
     # Set distance to max
-    distance = FloorPlan.width / 2 - chosenHouse.width / 2 - chosenHouse.freeSpace
+    distance = FloorPlan.width
 
 
     # Loop over all houses
@@ -19,14 +19,16 @@ def findClosestHouse(houses, chosenHouse):
 
         # Check if house is not chosen house
         if chosenHouse.x1 != house.x1 and chosenHouse.x2 != house.x2:
+            
+            newDistance = sd.shortest(chosenHouse, house)
 
             # Check if distance between two houses is smaller than previous smallest distance
-            if sd.shortest(chosenHouse, house) < distance:
+            if newDistance < distance:
 
                 # Save new smallest distance
-                distance = sd.shortest(chosenHouse, house)
+                distance = newDistance
 
-    # Check if distance between house and border is smaller than previous smallest distance.
+    # Check if distance between house and border is smaller than previous smallest distance
     if chosenHouse.x1 < distance:
 
         distance = chosenHouse.x1

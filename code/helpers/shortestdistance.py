@@ -32,7 +32,7 @@ def shortest(house1, house2):
     # otherwise.
 
     # Checks if the houses are above each other
-    if x1h1 <= x1h2 <= x2h1 or x1h1 <= x2h2 <= x2h1 or x1h2 <= x1h1 <= x2h2 or x1h2 <= x2h1 <=x2h2:
+    if x1h1 <= x1h2 <= x2h1 or x1h1 <= x2h2 <= x2h1 or x1h2 <= x1h1 <= x2h2 or x1h2 <= x2h1 <= x2h2:
 
         # Checks if the houses are next to each other
         if y1h1 <= y1h2 <= y2h1 or y1h1 <= y2h2 <= y2h1 or y1h2 <= y1h1 <= y2h2 or y1h2 <= y2h1 <=y2h2:

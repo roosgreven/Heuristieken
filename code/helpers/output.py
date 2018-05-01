@@ -15,7 +15,7 @@ def Output(plan):
     # Total value of neighbourhood is calculated
     for house in plan.houses:
 
-        totalValue += house.value(plan.houses, house)
+        totalValue += house.value(plan.houses)
 
     print("The total value of the neighbourhood:")
     print(totalValue)
