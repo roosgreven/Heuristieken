@@ -48,23 +48,22 @@ def greedy(houseNumber):
         # check for each coordinate if it's better than the current one. If it is,
         # the better coordinate will be saved
         
+        bestX, bestY = 0, 0
+        
         if i < plan.numberOfMaisons - 1:
             
             house = hs.Maison(0, 0)
-            testHouse = hs.Maison(0, 0)
             plan.currentMaisons += 1
-            print('maison')
+            print("maison")
 
         elif i < plan.numberOfMaisons + plan.numberOfBungalows - 1:
 
             house = hs.Bungalow(0, 0)
-            testHouse = hs.Bungalow(0, 0)
             plan.currentBungalows += 1
             print("bungalow")
 
         else:
             house = hs.Eengezins(0, 0)
-            testHouse = hs.Eengezins(0, 0)
             plan.currentEengezins += 1
             print("eengezins")
             
@@ -75,21 +74,23 @@ def greedy(houseNumber):
 
             x, y = coordinate[0], coordinate[1]
 
-            # The testhouse is set to new coordinate
-            testHouse.coordinates(x, y)
+            # The house is set to new coordinate
+            house.coordinates(x, y)
 
             # Check if it can be placed there
-            if con.checkBoundaries(plan, testHouse):
-                if con.noOverlap(plan.houses, testHouse, plan.ponds):
+            if con.checkBoundaries(plan, house):
+                if con.noOverlap(plan.houses, house, plan.ponds):
 
                     # Find closest distance to house or border
-                    newDistance = fch.findClosestHouse(plan.houses, testHouse)
+                    newDistance = fch.findClosestHouse(plan.houses, house)
 
                     # If there's more freespace in this position, take over coordinates
                     if newDistance > distance:
 
                         distance = newDistance
-                        house.coordinates(x, y)
+                        bestX, bestY = x, y
+                        
+        house.coordinates(bestX, bestY)
         print("distance: ", distance)
         plan.houses.append(house)
         print("house ", len(plan.houses))

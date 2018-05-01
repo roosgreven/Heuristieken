@@ -46,19 +46,17 @@ def RandomAlgorithm(houseNumber):
         # Decide what type of house will be placed
         if len(plan.houses) < plan.numberOfEengezins:
             randomHouse = hs.Eengezins(x, y)
-            plan.currentEengezins += 1
 
         elif len(plan.houses) < plan.numberOfEengezins + plan.numberOfBungalows:
             randomHouse = hs.Bungalow(x, y)
-            plan.currentBungalows += 1
+            
         else:
             randomHouse = hs.Maison(x, y)
-            plan.currentMaisons += 1
 
         # Add 1 to while loop counter
         j += 1
 
-        # Check if there's overlap, if so, delete house from array and try again
+        # Check if there's overlap, if not, add house to array
         if con.noOverlap(plan.houses, randomHouse, plan.ponds) and con.checkBoundaries(plan, randomHouse):
             
             # Add placed randomly house

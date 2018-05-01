@@ -19,7 +19,6 @@ def noOverlap(houseArray, chosenHouse, ponds):
         # Check for overlap
         if distance < chosenHouse.freeSpace or distance < house.freeSpace:
 
-
             return False
 
     # Check for overlap with each pond
