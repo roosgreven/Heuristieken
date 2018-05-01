@@ -8,10 +8,10 @@ from randomalgorithm import RandomAlgorithm
 from greedy import greedy
 
 def main():
-    
+
     # Runs standard random placement algorithm
     for i in range(1):
-        greedy(20)
-        
+        RandomAlgorithm(20)
+
 if __name__ == "__main__":
     main()
