@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import helpers.constraints as con
 import classes.water as wt
 
-def RandomAlgorithm(houseNumber):
+def randomAlgorithm(houseNumber):
 
     # j checks how many times the while loop of house placement has run
     j = 0
@@ -40,11 +40,14 @@ def RandomAlgorithm(houseNumber):
         j += 1
 
         # Check if there's overlap, if not, add house to array
-        if con.noOverlap(plan.houses, randomHouse, plan.ponds) and con.checkBoundaries(plan, randomHouse):
+        if con.noWater(randomHouse, plan.ponds):
 
-            # Add placed randomly house
-            plan.houses.append(randomHouse)
-            i += 1
+            distance = fch.findClosestHouse(plan.houses, randomHouse)
+            
+            if not distance < randomHouse.freeSpace:
+                # Add placed randomly house
+                plan.houses.append(randomHouse)
+                i += 1
 
     print("Number of times iterated through loop:")
     print(j)
@@ -84,4 +87,4 @@ def house_placement(x, y, plan):
     return house
 
 if __name__ == "__main__":
-    RandomAlgorithm(60)
+    randomAlgorithm(60)
