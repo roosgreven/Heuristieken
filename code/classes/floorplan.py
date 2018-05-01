@@ -5,6 +5,8 @@ Contains a class with the floorplan for the neighbourhood. This includes a list
 with houses and specifics for the neighbourhood.
 """
 
+import numpy as np
+
 class FloorPlan:
     """ Has a list of houses and specifics for the neighbourhood """
 
@@ -44,6 +46,6 @@ class FloorPlan:
         
         self.coordinates = []
         
-        for x in range(int(self.eengezinsFree), int(self.width - self.eengezinsFree - self.eengezinsWidth + 1)):
-            for y in range(int(self.eengezinsFree), int(self.length - self.eengezinsFree - self.eengezinsLength + 1)):
+        for x in np.arange(self.eengezinsFree, self.width - self.eengezinsFree - self.eengezinsWidth + 1, 0.5):
+            for y in np.arange(self.eengezinsFree, self.length - self.eengezinsFree - self.eengezinsLength + 1, 0.5):
                 self.coordinates.append([x, y])

@@ -16,9 +16,9 @@ def findClosestHouse(houses, chosenHouse):
 
     # Loop over all houses
     for house in houses:
-
-        # Check if house is not chosen house
-        if chosenHouse.x1 != house.x1 and chosenHouse.x2 != house.x2:
+        
+        # Check if house is not chosenHouse
+        if not chosenHouse == house:
             
             newDistance = sd.shortest(chosenHouse, house)
 

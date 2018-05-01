@@ -17,7 +17,6 @@ class House:
 
     def value(self, houseArray):
         """ Calculates the value of a house for the given shortest distance """
-
         distance = fch.findClosestHouse(houseArray, self)
         extraFreeSpace = distance - self.freeSpace
         return self.basicValue + self.extraValue * extraFreeSpace

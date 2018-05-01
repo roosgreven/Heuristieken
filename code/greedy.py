@@ -15,6 +15,7 @@ import helpers.constraints as con
 import classes.water as wt
 import helpers.output as output
 import random
+import numpy as np
 
 def greedy(houseNumber):
     
@@ -97,8 +98,8 @@ def greedy(houseNumber):
 
         # All coordinates that have guaranteed become unavailable because of the
         # house that was just placed, are removed from the list of coordinates
-        for x in range(int(house.x1 - house.freeSpace - plan.eengezinsWidth + 1), int(house.x2 + house.freeSpace)):
-            for y in range(int(house.y1 - house.freeSpace - plan.eengezinsLength + 1), int(house.y2 + house.freeSpace)):
+        for x in np.arange(house.x1 - house.freeSpace - plan.eengezinsWidth + 1, house.x2 + house.freeSpace, 0.5):
+            for y in np.arange(house.y1 - house.freeSpace - plan.eengezinsLength + 1, house.y2 + house.freeSpace, 0.5):
 
                 if [x, y] in plan.coordinates:
                     plan.coordinates.remove([x, y])
@@ -107,4 +108,4 @@ def greedy(houseNumber):
     output.Output(plan)   
 
 if __name__ == "__main__":
-    greedy(20)
+    greedy(60)
