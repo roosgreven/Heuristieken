@@ -1,28 +1,34 @@
 """
-Contains two functions that check if the constraints are met. noOverlap returns
-False when the house overlaps with another house, checkBoundaries returns False
-if there isn't enough free space for the house next to the neighbourhood boundaries.
+Contains three functions that check if the constraints are met.  noWater returns
+False when the house overlaps with water, checkBoundaries returns False if there 
+isn't enough free space for the house next to the neighbourhood boundaries.  
 """
 
 import helpers.shortestdistance as sd
-#import classes.water as wt
-#from classes.floorplan import FloorPlan
 
-def noWater(chosenHouse, ponds):
+def noWaterAndBoundary(chosenObject, plan):
     """ Returns False if two houses overlap. """
 
     # Check for overlap with each pond
-    for water in ponds:
+    for water in plan.ponds:
 
-        distance = sd.shortest(water, chosenHouse)
+        distance = sd.shortest(water, chosenObject)
                 
         # Check if water is inside house
         if distance < 0:
 
             return False
+            
+    # Checks left and lower boundary
+    if chosenObject.x1 < chosenObject.freeSpace or chosenObject.y1 < chosenObject.freeSpace:
+        return False
+
+    # Checks right and upper boundary
+    if chosenObject.x2 > plan.width - chosenObject.freeSpace or chosenObject.y2 > plan.length - chosenObject.freeSpace:
+        return False
 
     return True
-
+'''
 def checkBoundaries(plan, house):
     """ Returns False if the house is too close to a boundary. """
 
@@ -35,7 +41,7 @@ def checkBoundaries(plan, house):
         return False
 
     return True
-    
+
 def waterCheck(plan, water):
     """ Returns False if the water is outside a boundary or inside another pond. """
     
@@ -57,3 +63,4 @@ def waterCheck(plan, water):
         return False
 
     return True
+'''

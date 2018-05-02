@@ -1,7 +1,7 @@
 """
 28 April 2018.
 
-Contains a Water class that keeps up with the coordinates of each pond. Also
+Contains a Water class that keeps up with the coordinates of each pond.  Also
 contains a Pond class with the specifics for a pond.
 """
 
@@ -26,5 +26,6 @@ class Pond(Water):
     
     width = 20.
     length = 72.
+    freeSpace = 0.
     def __init__(self, x1, y1):
         Water.__init__(self, x1, y1)

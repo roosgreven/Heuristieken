@@ -1,7 +1,11 @@
 """
 24 April 2018.
 
-Random algorithm.
+Performs a random algorithm to solve Amstelhaege.  First places all the water
+randomly, then places all houses randomly. It always checks if a water or house
+is actually allowed to be placed at a certain coordinate befor placing it.  Still
+needs a way to check if all houses were actually placed in the given number of 
+iteratations and if not handle accordingly.
 """
 
 import classes.houses as hs
@@ -11,8 +15,12 @@ import random
 import matplotlib.pyplot as plt
 import helpers.constraints as con
 import classes.water as wt
+import helpers.output as output
 
 def randomAlgorithm(houseNumber):
+    """ Performs a random algorithm, first placing water, then placing houses.
+    houseNumber is the number of houses that have to be in the neighbourhood.
+    """
 
     # j checks how many times the while loop of house placement has run
     j = 0
@@ -40,7 +48,7 @@ def randomAlgorithm(houseNumber):
         j += 1
 
         # Check if there's overlap, if not, add house to array
-        if con.noWater(randomHouse, plan.ponds):
+        if con.noWaterAndBoundary(randomHouse, plan):
 
             distance = fch.findClosestHouse(plan.houses, randomHouse)
             
@@ -54,26 +62,27 @@ def randomAlgorithm(houseNumber):
 
     return plan
 
-""" Places water at random location """
 def water_placement(x, y, plan):
-
+    """ Places water at random location. x and y form the random coordinate. """    
+    
     # Initiate random water pond
-    WaterPond = wt.Pond(x, y)
+    waterPond = wt.Pond(x, y)
 
-    if con.waterCheck(plan, WaterPond):
+    if con.noWaterAndBoundary(waterPond, plan):
 
-        plan.ponds.append(WaterPond)
+        plan.ponds.append(waterPond)
 
-""" Sets random coordinates x and y. """
 def random_coordinates(plan):
+    """ Sets random coordinates x and y. """
 
     # Random coordinates
     x = round(random.random() * plan.width, 1)
     y = round(random.random() * plan.length, 1)
     return x, y
 
-""" Initiates new house to place """
 def house_placement(x, y, plan):
+    """ Initiates new house to place at position (x,y). """
+    
     # Decide what type of house will be placed
     if len(plan.houses) < plan.numberOfEengezins:
         house = hs.Eengezins(x, y)
@@ -87,4 +96,6 @@ def house_placement(x, y, plan):
     return house
 
 if __name__ == "__main__":
-    randomAlgorithm(60)
+    plan = randomAlgorithm(60)
+    
+    output.Output(plan)

@@ -1,11 +1,12 @@
 """
 29 April 2018.
 
-Contains a greedy algorithm to solve Amstelhaege. It generates a list with all
+Contains a greedy algorithm to solve Amstelhaege.  It generates a list with all
 possible coordinates a house can have and iterates through this list for every
-house to find the highest value place. But, whenever a house gets placed, this
-reduces the number of places the next house has. The coordinates that are
-impossible then get removed form the list.
+house to find the highest value place.  But, whenever a house gets placed, this
+reduces the number of places the next house has.  The coordinates that are
+impossible then get removed form the list.  Still needs a way to check if no house
+is in another houses mandatory freespace.
 """
 
 import classes.houses as hs
@@ -19,6 +20,10 @@ import numpy as np
 import randomalgorithm as water
 
 def greedy(houseNumber):
+    """ Performs a greedy algorithm.  Places the water randomly and places each
+    house in an optimal place. houseNumber is the number of houses that have to
+    be placed.
+    """
     
     plan = FloorPlan(houseNumber)
 
@@ -85,7 +90,7 @@ def greedy(houseNumber):
             house.coordinates(x, y)
 
             # Check if it can be placed there
-            if con.noWater(house, plan.ponds):
+            if con.noWaterAndBoundary(house, plan):
 
                 # Find closest distance to house or border
                 newDistance = fch.findClosestHouse(plan.houses, house)

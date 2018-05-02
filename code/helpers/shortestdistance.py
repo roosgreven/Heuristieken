@@ -7,6 +7,9 @@ located.
 """
 
 def shortest(house1, house2):
+    """ Takes in two houses and determines where and what the shortest distance
+    between them is.
+    """
     
     # x coordinate 1 of house 1
     x1h1 = house1.x1

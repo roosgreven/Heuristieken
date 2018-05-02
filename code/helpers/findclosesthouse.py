@@ -1,14 +1,16 @@
 """
-Finds distance between given house and house closest to that house. 
-Takes in the array of placed houses and the house to check. 
-Returns false if there's overlap between houses. 
-Returns distance if there's no overlap. 
+Finds distance between given house and house or boundary closest to that house.  
+Takes in the array of placed houses and the house to check.  Distance will be 
+negative when two houses overlap.
 """
 
 import helpers.shortestdistance as sd
 from classes.floorplan import FloorPlan
 
 def findClosestHouse(houses, chosenHouse):
+    """ Finds the closes distance of a house to another house or a boundary.
+    Takes in the array of houses and the house that will be checked.
+    """
 
     # Set distance to max
     distance = FloorPlan.width

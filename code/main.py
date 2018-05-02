@@ -1,7 +1,10 @@
 """
 27 April 2018
 
-Runs the algorithms to solve Amstelhaege
+Runs the algorithms to solve Amstelhaege.  Every algorithm returns the Floorplan.
+This functions can then generate the wanted output.  For the time being this 
+function will be changed for different desired outcomes, but will become fully
+automated eventually.  For now the function also saves the outcome in a csv file.
 """
 
 from randomalgorithm import randomAlgorithm
@@ -11,6 +14,9 @@ import csv
 import sys
 
 def main():
+    """ Performs desired algorithm for desired number of houses, handles output
+    and saves best outcome. 
+    """
 
     # If not enough command arguments were provided
     if len(sys.argv) != 3:

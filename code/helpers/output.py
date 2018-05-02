@@ -1,11 +1,18 @@
 """
 29 April 2018.
+
+Generates output for a completed Floorplan.  Calculates the total value of the
+neighbourhood and visualizes the Floorplan by plotting the house and pond 
+outlines with matplotlib.
 """
 
 import helpers.findclosesthouse as fch
 import matplotlib.pyplot as plt
 
 def Output(plan):
+    """ Calculates total value of a Floorplan and generates a visual floorplan
+    with all houses and ponds. 
+    """
 
     totalValue = 0
 

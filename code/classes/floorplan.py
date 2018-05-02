@@ -1,8 +1,9 @@
 """
 27 April 2018.
 
-Contains a class with the floorplan for the neighbourhood. This includes a list
-with houses and specifics for the neighbourhood.
+Contains a class with the floorplan for the neighbourhood.  This includes a list
+with houses, a function to generate all coordinates and specifics for the 
+neighbourhood.
 """
 
 import numpy as np
@@ -14,6 +15,10 @@ class FloorPlan:
     width = 160.
     length = 180.
     
+    # The specifics for all housetypes. Are also defined in the house classes,
+    # but because there they are only available when there is an instance of
+    # the house, they are also saved here. It's not very elegant and we will
+    # change it at some point.
     eengezinsWidth = 8.
     eengezinsLength = 8.
     eengezinsFree = 2.
@@ -43,6 +48,10 @@ class FloorPlan:
         self.ponds =[]
         
     def createCoordinates(self):
+        """ Creates a list of all possible coordinates in the neighbourhood.  
+        Coordinates too close to the boundary to ever place a house on them, are
+        not added. 
+        """
         
         self.coordinates = []
         
