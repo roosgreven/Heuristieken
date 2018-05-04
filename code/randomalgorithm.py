@@ -4,7 +4,7 @@
 Performs a random algorithm to solve Amstelhaege.  First places all the water
 randomly, then places all houses randomly. It always checks if a water or house
 is actually allowed to be placed at a certain coordinate befor placing it.  Still
-needs a way to check if all houses were actually placed in the given number of 
+needs a way to check if all houses were actually placed in the given number of
 iteratations and if not handle accordingly.
 """
 
@@ -51,7 +51,7 @@ def randomAlgorithm(houseNumber):
         if con.noWaterAndBoundary(randomHouse, plan):
 
             distance = fch.findClosestHouse(plan.houses, randomHouse)
-            
+
             if not distance < randomHouse.freeSpace:
                 # Add placed randomly house
                 plan.houses.append(randomHouse)
@@ -63,8 +63,8 @@ def randomAlgorithm(houseNumber):
     return plan
 
 def water_placement(x, y, plan):
-    """ Places water at random location. x and y form the random coordinate. """    
-    
+    """ Places water at random location. x and y form the random coordinate. """
+
     # Initiate random water pond
     waterPond = wt.Pond(x, y)
 
@@ -82,7 +82,7 @@ def random_coordinates(plan):
 
 def house_placement(x, y, plan):
     """ Initiates new house to place at position (x,y). """
-    
+
     # Decide what type of house will be placed
     if len(plan.houses) < plan.numberOfEengezins:
         house = hs.Eengezins(x, y)
@@ -97,5 +97,5 @@ def house_placement(x, y, plan):
 
 if __name__ == "__main__":
     plan = randomAlgorithm(60)
-    
+
     output.Output(plan)
