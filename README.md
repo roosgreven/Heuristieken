@@ -6,3 +6,17 @@ De casus: Er wordt een nieuwe wijk gebouwd: Amstelhaege, van 160 bij 180 meter g
 Onze aanpak: De datastructuur is erg belangrijk bij deze casus. Ga je de huizen indelen in een grid, of juist met coördinaten? Wij kiezen voor het laatste. Het is niet wenselijk om de huizen op de centimeter precies in te delen - hier wordt het probleem eindeloos groot van -, maar door het werken met coördinaten is het wel mogelijk om preciezer dan met halve meters te werken, wat bij het gebruik van een grid toch lastig zou worden. Daarnaast is het zo makkelijker de afstand tussen de hoeken van huizen uit te rekenen. 
 De huizen staan in een class gedefinieerd. Deze class 'erft', inherit de eigenschappen van een algemenere class. Hierin staan alle move-functies beschreven, welke natuurlijk hetzelfde werken voor alle huizen. 
 
+# Gebruik
+Aanroepen van de functie gaat via het format:
+python Heuristieken\code\main.py TYPEOFALGORITHM NUMBEROFHOUSES 
+
+Als NUMBEROFHOUSES worden de getallen 20, 40 en 60 geaccepteerd. Dit is het aantal huizen dat in de wijk zal worden geplaatst.
+Voor TYPEOFALGORITHM bestaan de volgende mogelijkheden:
+- random            
+Voert het random algoritme eenmalig uit, slaat de uitkomst op en print deze.
+- greedy            
+Voert het greedy algoritme eenmalig uit, slaat de uitkomst op en print deze.
+- hillclimber       
+Voert het hill climber algoritme eenmalig uit, slaat de uitkomst op en print deze. (Werkt nog niet.)
+- lotsOfRandom      
+Voert het random algoritme honder keer uit, print de gemiddelde waarde, onthoudt de beste en de slechtste en print beide.
