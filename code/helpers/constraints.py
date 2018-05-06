@@ -28,39 +28,3 @@ def noWaterAndBoundary(chosenObject, plan):
         return False
 
     return True
-'''
-def checkBoundaries(plan, house):
-    """ Returns False if the house is too close to a boundary. """
-
-    # Checks left and lower boundary
-    if house.x1 < house.freeSpace or house.y1 < house.freeSpace:
-        return False
-
-    # Checks right and upper boundary
-    if house.x2 > plan.width - house.freeSpace or house.y2 > plan.length - house.freeSpace:
-        return False
-
-    return True
-
-def waterCheck(plan, water):
-    """ Returns False if the water is outside a boundary or inside another pond. """
-    
-        
-    # Loop over all ponds
-    for pond in plan.ponds:
-            
-        distance = sd.shortest(water, pond)
-            
-        # Check for overlap
-        if distance < 0:
-                
-            return False
-                
-    # Checks if water is within the neighbourhood boundaries. Since x1 and y1
-    # are generated within the neighbourhood, water can only cross the right and
-    # upper boundary
-    if water.x2 > plan.width or water.y2 > plan.length:
-        return False
-
-    return True
-'''

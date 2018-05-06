@@ -11,15 +11,10 @@ from classes.floorplan import FloorPlan
 import helpers.findclosesthouse as fch
 import helpers.constraints as con
 import classes.water as wt
-import helpers.output as output
 import random
-from randomalgorithm import randomAlgorithm
-from randomalgorithm import house_placement
+from randomalgorithm.randomalgorithm import randomAlgorithm
 
-def hillClimber(houseNumber):
-
-    # Initial floorplan is random
-    plan = randomAlgorithm(houseNumber)
+def hillClimber(houseNumber, plan):
 
     # Safe old plan
     oldPlan = plan
@@ -31,7 +26,7 @@ def hillClimber(houseNumber):
     i = 0
 
     # Calculate value of old plan
-    valueOldPlan = totalValueCalculator(oldPlan)
+    valueOldPlan = oldPlan.getValue()
 
     # Initiate index
     index = 0
@@ -42,13 +37,13 @@ def hillClimber(houseNumber):
         j = 0
 
         # Select random house in houses array of current plan
-        index = random_house(newPlan.houses)
+        index = randomHouse(newPlan.houses)
 
         # Random move of indexed house
-        random_move(newPlan.houses[index])
+        randomMove(newPlan.houses[index])
 
         # Calculate new value of plan after movement
-        valueNewPlan = totalValueCalculator(newPlan)
+        valueNewPlan = newPlan.getValue()
 
         if valueNewPlan > valueOldPlan:
             # If the new plan is better, save it
@@ -59,26 +54,18 @@ def hillClimber(houseNumber):
 
     return newPlan
 
-def totalValueCalculator(plan):
-    """ Returns total value of plan """
-    # Initiate total value
-    totalValue = 0
-    for house in plan.houses:
 
-        totalValue += house.value(plan.houses)
-
-
-def random_house(houseArray):
+def randomHouse(houseArray):
     """ Returns index of random house from house array in floorplan """
 
     # Random index of given houseArray
     index = round(random.random() * len(houseArray), 1)
     return int(index)
 
-def random_move(houseToBeMoved):
+def randomMove(houseToBeMoved):
     """ Moves a house in a random direction with using a distance between 0.0 and 1.0
         This function only runs 10 times (using j counter).
-        If after the 10th time a good move is still not found,the random_move stops."""
+        If after the 10th time a good move is still not found,the randomMove stops."""
     j += 1
 
     # Save current coordinates
@@ -99,14 +86,14 @@ def random_move(houseToBeMoved):
         # New y1 coordinate is old y1 + random number
         newy1 = y1 + random.random()
 
-    # Places house using house_placement function from randomAlgorithm,
+    # Places house using makeHouse function from randomAlgorithm,
     # returns a house at new x and y coordinates
-    house_placement(newx1, newy1, newPlan)
+    plan.makeHouse(newx1, newy1, newPlan)
 
     # Check if there's overlap, if not, add house to array
     if con.noWaterAndBoundary(house, newPlan):
 
-        distance = fch.findClosestHouse(newPlan.houses, house)
+        distance = fch.findClosestHouse(newPlan, house)
 
         if not distance < house.freeSpace:
 
@@ -115,7 +102,7 @@ def random_move(houseToBeMoved):
     else:
         if j < 10:
             # Retry random move if counter is below 10
-            random_move(houseToBeMoved)
+            randomMove(houseToBeMoved)
         else:
             # Stop moving this house
             return 1
@@ -123,4 +110,5 @@ def random_move(houseToBeMoved):
 if __name__ == "__main__":
     plan = hillClimber(20)
 
-    output.Output(plan)
+    # Make visualisation
+    plan.showFloorplan()

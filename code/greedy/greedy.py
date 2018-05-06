@@ -14,29 +14,20 @@ from classes.floorplan import FloorPlan
 import helpers.findclosesthouse as fch
 import helpers.constraints as con
 import classes.water as wt
-import helpers.output as output
 import random
 import numpy as np
 import randomalgorithm as water
+import helpers.coordinates as co
 
-def greedy(houseNumber):
+def greedy(houseNumber, plan):
     """ Performs a greedy algorithm.  Places the water randomly and places each
     house in an optimal place. houseNumber is the number of houses that have to
-    be placed.
+    be placed.  plan is the empty floorplan that will be filled.
     """
-    
-    plan = FloorPlan(houseNumber)
 
     plan.createCoordinates()
     
-    # Place four water ponds
-    while len(plan.ponds) < 4:
-
-        # Get random coordinates
-        x, y = water.random_coordinates(plan)
-
-        # Call water placement function
-        water.water_placement(x, y, plan)
+    plan.makePonds()
 
     # First house hasn't been placed yet
     firstHouse = False
@@ -68,58 +59,26 @@ def greedy(houseNumber):
         
         bestX, bestY = 0, 0
         
-        if i < plan.numberOfMaisons:
-            
-            house = hs.Maison(0, 0)
+        house = plan.makeHouse(bestX, bestY)
 
-        elif i < plan.numberOfMaisons + plan.numberOfBungalows:
-
-            house = hs.Bungalow(0, 0)
-
-        else:
-            house = hs.Eengezins(0, 0)
-            
-        distance = 0
-
-        # Looks for the best coordinate to place a house
-        for coordinate in plan.coordinates:
-
-            x, y = coordinate[0], coordinate[1]
-
-            # The house is set to new coordinate
-            house.coordinates(x, y)
-
-            # Check if it can be placed there
-            if con.noWaterAndBoundary(house, plan):
-
-                # Find closest distance to house or border
-                newDistance = fch.findClosestHouse(plan.houses, house)
-
-                # If there's more freespace in this position, take over coordinates
-                if newDistance > distance:
-
-                    distance = newDistance
-                    bestX, bestY = x, y
+        bestX, bestY, distance = co.findCoordinates(plan, house)
                     
         if distance < house.freeSpace:
             print("Error, no solution.")
                         
         house.coordinates(bestX, bestY)
         print("distance: ", distance)
-        plan.houses.append(house)
+        
+        if distance > 0:
+            plan.houses.append(house)
         print("house ", len(plan.houses))
-
-        # All coordinates that have guaranteed become unavailable because of the
-        # house that was just placed, are removed from the list of coordinates
-        for x in np.arange(house.x1 - house.freeSpace - plan.eengezinsWidth + 1, house.x2 + house.freeSpace, 0.5):
-            for y in np.arange(house.y1 - house.freeSpace - plan.eengezinsLength + 1, house.y2 + house.freeSpace, 0.5):
-                try:
-                    plan.coordinates.remove([x, y])
-                except ValueError:
-                    pass
-
-    print("ready for output")
-    output.Output(plan)   
+        
+        co.removeCoordinates(plan, house)
+                    
+    return plan
 
 if __name__ == "__main__":
-    greedy(60)
+    plan = greedy(60)
+    
+    # Make visualisation
+    plan.showFloorplan()
