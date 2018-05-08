@@ -13,6 +13,7 @@ import helpers.constraints as con
 import classes.houses as hs
 import classes.water as wt
 import matplotlib.pyplot as plt
+import helpers.findclosesthouse as fch
 
 class FloorPlan:
     """ Has a list of houses and specifics for the neighbourhood """
@@ -107,10 +108,10 @@ class FloorPlan:
 
         else:
             house = hs.Eengezins(x, y)
-            
+        
         if random.random() > 0.5:
             house.swap()
-
+        
         return house
         
     def getValue(self):
@@ -198,6 +199,11 @@ class FloorPlan:
             # By plotting these lists, all corners will be connected by a line
             xlist = [house.x1, house.x2, house.x2, house.x1, house.x1]
             ylist = [house.y1, house.y1, house.y2, house.y2, house.y1]
+            
+            print("a house")
+            print(house.width)
+            print(house.length)
+            print(fch.findClosestHouse(self, house))
 
             plt.plot(xlist, ylist)
 
