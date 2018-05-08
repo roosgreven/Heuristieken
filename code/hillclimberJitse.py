@@ -30,7 +30,8 @@ def hillClimber(houseNumber, plan):
     # ANDERE ALGORITMEN:
     # GENETISCHE ALGORITMEN
     # POPULATION ALGORITMEN
-    
+    # Particle swarm / swarm algoritmen (ant colony)
+
 
     # Safe old plan
     # OPLETTEN MET POINTERS, COPY MODULE
