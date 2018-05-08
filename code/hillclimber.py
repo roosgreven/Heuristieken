@@ -31,26 +31,65 @@ def hillClimber(houseNumber):
     i = 0
 
     # Calculate value of old plan
-    valueOldPlan = totalValueCalculator(oldPlan)
+    value_old_plan = totalValueCalculator(oldPlan)
 
     # Initiate index
     index = 0
 
-    while (i < 10):
-
-        i += 1
-        j = 0
+    for i in range(50):
 
         # Select random house in houses array of current plan
         index = random_house(newPlan.houses)
 
-        # Random move of indexed house
-        random_move(newPlan.houses[index])
+        # Move house to right
+        house_move(newPlan.houses[index], right)
 
         # Calculate new value of plan after movement
-        valueNewPlan = totalValueCalculator(newPlan)
+        value_new_plan_right = total_value_calculator(newPlan)
 
-        if valueNewPlan > valueOldPlan:
+        # Use len(newPlan.houses) - 1, because the last house was appended at the end of array
+        house_move(newPlan.houses[len(newPlan.houses)-1], left)
+
+        # Calculate new value of plan after movement
+        value_new_plan_left = total_value_calculator(newPlan)
+
+        # If move to left returns better value than to the right
+        if value_new_plan_left > value_new_plan_right:
+            best_move = left
+        else:
+            best_move = right
+
+        # Move house upwards
+        house_move(newPlan.houses[len(newPlan.houses)-1], upwards)
+
+        # Calculate new value of plan after movement
+        value_new_plan_upwards = total_value_calculator(newPlan)
+
+        # If move to left returns better value than to the right
+        if best_move == right:
+            if value_new_plan_upwards > value_new_plan_right:
+                best_move = upwards
+
+        else:
+            if value_new_plan_upwards > value_new_plan_left:
+                best_move = upwards
+
+        # Move house downwards
+        house_move(newPlan.houses[len(newPlan.houses)-1], downwards)
+
+        # Calculate new value of plan after movement
+        value_new_plan_downwards = total_value_calculator(newPlan)
+
+        if value_new_plan_downwards > best_move:
+            best_move = downwards
+
+        # Use best move and add it to newplan
+        house_move(newPlan.houses[len(newPlan.houses)-1], best_move)
+
+        # Calculate value new plan using the best move
+        value_new_plan = total_value_calculator(newPlan)
+
+        if value_new_plan > value_old_plan:
             # If the new plan is better, save it
             Oldplan = Newplan
         else:
@@ -59,7 +98,7 @@ def hillClimber(houseNumber):
 
     return newPlan
 
-def totalValueCalculator(plan):
+def total_value_calculator(plan):
     """ Returns total value of plan """
     # Initiate total value
     totalValue = 0
@@ -75,11 +114,10 @@ def random_house(houseArray):
     index = round(random.random() * len(houseArray), 1)
     return int(index)
 
-def random_move(houseToBeMoved):
+def house_move(houseToBeMoved, direction):
     """ Moves a house in a random direction with using a distance between 0.0 and 1.0
         This function only runs 10 times (using j counter).
         If after the 10th time a good move is still not found,the random_move stops."""
-    j += 1
 
     # Save current coordinates
     x1 = houseToBeMoved.x1
@@ -88,20 +126,39 @@ def random_move(houseToBeMoved):
     # Remove house
     del houseToBeMoved
 
-    # Returns random number between 0.0 and 1.0
-    direction = random.random()
+    if direction == right:
+        # Move house 0.5m to right
+        newx1 = x1 + 0.5
 
-    if direction <= 0.50:
-        # New x coordinate is old x1 + random number
-        newx1 = x1 + random.random()
+        # Places house using house_placement function from randomAlgorithm,
+        # returns a house at new x and old y coordinates
+        house_placement(newx1, y1, newPlan)
+
+    elif direction == left:
+        # Move house 0.5m to left
+        newx1 = x1 - 0.5
+
+        # Places house using house_placement function from randomAlgorithm,
+        # returns a house at new x and old y coordinates
+        house_placement(newx1, y1, newPlan)
+
+    elif direction == upwards:
+        # Move house 0.5m upwards
+        newy1 = y1 + 0.5
+
+        # Places house using house_placement function from randomAlgorithm,
+        # returns a house at old x and new y coordinates
+        house_placement(x1, newy1, newPlan)
+
+    elif direction == downwards:
+        # Move house 0.5m downwards
+        newy1 = y1 - 0.5
+        # Places house using house_placement function from randomAlgorithm,
+        # returns a house at new x and y coordinates
+        house_placement(x1, newy1, newPlan)
 
     else:
-        # New y1 coordinate is old y1 + random number
-        newy1 = y1 + random.random()
-
-    # Places house using house_placement function from randomAlgorithm,
-    # returns a house at new x and y coordinates
-    house_placement(newx1, newy1, newPlan)
+        return 1
 
     # Check if there's overlap, if not, add house to array
     if con.noWaterAndBoundary(house, newPlan):
@@ -113,12 +170,9 @@ def random_move(houseToBeMoved):
             # Add placed house
             newPlan.houses.append(house)
     else:
-        if j < 10:
-            # Retry random move if counter is below 10
-            random_move(houseToBeMoved)
-        else:
-            # Stop moving this house
-            return 1
+
+        # Stop moving this house
+        return 1
 
 if __name__ == "__main__":
     plan = hillClimber(20)

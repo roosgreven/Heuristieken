@@ -14,7 +14,6 @@ import helpers.maininput as maininput
 import sys
 import csv
 
-
 def main():
     """ Performs desired algorithm for desired number of houses, handles output
     and saves best outcome.
