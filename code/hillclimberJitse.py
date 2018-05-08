@@ -18,7 +18,9 @@ from randomalgorithm import housePlacement
 
 def hillClimber(houseNumber, plan):
 
-
+    # FUNCTIES IN FLOORPLAN BEKIJKEN en MOVEMENT HUIS MET OUDE PLAN DOEN. DIT MOET OMDAT ALS JE HET HUIS
+    # EERST NAAR RECHTS VERPLAATS, JE DEZE WEER OP DE OUDE POSITIE ZET ALS JE HET HUIS NAAR LINKS VERPLAATS.
+    # IPV VERWIJDEREN HUIS EN OPNIEUW PLAATSEN, ALLEEN COORDINATEN AANPASSEN
     # Safe old plan
     oldPlan = plan
 
@@ -40,37 +42,37 @@ def hillClimber(houseNumber, plan):
         index = random_house(newPlan.houses)
 
         # Move house to right
-        house_move(newPlan.houses[index], right)
+        house_move(newPlan.houses[index], "right")
 
         # Calculate new value of plan after movement
         value_new_plan_right = total_value_calculator(newPlan)
 
         # Use len(newPlan.houses) - 1, because the last house was appended at the end of array
-        house_move(newPlan.houses[len(newPlan.houses)-1], left)
+        house_move(newPlan.houses[len(newPlan.houses)-1], "left")
 
         # Calculate new value of plan after movement
         value_new_plan_left = total_value_calculator(newPlan)
 
         # If move to left returns better value than to the right
         if value_new_plan_left > value_new_plan_right:
-            best_move = left
+            best_move = "left"
         else:
-            best_move = right
+            best_move = "right"
 
         # Move house upwards
-        house_move(newPlan.houses[len(newPlan.houses)-1], upwards)
+        house_move(newPlan.houses[len(newPlan.houses)-1], "upwards")
 
         # Calculate new value of plan after movement
         value_new_plan_upwards = total_value_calculator(newPlan)
 
         # If move to left returns better value than to the right
-        if best_move == right:
+        if best_move == "right":
             if value_new_plan_upwards > value_new_plan_right:
-                best_move = upwards
+                best_move = "upwards"
 
         else:
             if value_new_plan_upwards > value_new_plan_left:
-                best_move = upwards
+                best_move = "upwards"
 
         # Move house downwards
         house_move(newPlan.houses[len(newPlan.houses)-1], downwards)
@@ -79,7 +81,7 @@ def hillClimber(houseNumber, plan):
         value_new_plan_downwards = total_value_calculator(newPlan)
 
         if value_new_plan_downwards > best_move:
-            best_move = downwards
+            best_move = "downwards"
 
         # Use best move and add it to newplan
         house_move(newPlan.houses[len(newPlan.houses)-1], best_move)
@@ -90,6 +92,7 @@ def hillClimber(houseNumber, plan):
         if value_new_plan > value_old_plan:
             # If the new plan is better, save it
             Oldplan = Newplan
+
         else:
             # If the new plan is worse, go back to old plan
             Newplan = Oldplan
@@ -121,10 +124,13 @@ def house_move(houseToBeMoved, direction):
     x1 = houseToBeMoved.x1
     y1 = houseToBeMoved.y1
 
+    movement = 0.5
+
+
     # Remove house
     del houseToBeMoved
 
-    if direction == right:
+    if direction == "right":
         # Move house 0.5m to right
         newx1 = x1 + 0.5
 
@@ -132,25 +138,30 @@ def house_move(houseToBeMoved, direction):
         # returns a house at new x and old y coordinates
         house_placement(newx1, y1, newPlan)
 
-    elif direction == left:
+    elif direction == "left":
         # Move house 0.5m to left
-        newx1 = x1 - 0.5
+        newx1 = x1 - 2 * movement
 
         # Places house using house_placement function from randomAlgorithm,
         # returns a house at new x and old y coordinates
         house_placement(newx1, y1, newPlan)
 
-    elif direction == upwards:
+    elif direction == "upwards":
         # Move house 0.5m upwards
         newy1 = y1 + 0.5
 
+        # Set house at the old x coordinate
+        newx1 = x1 + movement
+
         # Places house using house_placement function from randomAlgorithm,
         # returns a house at old x and new y coordinates
-        house_placement(x1, newy1, newPlan)
+        house_placement(newx1, newy1, newPlan)
 
-    elif direction == downwards:
+    elif direction == "downwards":
+
         # Move house 0.5m downwards
-        newy1 = y1 - 0.5
+        newy1 = y1 - movement
+
         # Places house using house_placement function from randomAlgorithm,
         # returns a house at new x and y coordinates
         house_placement(x1, newy1, newPlan)
