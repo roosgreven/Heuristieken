@@ -27,10 +27,7 @@ def hillClimber(houseNumber, plan):
     # 1 MOVE PER HUIS EN DAN NAAR VOLGEND HUIS IN RANDOM DIRECTION
     #
 
-    # ANDERE ALGORITMEN:
-    # GENETISCHE ALGORITMEN
-    # POPULATION ALGORITMEN
-    # Particle swarm / swarm algoritmen (ant colony)
+    
 
 
     # Safe old plan
