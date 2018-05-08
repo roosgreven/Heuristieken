@@ -107,6 +107,9 @@ class FloorPlan:
 
         else:
             house = hs.Eengezins(x, y)
+            
+        if random.random() > 0.5:
+            house.swap()
 
         return house
         

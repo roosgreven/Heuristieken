@@ -38,6 +38,14 @@ class House:
         self.x2 = x1 + self.width
         self.y1 = y1
         self.y2 = y1 + self.length
+        
+    def swap(self):
+        """ Swaps the value of width and length and changes coordinates
+        accordingly. """
+        
+        self.width, self.length = self.length, self.width
+        
+        self.coordinates(self.x1, self.y1)
 
 class Eengezins(House):
     """ Specifies the "eengezins" housetype. Inherits from house(). """
