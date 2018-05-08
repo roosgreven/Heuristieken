@@ -15,7 +15,6 @@ import sys
 import helpers.typesofperformance as top
 from classes.floorplan import FloorPlan
 
-
 def main():
     """ Performs desired algorithm for desired number of houses, handles output
     and saves best outcome.
