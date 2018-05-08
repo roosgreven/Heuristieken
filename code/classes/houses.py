@@ -13,18 +13,21 @@ class House:
     def __init__(self, x1, y1):
 
         self.coordinates(x1, y1)
-        self.totalValue = self.basicValue
 
-    def value(self, houseArray):
+    def value(self, plan):
         """ Takes in the array of houses and uses it to calculate the shortest
         distance for the house.  Then calculates and returns the house value.
         """
         
-        distance = fch.findClosestHouse(houseArray, self)
-        extraFreeSpace = distance - self.freeSpace
-        self.totalValue = self.basicValue + self.extraValue * extraFreeSpace
+        distance = fch.findClosestHouse(plan, self)
         
-        return self.totalValue
+        if distance < 0:
+            return -1
+        
+        extraFreeSpace = distance - self.freeSpace
+        totalValue = self.basicValue + self.extraValue * extraFreeSpace
+        
+        return totalValue
 
     def coordinates(self, x1, y1):
         """ Calculates the houses coordinates. To do this it only needs x1 and 

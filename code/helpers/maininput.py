@@ -4,8 +4,8 @@ Checks if system arguments were correct
 """
 
 import sys
-from randomalgorithm import randomAlgorithm
-from greedy import greedy
+from randomalgorithm.randomalgorithm import randomAlgorithm
+from greedy.greedy import greedy
 
 def sysArguments():
 
@@ -15,6 +15,6 @@ def sysArguments():
         exit(1)
 
     # If number of houses provided was incorrect
-    if not int(sys.argv[2]) == 20 or int(sys.argv[2]) == 40 or int(sys.argv[2]) == 60:
+    if not (int(sys.argv[2]) == 20 or int(sys.argv[2]) == 40 or int(sys.argv[2]) == 60):
         print("Error: number of houses has to be 20, 40 or 60")
         exit(1)

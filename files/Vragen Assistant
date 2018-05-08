@@ -52,3 +52,20 @@ Meeting 4:
 - In greedy losse functies maken, het is nu een te groot blok. Bijv. loopen over de coordinaten heen.
 - Read me moet uitgebreider worden (wat gebeurt er als je runt, wat staat er waar?).
 - Twee if statements van boundary en overap kunnen weg, en dan doe je het in findclosesthouse.
+
+Meeting 5:
+- Hillclimber mag niet zelf randomalgoritme aanroepen, hij krijgt een oplossing mee.
+Dus je kunt doen hillclimber(randomalgoritme)
+- While loop in hillclimber moet een forloop worden.
+- In de readme moet ook staan wat je precies aan moet roepen om te runnen.
+- Main doet nooit zelf wat, hij heeft alleen functies staan die aangeroepen worden om
+ergens anders uitgevoerd te worden.
+- Bij floorplan moet er direct gekeken worden wat de totalvalue is. Bij het plaatsen van een
+huis moet eigenlijk automatisch deze waarde geupdated worden.
+- Greedy kun je ook maken dat hij niet kijkt naar wat voor dat huis de beste plek is,
+maar wat voor de kaart de beste plek is.
+- Als je random runt, wil je niet de hele tijd die totale waarde updaten, want dat is
+dan niet nodig, dat wil je pas op het einde. Dus wil je meeggeven dat hij dat niet elke
+keer moet doen. Dan moet hij ook weten dat de totalvalue van dat moment niet goed is.
+- In floorplan kun je ook die randomhouse functie doen, dat hij een random house returnt
+als je erom vraagt.
