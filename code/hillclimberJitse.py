@@ -21,7 +21,19 @@ def hillClimber(houseNumber, plan):
     # FUNCTIES IN FLOORPLAN BEKIJKEN en MOVEMENT HUIS MET OUDE PLAN DOEN. DIT MOET OMDAT ALS JE HET HUIS
     # EERST NAAR RECHTS VERPLAATS, JE DEZE WEER OP DE OUDE POSITIE ZET ALS JE HET HUIS NAAR LINKS VERPLAATS.
     # IPV VERWIJDEREN HUIS EN OPNIEUW PLAATSEN, ALLEEN COORDINATEN AANPASSEN
+    # VERGELIJKEN MET OUDE PLAN, KLEINER OF GELIJK AAN ZODAT JE NIET IN LOKAAL VAST KOMT TE ZITTEN
+    # GEEN HOUSE NUMBER DOORGEVEN OMDAT PLAN AL WEET HOEVEEL HUIZEN HET ZIJN
+    # IPV LINKS RECHT ONDER BOVEN, DE COORDINAAT VERANDERING DOORGEVEN
+    # 1 MOVE PER HUIS EN DAN NAAR VOLGEND HUIS IN RANDOM DIRECTION
+    #
+
+    # ANDERE ALGORITMEN:
+    # GENETISCHE ALGORITMEN
+    # POPULATION ALGORITMEN
+    
+
     # Safe old plan
+    # OPLETTEN MET POINTERS, COPY MODULE
     oldPlan = plan
 
     # First initiate new plan to old plan
@@ -75,7 +87,7 @@ def hillClimber(houseNumber, plan):
                 best_move = "upwards"
 
         # Move house downwards
-        house_move(newPlan.houses[len(newPlan.houses)-1], downwards)
+        house_move(newPlan.houses[len(newPlan.houses)-1], "downwards")
 
         # Calculate new value of plan after movement
         value_new_plan_downwards = total_value_calculator(newPlan)
