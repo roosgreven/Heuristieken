@@ -33,6 +33,7 @@ def randomHouse(houseArray):
 
     # Random index of given houseArray
     index = round(random.random() * len(houseArray), 1)
+    
     return int(index)
 
 def houseMove(houseToBeMoved):
