@@ -30,37 +30,37 @@ def main():
     # eval was needed to turn the argv[1] into a callable function
     plan = eval(sys.argv[1])(houses)
     """
-    
+
     # argv[1] will decide what algorithm will be run in what way, usage of
     # argv[1] is included in the README
-    
+
     # run greedy, save and show result
     if sys.argv[1] == "greedy":
-        
+
         plan = FloorPlan(numberOfHouses)
-        
+
         top.saveAndShow("greedy", numberOfHouses, plan)
-    
+
     # Run random, save and show result
     if sys.argv[1] == "random":
-        
+
         plan = FloorPlan(numberOfHouses)
-        
+
         top.saveAndShow("randomAlgorithm", numberOfHouses, plan)
-        
+
     # Run hill climber, save and show result
     if sys.argv[1] == "hillclimber":
-        
+
         plan = FloorPlan(numberOfHouses)
-        
-        top.saveAndShow("randomAlgorithm", numberOfHouses, plan)
-        
-    # Run random a hundred times, calculate and print average value and 
+
+        top.saveAndShow("hillClimber", numberOfHouses, randomAlgorithm)
+
+    # Run random a hundred times, calculate and print average value and
     # visualize best and worst floorplan
     if sys.argv[1] == "lotsOfRandom":
-        
+
         numberOfIterations = 100
-        
+
         top.showBestAndWorst("randomAlgorithm", numberOfHouses, "FloorPlan", numberOfIterations)
 
 

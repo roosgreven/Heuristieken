@@ -2,7 +2,7 @@
 27 April 2018.
 
 Contains a class with the floorplan for the neighbourhood.  This includes a list
-with houses, a function to generate all coordinates and specifics for the 
+with houses, a function to generate all coordinates and specifics for the
 neighbourhood.
 """
 
@@ -22,7 +22,7 @@ class FloorPlan:
     width = 160.
     length = 180.
     numberOfPonds = 4
-    
+
     # The specifics for all housetypes. Are also defined in the house classes,
     # but because there they are only available when there is an instance of
     # the house, they are also saved here. It's not very elegant and we will
@@ -30,7 +30,7 @@ class FloorPlan:
     eengezinsWidth = 8.
     eengezinsLength = 8.
     eengezinsFree = 2.
-    
+
     bungalowWidth = 7.5
     bungalowLength = 10.
     bungalowFree = 3.
@@ -54,21 +54,21 @@ class FloorPlan:
         self.currentMaisons = 0
 
         self.ponds =[]
-        
+
     def createCoordinates(self):
-        """ Creates a list of all possible coordinates in the neighbourhood.  
+        """ Creates a list of all possible coordinates in the neighbourhood.
         Coordinates too close to the boundary to ever place a house on them, are
-        not added. 
+        not added.
         """
-        
+
         self.coordinates = []
-        
+
         for x in np.arange(self.eengezinsFree, self.width - self.eengezinsFree - self.eengezinsWidth + 1, 0.5):
             for y in np.arange(self.eengezinsFree, self.length - self.eengezinsFree - self.eengezinsLength + 1, 0.5):
                 self.coordinates.append([x, y])
-                
+
     def makePonds(self):
-        
+
         while len(self.ponds) < self.numberOfPonds:
             """ Place the ponds. """
 
@@ -77,7 +77,7 @@ class FloorPlan:
 
             # Call water placement function
             self.waterPlacement(x, y)
-                
+
     def waterPlacement(self, x, y):
         """ Places water at random location. x and y form the random coordinate. """
 
@@ -108,23 +108,23 @@ class FloorPlan:
 
         else:
             house = hs.Eengezins(x, y)
-        
+
         if random.random() > 0.5:
             house.swap()
-        
+
         return house
-        
+
     def getValue(self):
         """ Total value of neighbourhood is calculated. """
-        
+
         totalValue = 0
-        
+
         for house in self.houses:
 
             totalValue += house.value(self)
-            
+
         return totalValue
-              
+
 
     def saveFloorplan(self):
         """ For now: Overwrites old floorplan with new one.
@@ -132,12 +132,12 @@ class FloorPlan:
         Future: Checks if the value of the Floorplan is higher than the current value.  If so, the
         floorplan will overwrite the old floorplan.
         """
-        
+
         # Initialize empty list
         coordinates = []
-        
+
         totalValue = self.getValue()
-        
+
         # Append total value to coordinates list
         coordinates.append(["totalValue", totalValue])
 
@@ -161,7 +161,7 @@ class FloorPlan:
         with myFile:
             writer = csv.writer(myFile)
             writer.writerows(coordinates)
-            
+
     def showFloorplan(self):
         """ Prints total value of a Floorplan and generates a visual floorplan
         with all houses and ponds. 
@@ -199,7 +199,7 @@ class FloorPlan:
             # By plotting these lists, all corners will be connected by a line
             xlist = [house.x1, house.x2, house.x2, house.x1, house.x1]
             ylist = [house.y1, house.y1, house.y2, house.y2, house.y1]
-            
+
             print("a house")
             print(house.width)
             print(house.length)
@@ -208,4 +208,3 @@ class FloorPlan:
             plt.plot(xlist, ylist)
 
         plt.show()
-
