@@ -53,7 +53,7 @@ def main():
 
         plan = Floorplan(numberOfHouses)
 
-        top.saveAndShow("hillClimber", numberOfHouses, plan)
+        top.saveAndShow("randomAlgorithm", numberOfHouses, plan)
 
     # Run random a hundred times, calculate and print average value and
     # visualize best and worst floorplan
