@@ -18,12 +18,12 @@ def hillClimber(houseNumber, plan):
     # Initiate counter
     i = 0
 
-    for i in range(1):
+    for i in range(10):
 
         # Select random house in houses array of current plan
         index = randomHouse(plan.houses)
 
-        # Move house to right
+        # Move house in random direction with houseMove function
         houseMove(plan.houses[index])
 
     return plan
@@ -33,7 +33,7 @@ def randomHouse(houseArray):
 
     # Random index of given houseArray
     index = round(random.random() * len(houseArray), 1)
-    
+
     return int(index)
 
 def houseMove(houseToBeMoved):
