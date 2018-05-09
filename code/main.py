@@ -34,7 +34,7 @@ def main():
     # argv[1] will decide what algorithm will be run in what way, usage of
     # argv[1] is included in the README
 
-    # run greedy, save and show result
+    # Run greedy, save and show result
     if sys.argv[1] == "greedy":
 
         plan = FloorPlan(numberOfHouses)
