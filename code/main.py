@@ -51,9 +51,11 @@ def main():
     # Run hill climber, save and show result
     if sys.argv[1] == "hillclimber":
 
-        plan = Floorplan(numberOfHouses)
+        plan = FloorPlan(numberOfHouses)
 
-        top.saveAndShow("randomAlgorithm", numberOfHouses, plan)
+        plan = randomAlgorithm(numberOfHouses, plan)
+
+        top.saveAndShow("hillClimber", numberOfHouses, plan)
 
     # Run random a hundred times, calculate and print average value and
     # visualize best and worst floorplan

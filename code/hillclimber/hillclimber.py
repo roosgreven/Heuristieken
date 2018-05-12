@@ -11,10 +11,10 @@ from classes.floorplan import FloorPlan
 import helpers.findclosesthouse as fch
 import helpers.constraints as con
 import random
+import randomalgorithm.randomalgorithm
 
 def hillClimber(houseNumber, plan):
 
-    # 1 MOVE PER HUIS EN DAN NAAR VOLGEND HUIS IN RANDOM DIRECTION
     # Initiate counter
     i = 0
 
@@ -24,8 +24,9 @@ def hillClimber(houseNumber, plan):
         index = randomHouse(plan.houses)
 
         # Move house in random direction with houseMove function
-        houseMove(plan.houses[index])
+        houseMove(plan.houses[index], plan)
 
+    print("hillclimber succeeded")
     return plan
 
 def randomHouse(houseArray):
@@ -36,7 +37,7 @@ def randomHouse(houseArray):
 
     return int(index)
 
-def houseMove(houseToBeMoved):
+def houseMove(houseToBeMoved, plan):
     """ First checks the value of the plan as it is. Then, moves a house in a
         random direction, using a distance between 0.0 and 1.0.
         The function checks whether the house move is viable.
@@ -65,13 +66,13 @@ def houseMove(houseToBeMoved):
     houseToBeMoved.coordinates(newx1, newy1)
 
     # Check if there's overlap
-    if con.noWaterAndBoundary(houseToBeMoved, newPlan):
+    if con.noWaterAndBoundary(houseToBeMoved, plan):
 
-        distance = fch.findClosestHouse(plan.houses, houseToBeMoved)
+        distance = fch.findClosestHouse(plan, houseToBeMoved)
 
         if not distance < houseToBeMoved.freeSpace:
 
-            newValue = houseToBeMoved.getValue()
+            newValue = plan.getValue()
 
             # If the house move has decreased plan value
             if not newValue >= oldValue:
@@ -92,4 +93,4 @@ def houseMove(houseToBeMoved):
 if __name__ == "__main__":
     plan = hillClimber(20)
 
-    plan.showFloorplan()
+    FloorPlan.showFloorplan()
