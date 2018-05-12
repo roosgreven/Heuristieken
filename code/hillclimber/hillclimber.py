@@ -18,7 +18,7 @@ def hillClimber(houseNumber, plan):
     # Initiate counter
     i = 0
 
-    for i in range(10):
+    for i in range(3000):
 
         # Select random house in houses array of current plan
         index = randomHouse(plan.houses)
@@ -32,8 +32,10 @@ def hillClimber(houseNumber, plan):
 def randomHouse(houseArray):
     """ Returns index of random house from house array in floorplan """
 
+    lengthHouseArray = len(houseArray) - 1
+
     # Random index of given houseArray
-    index = round(random.random() * len(houseArray), 1)
+    index = round(random.random() * lengthHouseArray, 1)
 
     return int(index)
 
