@@ -110,7 +110,7 @@ class FloorPlan:
             house = hs.Eengezins(x, y)
 
         if random.random() > 0.5:
-            house.swap()
+            house.rotate()
 
         return house
 
@@ -183,7 +183,7 @@ class FloorPlan:
         # These coordinates together plot the outline of the neighbourhood
         xlist = [0, self.width, self.width, 0, 0]
         ylist = [0, 0, self.length, self.length, 0]
-        plt.plot(xlist, ylist)
+        plt.plot(xlist, ylist, 'm-')
 
         for pond in self.ponds:
 
@@ -191,7 +191,7 @@ class FloorPlan:
             xlist = [pond.x1, pond.x2, pond.x2, pond.x1, pond.x1]
             ylist = [pond.y1, pond.y1, pond.y2, pond.y2, pond.y1]
 
-            plt.plot(xlist, ylist)
+            plt.plot(xlist, ylist, 'b-')
 
 
         for house in self.houses:
@@ -199,12 +199,16 @@ class FloorPlan:
             # By plotting these lists, all corners will be connected by a line
             xlist = [house.x1, house.x2, house.x2, house.x1, house.x1]
             ylist = [house.y1, house.y1, house.y2, house.y2, house.y1]
+            
+            color = 'y-'
 
-            print("a house")
-            print(house.width)
-            print(house.length)
-            print(fch.findClosestHouse(self, house))
-
-            plt.plot(xlist, ylist)
+            if house.theType == "Eengezins":
+                color = 'r-'
+            elif house.theType == "Bungalow":
+                color = 'g-'
+            elif house.theType == "Maison":
+                color = 'c-'
+                
+            plt.plot(xlist, ylist, color)
 
         plt.show()

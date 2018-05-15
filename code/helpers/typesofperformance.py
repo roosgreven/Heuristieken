@@ -8,8 +8,9 @@ from randomalgorithm.randomalgorithm import randomAlgorithm
 from greedy.greedy import greedy
 from hillclimber.hillclimber import hillClimber
 from classes.floorplan import FloorPlan
+import helpers.improvements as imp
 
-def saveAndShow(algorithmType, numberOfHouses, plan):
+def saveAndShow(algorithmType, plan):
     """ Performs an algorithm of algorithmType for the correct numberOfHouses 
     and both saves and shows it. 
     """
@@ -19,7 +20,7 @@ def saveAndShow(algorithmType, numberOfHouses, plan):
     # Perform the algorithm
     plan = algorithm(plan)
         
-    while len(plan.houses) < numberOfHouses:
+    while len(plan.houses) < plan.numberOfHouses:
             
         plan = algorithm(plan)
     

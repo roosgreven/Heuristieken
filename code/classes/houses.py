@@ -39,7 +39,7 @@ class House:
         self.y1 = y1
         self.y2 = y1 + self.length
         
-    def swap(self):
+    def rotate(self):
         """ Swaps the value of width and length and changes coordinates
         accordingly. """
         
@@ -50,6 +50,7 @@ class House:
 class Eengezins(House):
     """ Specifies the "eengezins" housetype. Inherits from house(). """
 
+    theType = "Eengezins"
     width = 8.
     length = 8.
     basicValue = 285000.
@@ -62,6 +63,7 @@ class Eengezins(House):
 class Bungalow(House):
     """ Specifies the "bungalow" housetype. Inherits from house(). """
 
+    theType = "Bungalow"
     width = 7.5
     length = 10.
     basicValue = 399000.
@@ -74,6 +76,7 @@ class Bungalow(House):
 class Maison(House):
     """ Specifies the "maison" housetype. Inherits from house(). """
 
+    theType = "Maison"
     width = 10.5
     length = 11.
     basicValue = 610000.

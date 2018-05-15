@@ -39,14 +39,14 @@ def main():
 
         plan = FloorPlan(numberOfHouses)
 
-        top.saveAndShow("greedy", numberOfHouses, plan)
+        top.saveAndShow("greedy", plan)
 
     # Run random, save and show result
     if sys.argv[1] == "random":
 
         plan = FloorPlan(numberOfHouses)
 
-        top.saveAndShow("randomAlgorithm", numberOfHouses, plan)
+        top.saveAndShow("randomAlgorithm", plan)
 
     # Run hill climber, save and show result
     if sys.argv[1] == "hillclimber":
@@ -55,7 +55,7 @@ def main():
 
         plan = randomAlgorithm(plan)
 
-        top.saveAndShow("hillClimber", numberOfHouses, plan)
+        top.saveAndShow("hillClimber", plan)
 
     # Run random a hundred times, calculate and print average value and
     # visualize best and worst floorplan

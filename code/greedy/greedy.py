@@ -51,7 +51,7 @@ def greedy(plan):
             firstHouse = True
     """
     # Places the houses with a greedy algorithm
-    for i in range(houseNumber):
+    for i in range(plan.numberOfHouses):
 
         # Decide what type of house will be placed. A testhouse is also made to
         # check for each coordinate if it's better than the current one. If it is,
