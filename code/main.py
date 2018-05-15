@@ -14,6 +14,7 @@ import helpers.maininput as maininput
 import sys
 import helpers.typesofperformance as top
 from classes.floorplan import FloorPlan
+from classes.population import Population
 
 def main():
     """ Performs desired algorithm for desired number of houses, handles output
@@ -56,6 +57,17 @@ def main():
         plan = randomAlgorithm(plan)
 
         top.saveAndShow("hillClimber", plan)
+        
+    # Run particle swarm, save and show result
+    if sys.argv[1] == "particleswarm":
+        
+        planNumber = 20
+        
+        population = Population(planNumber)
+        
+        population.makeRandomPopulation(numberOfHouses)
+        
+        top.saveAndShowPopulation("particleSwarm", population)
 
     # Run random a hundred times, calculate and print average value and
     # visualize best and worst floorplan

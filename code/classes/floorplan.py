@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import helpers.findclosesthouse as fch
 
 class FloorPlan:
-    """ Has a list of houses and specifics for the neighbourhood """
+    """ Has a list of houses and specifics for the neighbourhood. """
 
     # The area of the neighbourhood
     width = 160.

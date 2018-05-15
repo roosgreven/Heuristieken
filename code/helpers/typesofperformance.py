@@ -7,12 +7,13 @@ times and saving the best one.
 from randomalgorithm.randomalgorithm import randomAlgorithm
 from greedy.greedy import greedy
 from hillclimber.hillclimber import hillClimber
+from particleswarm.particleswarm import particleSwarm
 from classes.floorplan import FloorPlan
 import helpers.improvements as imp
 
 def saveAndShow(algorithmType, plan):
-    """ Performs an algorithm of algorithmType for the correct numberOfHouses 
-    and both saves and shows it. 
+    """ Performs an algorithm of algorithmType on the given plan and both saves 
+    and shows it. 
     """
     
     algorithm = globals()[algorithmType]
@@ -29,6 +30,19 @@ def saveAndShow(algorithmType, plan):
 
     # Make visualisation
     plan.showFloorplan()
+    
+def saveAndShowPopulation(algorithmType, population):
+    """ Perfroms a population based algorithm of algorithmType on the given 
+    plan and bot saves and shows it.
+    """
+    
+    algorithm = globals()[algorithmType]
+    
+    # Perform the algorithm
+    population = algorithm(population)
+    
+    # Make visualisation
+    population.showPopulation()
     
 def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
     """ Performs an algorithm of algorithmType a numberOfIterations amount of 
