@@ -17,11 +17,11 @@ def saveAndShow(algorithmType, numberOfHouses, plan):
     algorithm = globals()[algorithmType]
     
     # Perform the algorithm
-    plan = algorithm(numberOfHouses, plan)
+    plan = algorithm(plan)
         
     while len(plan.houses) < numberOfHouses:
             
-        plan = algorithm(numberOfHouses)
+        plan = algorithm(plan)
     
     # Save floorplan to a csv file
     plan.saveFloorplan()
@@ -29,14 +29,13 @@ def saveAndShow(algorithmType, numberOfHouses, plan):
     # Make visualisation
     plan.showFloorplan()
     
-def showBestAndWorst(algorithmType, numberOfHouses, planType, numberOfIterations):
+def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
     """ Performs an algorithm of algorithmType a numberOfIterations amount of 
     iterations.  Does this for the variant of numberOfHouses.  Prints the 
     average value of the plan and visualizes the best and worst plan.
     """
     
     algorithm = globals()[algorithmType]
-    typePlan = globals()[planType]
     bestValue = 0
     worstValue = 10 ** 20
     totalValue = 0
@@ -44,13 +43,13 @@ def showBestAndWorst(algorithmType, numberOfHouses, planType, numberOfIterations
     # Perform the algorithm numberOfIterations amount of times
     for i in range(numberOfIterations):
         
-        plan = typePlan(numberOfHouses)
+        plan = FloorPlan(numberOfHouses)
         
-        plan = algorithm(numberOfHouses, plan)
+        plan = algorithm(plan)
         
         while len(plan.houses) < numberOfHouses:
             
-            plan = algorithm(numberOfHouses)
+            plan = algorithm(plan)
             
         # Save the plan if it's either the best or worst
         value = plan.getValue()

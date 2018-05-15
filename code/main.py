@@ -53,7 +53,7 @@ def main():
 
         plan = FloorPlan(numberOfHouses)
 
-        plan = randomAlgorithm(numberOfHouses, plan)
+        plan = randomAlgorithm(plan)
 
         top.saveAndShow("hillClimber", numberOfHouses, plan)
 
@@ -63,7 +63,7 @@ def main():
 
         numberOfIterations = 100
 
-        top.showBestAndWorst("randomAlgorithm", numberOfHouses, "FloorPlan", numberOfIterations)
+        top.showBestAndWorst("randomAlgorithm", numberOfHouses, numberOfIterations)
 
 
 if __name__ == "__main__":
