@@ -19,14 +19,14 @@ import numpy as np
 import randomalgorithm as water
 import helpers.coordinates as co
 
-def greedy(houseNumber, plan):
+def greedy(plan):
     """ Performs a greedy algorithm.  Places the water randomly and places each
     house in an optimal place. houseNumber is the number of houses that have to
     be placed.  plan is the empty floorplan that will be filled.
     """
 
     plan.createCoordinates()
-    
+
     plan.makePonds()
 
     # First house hasn't been placed yet
@@ -40,7 +40,7 @@ def greedy(houseNumber, plan):
 
         # Create house
         house1 = hs.Maison(x, y)
-        
+
         distance = fch.findClosestHouse(plan.houses, house1)
 
         # Check if coordinates don't cross boundaries
@@ -52,33 +52,33 @@ def greedy(houseNumber, plan):
     """
     # Places the houses with a greedy algorithm
     for i in range(houseNumber):
-        
+
         # Decide what type of house will be placed. A testhouse is also made to
         # check for each coordinate if it's better than the current one. If it is,
         # the better coordinate will be saved
-        
+
         bestX, bestY = 0, 0
-        
+
         house = plan.makeHouse(bestX, bestY)
 
         bestX, bestY, distance = co.findCoordinates(plan, house)
-                    
+
         if distance < house.freeSpace:
             print("Error, no solution.")
-                        
+
         house.coordinates(bestX, bestY)
         print("distance: ", distance)
-        
+
         if distance > 0:
             plan.houses.append(house)
         print("house ", len(plan.houses))
-        
+
         co.removeCoordinates(plan, house)
-                    
+
     return plan
 
 if __name__ == "__main__":
     plan = greedy(60)
-    
+
     # Make visualisation
     plan.showFloorplan()

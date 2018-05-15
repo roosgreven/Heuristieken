@@ -15,9 +15,9 @@ import matplotlib.pyplot as plt
 import helpers.constraints as con
 import classes.water as wt
 
-def randomAlgorithm(houseNumber, plan):
+def randomAlgorithm(plan):
     """ Performs a random algorithm, first placing water, then placing houses.
-    houseNumber is the number of houses that have to be in the neighbourhood.  
+    houseNumber is the number of houses that have to be in the neighbourhood.
     plan is the empty floorplan that will be filled.
     """
 

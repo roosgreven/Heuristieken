@@ -13,7 +13,7 @@ import helpers.constraints as con
 import random
 import randomalgorithm.randomalgorithm
 
-def hillClimber(houseNumber, plan):
+def hillClimber(plan):
 
     # Initiate counter
     i = 0
