@@ -55,8 +55,6 @@ def houseMove(houseToBeMoved, plan):
     oldy1 = houseToBeMoved.y1
 
     # Retrieved from https://stackoverflow.com/questions/48122608/how-do-i-generate-random-float-and-round-it-to-1-decimal-place
-    # Random.uniform: https://docs.python.org/3/library/random.html#random.uniform
-    # Returns a number between -1 and 1, rounded to 1 decimal
     movementx = round(int(random.uniform(-1, 1) * 10)) / 10.0
     movementy = round(int(random.uniform(-1, 1) * 10)) / 10.0
 
@@ -69,12 +67,12 @@ def houseMove(houseToBeMoved, plan):
 
     print("Set house at new position")
 
-    # Check if there's overlap
+    # Check if there's overlap with water and boundaries
     if con.noWaterAndBoundary(houseToBeMoved, plan):
 
         distance = fch.findClosestHouse(plan, houseToBeMoved)
 
-        if not distance < houseToBeMoved.freeSpace:
+        if distance > 0:
 
             newValue = plan.getValue()
 
