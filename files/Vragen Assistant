@@ -76,3 +76,18 @@ ANDERE ALGORITMEN:
 GENETISCHE ALGORITMEN
 POPULATION ALGORITMEN
 Particle swarm / swarm algoritmen (ant colony)
+
+Meeting 7:
+Visualisatie: water blauw, types huizen dezelfde kleur.
+Readme in code map
+Results (csv) in code en naam map code veranderen
+Hillclimber:
+  housemove functie opdelen in kleinere functies
+  draaien huizen, swaps
+  Simulated annealing: kan ook voor experimentatie gebruikt worden. Kans voor acceptatie uit papers halen.
+Experimentatie:
+Documenteren van een experiment:
+  Bijvoorbeeld random 1000x runnen en dan resultaten bespreken
+Constraints case weghalen om te kijken of het interessanter wordt, zoals huisverdeling maison, bungalow, eengezinswoning.
+ 
+
