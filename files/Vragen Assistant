@@ -86,6 +86,7 @@ Hillclimber:
   draaien huizen, swaps
   Simulated annealing: kan ook voor experimentatie gebruikt worden. Kans voor acceptatie uit papers halen.
 Experimentatie:
+Verschillende probabilities met hillclimber: 20% swap 30% rotate 50% movement, en andere probabilities uitproberen
 Documenteren van een experiment:
   Bijvoorbeeld random 1000x runnen en dan resultaten bespreken
 Constraints case weghalen om te kijken of het interessanter wordt, zoals huisverdeling maison, bungalow, eengezinswoning.
