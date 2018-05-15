@@ -65,8 +65,6 @@ def houseMove(houseToBeMoved, plan):
     # Change coordinates of house to be moved
     houseToBeMoved.coordinates(newx1, newy1)
 
-    print("Set house at new position")
-
     # Check if there's overlap with water and boundaries
     if con.noWaterAndBoundary(houseToBeMoved, plan):
 
@@ -81,20 +79,15 @@ def houseMove(houseToBeMoved, plan):
 
                 # Set house back at old position
                 houseToBeMoved.coordinates(oldx1, oldy1)
-
-                print("Set house back old position")
-
-            return plan
+        else:
+            # Set house back at old position
+            houseToBeMoved.coordinates(oldx1, oldy1)
 
     # If move is not viable, because of overlap
     else:
 
         # Set house back at old position
         houseToBeMoved.coordinates(oldx1, oldy1)
-
-        print("Set house back to old position")
-
-        return plan
 
 if __name__ == "__main__":
     plan = hillClimber(20)
