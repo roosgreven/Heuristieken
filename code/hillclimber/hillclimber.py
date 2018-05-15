@@ -83,17 +83,11 @@ def houseMove(houseToBeMoved, plan):
             # Set house back at old position
             houseToBeMoved.coordinates(oldx1, oldy1)
 
-            return plan
-
     # If move is not viable, because of overlap
     else:
 
         # Set house back at old position
         houseToBeMoved.coordinates(oldx1, oldy1)
-
-        return plan
-
-    return plan
 
 if __name__ == "__main__":
     plan = hillClimber(20)
