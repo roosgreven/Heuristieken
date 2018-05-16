@@ -42,7 +42,7 @@ def saveAndShowPopulation(algorithmType, population):
     population = algorithm(population)
     
     # Make visualisation
-    population.showPopulation()
+    #population.showPopulation()
     
 def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
     """ Performs an algorithm of algorithmType a numberOfIterations amount of 

@@ -11,6 +11,9 @@ class House:
     """ Keeps up with the coordinates and value of a house. """
 
     def __init__(self, x1, y1):
+        
+        self.vx = 0
+        self.vy = 0
 
         self.coordinates(x1, y1)
 
@@ -38,6 +41,11 @@ class House:
         self.x2 = x1 + self.width
         self.y1 = y1
         self.y2 = y1 + self.length
+        
+    def speed(self, vx, vy):
+        
+        self.vx += vx
+        self.vy += vy
         
     def rotate(self):
         """ Swaps the value of width and length and changes coordinates

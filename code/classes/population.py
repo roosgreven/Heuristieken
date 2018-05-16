@@ -7,27 +7,44 @@ Contains a class with floorplans in it.
 
 from randomalgorithm.randomalgorithm import randomAlgorithm
 from classes.floorplan import FloorPlan
+import copy
 
 class Population:
     """ Has a list (a population) of floorplans. """
     
-    def __init__(self, planNumber):
+    def __init__(self, planNumber, houseNumber):
         
         self.planNumber = planNumber
         
         self.plans = []
         
-    def makeRandomPopulation(self, houseNumber):
+        self.gBest = FloorPlan(houseNumber)
         
-        self.velocity = []
+    def makeRandomPopulation(self, houseNumber):
+        """ Fills the floorplans using the random algorithm. """
         
         for i in range(self.planNumber):
-            
-            planVelocities = [[0, 0] for j in range(houseNumber)]
-            self.velocity.append(planVelocities)
             
             plan = FloorPlan(houseNumber)
             
             plan = randomAlgorithm(plan)
             
             self.plans.append(plan)
+            
+    def checkForGBest(self):
+        """ Check if the current population contains a new best floorplan and
+        saves it if it does. """
+        
+        gBestValue = self.gBest.getValue()
+        
+        for plan in self.plans:
+            
+            if plan.getValue() >= gBestValue:
+                
+                self.gBest = copy.deepcopy(plan)
+                
+                gBestValue = self.gBest.getValue()
+        
+        
+        
+        
