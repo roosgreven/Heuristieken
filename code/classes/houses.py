@@ -25,7 +25,7 @@ class House:
         distance = fch.findClosestHouse(plan, self)
         
         if distance < 0:
-            return -1
+            return -1000000
         
         extraFreeSpace = distance - self.freeSpace
         totalValue = self.basicValue + self.extraValue * extraFreeSpace

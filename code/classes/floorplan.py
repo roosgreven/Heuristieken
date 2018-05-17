@@ -14,6 +14,7 @@ import classes.houses as hs
 import classes.water as wt
 import matplotlib.pyplot as plt
 import helpers.findclosesthouse as fch
+import helpers.constraints as con
 
 class FloorPlan:
     """ Has a list of houses and specifics for the neighbourhood. """
@@ -116,6 +117,16 @@ class FloorPlan:
             house.rotate()
 
         return house
+    
+    def checkWaterAndBoundary(self):
+        
+        for house in self.houses:
+            
+            if not con.noWaterAndBoundary(house, self):
+                
+                return False
+        
+        return True
 
     def getValue(self):
         """ Total value of neighbourhood is calculated. """
@@ -133,7 +144,7 @@ class FloorPlan:
         particle swarm algorithm.
         """
         
-        for house in self.house:
+        for house in self.houses:
             
             house.changeBest()
 

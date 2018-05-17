@@ -61,7 +61,7 @@ def main():
     # Run particle swarm, save and show result
     if sys.argv[1] == "particleswarm":
         
-        planNumber = 3
+        planNumber = 100
         
         population = Population(planNumber, numberOfHouses)
         
