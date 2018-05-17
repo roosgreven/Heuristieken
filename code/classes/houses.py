@@ -43,9 +43,18 @@ class House:
         self.y2 = y1 + self.length
         
     def speed(self, vx, vy):
+        """ Updates the speed of a house in the particle swarm alogrithm. """
         
         self.vx += vx
         self.vy += vy
+        
+    def changeBest(self):
+        """ Updates the best found values for x1 and y1 in the particle swarm
+        algorithm. 
+        """
+        
+        self.xBest = self.x1
+        self.yBest = self.y1
         
     def rotate(self):
         """ Swaps the value of width and length and changes coordinates

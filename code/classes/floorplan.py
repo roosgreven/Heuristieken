@@ -54,6 +54,9 @@ class FloorPlan:
         self.currentMaisons = 0
 
         self.ponds =[]
+        
+        # Initiates the pBestValue for the particle swarm algorithm
+        self.pBestValue = 0
 
     def createCoordinates(self):
         """ Creates a list of all possible coordinates in the neighbourhood.
@@ -124,6 +127,15 @@ class FloorPlan:
             totalValue += house.value(self)
 
         return totalValue
+    
+    def changeBest(self):
+        """ The best x1 and y1 value are updated for each house. Used in the
+        particle swarm algorithm.
+        """
+        
+        for house in self.house:
+            
+            house.changeBest()
 
 
     def saveFloorplan(self):

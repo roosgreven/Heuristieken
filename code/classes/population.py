@@ -31,7 +31,7 @@ class Population:
             
             self.plans.append(plan)
             
-    def checkForGBest(self):
+    def checkForPAndGBest(self):
         """ Check if the current population contains a new best floorplan and
         saves it if it does. """
         
@@ -39,11 +39,18 @@ class Population:
         
         for plan in self.plans:
             
-            if plan.getValue() >= gBestValue:
+            theValue = plan.getValue()
+            
+            if theValue >= plan.pBestValue:
+                
+                plan.changeBest()
+                plan.pBestValue = theValue
+            
+            if theValue >= gBestValue:
                 
                 self.gBest = copy.deepcopy(plan)
                 
-                gBestValue = self.gBest.getValue()
+                gBestValue = theValue
         
         
         

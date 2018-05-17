@@ -11,5 +11,13 @@ and direct it to the best possible solution.
 def particleSwarm(population):
     """ Performs the algorithm. """
     
-    # The current overall best is established
-    population.checkForGBest()
+    for i in range(50):
+        
+        # The current overall best is established
+        population.checkForPAndGBest()
+        
+        for plan in population.plans:
+            
+            for house in plan.houses:
+                
+                v1 = 45
