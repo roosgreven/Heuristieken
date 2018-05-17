@@ -21,4 +21,5 @@ Voert het hill climber algoritme eenmalig uit, slaat de uitkomst op en print dez
 - lotsOfRandom      
 Voert het random algoritme honder keer uit, print de gemiddelde waarde, onthoudt de beste en de slechtste en print beide.
 - particleswarm
+
 Voert het particle swarm algoritme. (Werkt nog niet.)
