@@ -140,7 +140,7 @@ class FloorPlan:
             house.changeBest()
 
 
-    def saveFloorplan(self):
+    def saveFloorplan(self, algorithmType, numberOfHouses):
         """ For now: Overwrites old floorplan with new one.
 
         Future: Checks if the value of the Floorplan is higher than the current value.  If so, the
@@ -170,17 +170,67 @@ class FloorPlan:
             # Append coordinates of each house to coordinates array
             coordinates.append(["House",house.x1, house.x2, house.y1, house.y2])
 
-        with open('code/results/bestEver.csv', newline = '') as csvfile:
-            
-            # read CSV file
-            reader = csv.reader(csvfile, delimiter=',')
-            bestTillNow = float(list(reader)[0][1])
+        self.saveBestResults(algorithmType, numberOfHouses, totalValue, coordinates)
 
-        if bestTillNow < totalValue: 
-            # Retrieved from https://code.tutsplus.com/tutorials/how-to-read-and-write-csv-files-in-python--cms-29907
-            with open('code/results/bestEver.csv', 'w') as myFile:
+        
+    def saveBestResults(self, algorithmType, numberOfHouses, totalValue, coordinates):
+        
+        # Open file specific for this algorithm and this number of houses
+        with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv') as myFile:
+            
+            # read CSV file and save best value ever achieved
+            reader = csv.reader(myFile, delimiter = ',')
+            bestThisAlgorithm = float(list(reader)[0][1])
+
+        # Check if this value is better than best ever achieved
+        if bestThisAlgorithm < totalValue: 
+
+            # Open and read file with all highscores
+            with open('code/results/allBests.csv', 'r') as myFile:
+                reader = csv.reader(myFile, delimiter = ',')
+                
+                # List the file
+                listedValues = list(reader)
+                print(listedValues[0])
+
+            # Loop over all items in the file
+            for item in listedValues:
+
+                # Change total value of specific algorithm
+                if item[0] == algorithmType + "_" + str(numberOfHouses):
+                    item[1] = totalValue
+
+            # Open file with all best values to write score to
+            with open('code/results/allBests.csv', 'w', newline = '') as myFile:
                 writer = csv.writer(myFile)
+
+                # Write the changed values
+                writer.writerows(listedValues)
+
+            # Open csv for specific algorithm to write new floorplan to
+            with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'w') as myFile:
+                writer = csv.writer(myFile)
+
+                # Write total value and coordinates of houses and water to csv
                 writer.writerows(coordinates)
+
+            # Open file with best value ever achieved
+            with open('code/results/bestEver.csv', newline = '') as csvfile:
+                
+                # Check save best value ever achieved
+                reader = csv.reader(csvfile, delimiter=',')
+                bestTillNow = float(list(reader)[0][1])
+
+            # If this value is best ever achieved, save it in the csvfile
+            if bestTillNow < totalValue: 
+
+                with open('code/results/bestEver.csv', 'w') as myFile:
+                    writer = csv.writer(myFile)
+
+                    # Write total value and coordinates of houses and water to csv
+                    writer.writerows(coordinates + [["Algorithm Type: " + algorithmType]] 
+                        + [["Number of Houses: " + str(numberOfHouses)]])
+       
 
     def showFloorplan(self):
         """ Prints total value of a Floorplan and generates a visual floorplan

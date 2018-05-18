@@ -26,7 +26,7 @@ def saveAndShow(algorithmType, plan):
         plan = algorithm(plan)
     
     # Save floorplan to a csv file
-    plan.saveFloorplan()
+    plan.saveFloorplan(algorithmType, len(plan.houses))
 
     # Make visualisation
     plan.showFloorplan()
@@ -81,6 +81,30 @@ def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
             
         totalValue += value
     
+    # Initialize empty list
+    coordinates = []
+
+    # Append total value to coordinates list
+    coordinates.append(["totalValue", bestValue])
+
+    # Add header rows to csv file
+    coordinates.append(["Type", "x1", "x2", "y1", "y2"])
+
+    # Iterate over ponds array of plan
+    for pond in bestPlan.ponds:
+
+        # Append coordinates of each pond to coordinates array
+        coordinates.append(["Water", pond.x1, pond.x2, pond.y1, pond.y2])
+
+    # Iterate over houses array in plan
+    for house in bestPlan.houses:
+
+        # Append coordinates of each house to coordinates array
+        coordinates.append(["House",house.x1, house.x2, house.y1, house.y2])
+
+
+    #FloorPlan.saveBestResults("randomAlgorithm", numberOfHouses, bestValue, coordinates)
+
     # Output
     print("The average value was:")
     print(totalValue / numberOfIterations)
