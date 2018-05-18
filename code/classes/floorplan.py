@@ -176,7 +176,7 @@ class FloorPlan:
     def saveBestResults(self, algorithmType, numberOfHouses, totalValue, coordinates):
         
         # Open file specific for this algorithm and this number of houses
-        with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv') as myFile:
+        with open('results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'r') as myFile:
             
             # read CSV file and save best value ever achieved
             reader = csv.reader(myFile, delimiter = ',')
@@ -186,7 +186,7 @@ class FloorPlan:
         if bestThisAlgorithm < totalValue: 
 
             # Open and read file with all highscores
-            with open('code/results/allBests.csv', 'r') as myFile:
+            with open('results/allBests.csv', 'r') as myFile:
                 reader = csv.reader(myFile, delimiter = ',')
                 
                 # List the file
@@ -201,21 +201,21 @@ class FloorPlan:
                     item[1] = totalValue
 
             # Open file with all best values to write score to
-            with open('code/results/allBests.csv', 'w', newline = '') as myFile:
+            with open('results/allBests.csv', 'w', newline = '') as myFile:
                 writer = csv.writer(myFile)
 
                 # Write the changed values
                 writer.writerows(listedValues)
 
             # Open csv for specific algorithm to write new floorplan to
-            with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'w') as myFile:
+            with open('results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'w') as myFile:
                 writer = csv.writer(myFile)
 
                 # Write total value and coordinates of houses and water to csv
                 writer.writerows(coordinates)
 
             # Open file with best value ever achieved
-            with open('code/results/bestEver.csv', newline = '') as csvfile:
+            with open('results/bestEver.csv', newline = '') as csvfile:
                 
                 # Check save best value ever achieved
                 reader = csv.reader(csvfile, delimiter=',')
@@ -224,7 +224,7 @@ class FloorPlan:
             # If this value is best ever achieved, save it in the csvfile
             if bestTillNow < totalValue: 
 
-                with open('code/results/bestEver.csv', 'w') as myFile:
+                with open('results/bestEver.csv', 'w') as myFile:
                     writer = csv.writer(myFile)
 
                     # Write total value and coordinates of houses and water to csv

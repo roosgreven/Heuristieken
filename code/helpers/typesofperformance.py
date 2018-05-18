@@ -103,7 +103,7 @@ def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
         coordinates.append(["House",house.x1, house.x2, house.y1, house.y2])
 
 
-    #FloorPlan.saveBestResults("randomAlgorithm", numberOfHouses, bestValue, coordinates)
+    plan.saveBestResults("randomAlgorithm", numberOfHouses, bestValue, coordinates)
 
     # Output
     print("The average value was:")
