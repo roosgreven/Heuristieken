@@ -39,8 +39,8 @@ def removeCoordinates(plan, house):
     from the list of coordinates.
     """
     
-    for x in np.arange(house.x1 - house.freeSpace - plan.eengezinsWidth + 1, house.x2 + house.freeSpace, 0.5):
-        for y in np.arange(house.y1 - house.freeSpace - plan.eengezinsLength + 1, house.y2 + house.freeSpace, 0.5):
+    for x in np.arange(house.x1 - house.freeSpace - plan.smallestLength + 1, house.x2 + house.freeSpace, 0.5):
+        for y in np.arange(house.y1 - house.freeSpace - plan.smallestLength + 1, house.y2 + house.freeSpace, 0.5):
             try:
                 plan.coordinates.remove([x, y])
             except ValueError:

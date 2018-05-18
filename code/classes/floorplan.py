@@ -24,21 +24,12 @@ class FloorPlan:
     length = 180.
     numberOfPonds = 4
 
-    # The specifics for all housetypes. Are also defined in the house classes,
-    # but because there they are only available when there is an instance of
-    # the house, they are also saved here. It's not very elegant and we will
-    # change it at some point.
-    eengezinsWidth = 8.
-    eengezinsLength = 8.
-    eengezinsFree = 2.
-
-    bungalowWidth = 7.5
-    bungalowLength = 10.
-    bungalowFree = 3.
-
-    maisonWidth = 10.5
-    maisonLength = 11.
-    maisonFree = 6.
+    # The smallest freespace (eengezins), combination of freespace and length
+    # (eengezins) and length (bungalow). Used to remove coordinates where a
+    # house can't possibly be placed
+    smallestFree = 2.
+    smallestLengthPlusFree = 8. + smallestFree
+    smallestLength = 7.5
 
     def __init__(self, houseNumber):
 
@@ -67,8 +58,8 @@ class FloorPlan:
 
         self.coordinates = []
 
-        for x in np.arange(self.eengezinsFree, self.width - self.eengezinsFree - self.eengezinsWidth + 1, 0.5):
-            for y in np.arange(self.eengezinsFree, self.length - self.eengezinsFree - self.eengezinsLength + 1, 0.5):
+        for x in np.arange(self.smallestFree, self.width - self.smallestFree - self.smallestLengthPlusFree + 1, 0.5):
+            for y in np.arange(self.smallestFree, self.length - self.smallestFree - self.smallestLengthPlusFree + 1, 0.5):
                 self.coordinates.append([x, y])
 
     def makePonds(self):
