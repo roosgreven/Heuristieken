@@ -19,7 +19,7 @@ def hillClimber(plan):
     # Initiate counter
     i = 0
 
-    for i in range(30):
+    for i in range(3000):
 
         # Get value of plan as it is now
         oldValue = plan.getValue()

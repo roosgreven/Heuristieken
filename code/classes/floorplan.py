@@ -179,11 +179,17 @@ class FloorPlan:
             # Append coordinates of each house to coordinates array
             coordinates.append(["House",house.x1, house.x2, house.y1, house.y2])
 
-        # Retrieved from https://code.tutsplus.com/tutorials/how-to-read-and-write-csv-files-in-python--cms-29907
-        myFile = open('houseplan.csv', 'w')
-        with myFile:
-            writer = csv.writer(myFile)
-            writer.writerows(coordinates)
+        with open('code/results/bestEver.csv', newline = '') as csvfile:
+            
+            # read CSV file
+            reader = csv.reader(csvfile, delimiter=',')
+            bestTillNow = float(list(reader)[0][1])
+
+        if bestTillNow < totalValue: 
+            # Retrieved from https://code.tutsplus.com/tutorials/how-to-read-and-write-csv-files-in-python--cms-29907
+            with open('code/results/bestEver.csv', 'w') as myFile:
+                writer = csv.writer(myFile)
+                writer.writerows(coordinates)
 
     def showFloorplan(self):
         """ Prints total value of a Floorplan and generates a visual floorplan
