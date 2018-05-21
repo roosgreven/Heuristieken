@@ -25,10 +25,11 @@ def main():
 
     # Number of houses is third argument of command line
     numberOfHouses = int(sys.argv[2])
+
     """
-    # Function is second argument, for instance randomAlgorithm
-    # eval idea was retrieved from https://stackoverflow.com/questions/29854353/use-python-command-line-argument-as-function-names-and-function-values
-    # eval was needed to turn the argv[1] into a callable function
+    Function is second argument, for instance randomAlgorithm
+    eval idea was retrieved from https://stackoverflow.com/questions/29854353/use-python-command-line-argument-as-function-names-and-function-values
+    eval was needed to turn the argv[1] into a callable function
     plan = eval(sys.argv[1])(houses)
     """
 
@@ -57,16 +58,16 @@ def main():
         plan = randomAlgorithm(plan)
 
         top.saveAndShow("hillClimber", plan)
-        
+
     # Run particle swarm, save and show result
     if sys.argv[1] == "particleswarm":
-        
+
         planNumber = 100
-        
+
         population = Population(planNumber, numberOfHouses)
-        
+
         population.makeRandomPopulation(numberOfHouses)
-        
+
         top.saveAndShowPopulation("particleSwarm", population)
 
     # Run random a hundred times, calculate and print average value and

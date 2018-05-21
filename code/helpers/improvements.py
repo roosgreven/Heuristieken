@@ -14,7 +14,7 @@ import random
 import randomalgorithm.randomalgorithm
 
 def randomHouse(houseArray):
-    """ Returns index of random house from house array in floorplan """
+    """ Returns index of random house from house array in floorplan. """
 
     lengthHouseArray = len(houseArray) - 1
 
@@ -29,7 +29,7 @@ def houseMove(houseToBeMoved, plan, oldValue, simulatedAnnealing):
         The function checks whether the house move is viable.
         After the move has been made, it compares the plan value of the old
         situation and the new situation.
-        The house will be moved back to its old position if the value has decreased"""
+        The house will be moved back to its old position if the value has decreased. """
 
     # Save current coordinates
     oldx1 = houseToBeMoved.x1
@@ -82,7 +82,7 @@ def swap(house1, house2):
 def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing):
     """ Checks if swap was viable for both houses and whether
         plan value was improved or the same. If not, houses are set back to
-        old positions """
+        old positions. """
 
     # Check if there's overlap with water and boundaries for house 1
     if con.noWaterAndBoundary(house1, plan):

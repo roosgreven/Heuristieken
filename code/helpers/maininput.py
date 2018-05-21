@@ -1,6 +1,6 @@
 
 """
-Checks if system arguments were correct
+Checks if system arguments were correct.
 """
 
 import sys
