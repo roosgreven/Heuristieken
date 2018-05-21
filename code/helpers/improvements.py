@@ -55,11 +55,26 @@ def houseMove(houseToBeMoved, plan, oldValue, simulatedAnnealing):
 
             newValue = plan.getValue()
 
-            # If the house move has decreased plan value
-            if not newValue >= oldValue:
+            if simulatedAnnealing == False:
 
-                # Set house back at old position
-                houseToBeMoved.coordinates(oldx1, oldy1)
+                # If the house move has decreased plan value
+                if not newValue >= oldValue:
+
+                    # Set house back at old position
+                    houseToBeMoved.coordinates(oldx1, oldy1)
+
+            elif simulatedAnnealing == True:
+
+                probability = round(random.random(), 2)
+
+                # In 40% of the cases, the value decrease is accepted
+                if probability < 0.6:
+
+                    # If the house rotation has decreased plan value
+                    if not newValue >= oldValue:
+
+                        # Set house back at old position
+                        houseToBeMoved.coordinates(oldx1, oldy1)
         else:
             # Set house back at old position
             houseToBeMoved.coordinates(oldx1, oldy1)
@@ -101,7 +116,17 @@ def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing):
                     swap(house2, house1)
 
             elif simulatedAnnealing == True:
-                # Hier moet probability acceptance formula komen voor verslechtering
+
+                probability = round(random.random(), 2)
+
+                # In 40 % of the cases, the value decrease is accepted
+                if probability < 0.6:
+
+                    # If the house rotation has decreased plan value
+                    if not newValue >= oldValue:
+
+                        # Swap house back
+                        swap(house2, house1)
 
         else:
             swap(house2, house1)
@@ -128,7 +153,17 @@ def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing):
                     swap(house2, house1)
 
             elif simulatedAnnealing == True:
-                # Hier moet probability acceptance formula komen voor verslechtering
+
+                probability = round(random.random(), 2)
+
+                # In 40 % of the cases, the value decrease is accepted
+                if probability < 0.6:
+
+                    # If the house rotation has decreased plan value
+                    if not newValue >= oldValue:
+
+                        # Swap house back
+                        swap(house2, house1)
 
         else:
             swap(house2, house1)
@@ -163,7 +198,17 @@ def rotateHouse(house, plan, oldValue, simulatedAnnealing):
 
             # Do accept decrease in value with certain probability
             elif simulatedAnnealing == True:
-                # Hier moet probability acceptance formula komen voor verslechtering
+
+                probability = round(random.random(), 2)
+
+                # In 40 % of the cases, the value decrease is accepted
+                if probability < 0.6:
+
+                    # If the house rotation has decreased plan value
+                    if not newValue >= oldValue:
+
+                        # Rotate house back
+                        house.rotate()
 
         else:
             # Rotate house back

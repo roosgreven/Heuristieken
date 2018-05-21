@@ -57,6 +57,17 @@ def main():
 
         plan = randomAlgorithm(plan)
 
+        # False stands for no simulated annealing
+        top.saveAndShow("hillClimber", plan)
+
+    # Run hill climber, save and show result
+    if sys.argv[1] == "simulatedannealing":
+
+        plan = FloorPlan(numberOfHouses)
+
+        plan = randomAlgorithm(plan)
+
+        # False stands for no simulated annealing
         top.saveAndShow("hillClimber", plan)
 
     # Run particle swarm, save and show result

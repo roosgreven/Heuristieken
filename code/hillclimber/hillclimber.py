@@ -13,8 +13,9 @@ import helpers.constraints as con
 import random
 import randomalgorithm.randomalgorithm
 import helpers.improvements as imp
+import sys
 
-def hillClimber(plan, simulatedAnnealing):
+def hillClimber(plan):
     """ Hillclimber function that will increase the value of the given plan step
         by step. It starts off by selecting a random house and then it will
         either rotate the house, swap the house with another or move the house.
@@ -25,7 +26,13 @@ def hillClimber(plan, simulatedAnnealing):
         function will also accept a decrease in value of the plan with a certain
         probability. """
 
-    simulatedAnnealing = simulatedAnnealing
+    # initiate simulatedAnnealing boolean
+    simulatedAnnealing = False
+
+    if sys.argv[1] == "simulatedannealing":
+        simulatedAnnealing = True
+    else:
+        simulatedAnnealing = False
 
     # Initiate counter
     i = 0
