@@ -23,7 +23,7 @@ def randomHouse(houseArray):
 
     return int(index)
 
-def houseMove(houseToBeMoved, plan, oldValue):
+def houseMove(houseToBeMoved, plan, oldValue, simulatedAnnealing):
     """ First checks the value of the plan as it is. Then, moves a house in a
         random direction, using a distance between 0.0 and 1.0.
         The function checks whether the house move is viable.
@@ -79,7 +79,7 @@ def swap(house1, house2):
     house2.coordinates(house1.x1, house1.y1)
     house1.coordinates(tempX, tempY)
 
-def swapCheck(house1, house2, plan, oldValue):
+def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing):
     """ Checks if swap was viable for both houses and whether
         plan value was improved or the same. If not, houses are set back to
         old positions """
@@ -93,17 +93,23 @@ def swapCheck(house1, house2, plan, oldValue):
 
             newValue = plan.getValue()
 
-            # If the house move has decreased plan value
-            if not newValue >= oldValue:
-                swap(house2, house1)
-                return 0
+            # Do not accept decrease in value
+            if simulatedAnnealing == False:
+
+                # If the house move has decreased plan value
+                if not newValue >= oldValue:
+                    swap(house2, house1)
+
+            elif simulatedAnnealing == True:
+                # Hier moet probability acceptance formula komen voor verslechtering
+
         else:
             swap(house2, house1)
-            return 0
+
     # If move is not viable, because of overlap
     else:
         swap(house2, house1)
-        return 0
+
 
     # Check if there's overlap with water and boundaries for house 2
     if con.noWaterAndBoundary(house2, plan):
@@ -114,25 +120,29 @@ def swapCheck(house1, house2, plan, oldValue):
 
             newValue = plan.getValue()
 
-            # If the house move has decreased plan value
-            if not newValue >= oldValue:
-                swap(house2, house1)
-                return 0
+            # Do not accept decrease in values
+            if simulatedAnnealing == False:
+
+                # If the house move has decreased plan value
+                if not newValue >= oldValue:
+                    swap(house2, house1)
+
+            elif simulatedAnnealing == True:
+                # Hier moet probability acceptance formula komen voor verslechtering
+
         else:
             swap(house2, house1)
-            return 0
+
     # If move is not viable, because of overlap
     else:
         swap(house2, house1)
-        return 0
 
-def rotateHouse(house, plan, oldValue):
-    print(house.x1)
-    print(house.y1)
+
+def rotateHouse(house, plan, oldValue, simulatedAnnealing):
+
+    # Rotate house
     house.rotate()
-    print(house.x1)
-    print(house.y1)
-    print("house rotated")
+
     # Check if there's overlap with water and boundaries
     if con.noWaterAndBoundary(house, plan):
 
@@ -142,11 +152,19 @@ def rotateHouse(house, plan, oldValue):
 
             newValue = plan.getValue()
 
-            # If the house rotation has decreased plan value
-            if not newValue >= oldValue:
+            # Do not accept decrease in value
+            if simulatedAnnealing == False:
 
-                # Rotate house back
-                house.rotate()
+                # If the house rotation has decreased plan value
+                if not newValue >= oldValue:
+
+                    # Rotate house back
+                    house.rotate()
+
+            # Do accept decrease in value with certain probability
+            elif simulatedAnnealing == True:
+                # Hier moet probability acceptance formula komen voor verslechtering
+
         else:
             # Rotate house back
             house.rotate()

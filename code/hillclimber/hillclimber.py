@@ -14,7 +14,18 @@ import random
 import randomalgorithm.randomalgorithm
 import helpers.improvements as imp
 
-def hillClimber(plan):
+def hillClimber(plan, simulatedAnnealing):
+    """ Hillclimber function that will increase the value of the given plan step
+        by step. It starts off by selecting a random house and then it will
+        either rotate the house, swap the house with another or move the house.
+        After this, the function checks whether this is a viable option and
+        whether the value of the plan has increased. If this is all true, then
+        the move updates the plan. The second argument, simulatedAnnealing, can
+        also be entered by the user. If this is the case, the hillclimber
+        function will also accept a decrease in value of the plan with a certain
+        probability. """
+
+    simulatedAnnealing = simulatedAnnealing
 
     # Initiate counter
     i = 0
@@ -34,7 +45,7 @@ def hillClimber(plan):
             index = imp.randomHouse(plan.houses)
 
             # Move a house in random direction with houseMove function
-            imp.houseMove(plan.houses[index], plan, oldValue)
+            imp.houseMove(plan.houses[index], plan, oldValue, simulatedAnnealing)
 
         # 25% chance that the move is a swap of two houses
         elif whichMove <= 0.75:
@@ -56,7 +67,7 @@ def hillClimber(plan):
             imp.swap(plan.houses[index1], plan.houses[index2])
 
             # Check if swap was viable, if not, this function sets houses back
-            imp.swapCheck(plan.houses[index1], plan.houses[index2], plan, oldValue)
+            imp.swapCheck(plan.houses[index1], plan.houses[index2], plan, oldValue, simulatedAnnealing)
 
         # 25% chance that the move is a rotation of a single house
         else:
@@ -64,7 +75,7 @@ def hillClimber(plan):
             # Select random house in houses array of current plan
             index = imp.randomHouse(plan.houses)
 
-            imp.rotateHouse(plan.houses[index], plan, oldValue)
+            imp.rotateHouse(plan.houses[index], plan, oldValue, simulatedAnnealing)
 
     print("hillclimber succeeded")
     return plan
