@@ -10,6 +10,8 @@ from hillclimber.hillclimber import hillClimber
 from particleswarm.particleswarm import particleSwarm
 from classes.floorplan import FloorPlan
 import helpers.improvements as imp
+import experiments.convertToJSON as converter
+import csv
 
 def saveAndShow(algorithmType, plan):
     """ Performs an algorithm of algorithmType on the given plan and both saves
@@ -44,16 +46,15 @@ def saveAndShowPopulation(algorithmType, population):
     # Make visualisation
     #population.showPopulation()
 
-def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
+def experiment(algorithmType, numberOfHouses, numberOfIterations):
     """ Performs an algorithm of algorithmType a numberOfIterations amount of
     iterations.  Does this for the variant of numberOfHouses.  Prints the
     average value of the plan and visualizes the best and worst plan.
     """
 
     algorithm = globals()[algorithmType]
-    bestValue = 0
-    worstValue = 10 ** 20
-    totalValue = 0
+
+    experimentInfo = []
 
     # Perform the algorithm numberOfIterations amount of times
     for i in range(numberOfIterations):
@@ -66,9 +67,23 @@ def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
 
             plan = algorithm(plan)
 
-        # Save the plan if it's either the best or worst
+        # Save the plan value
         value = plan.getValue()
 
+        experimentInfo.append([i + 1, value])
+
+    # Write all values to csv file to use for visualisation
+    with open('code/experiments/' + algorithmType + '_' + str(numberOfIterations) +  '_' 
+        + str(numberOfHouses) + '.csv', 'w', newline = '') as myFile:
+        
+        writer = csv.writer(myFile)
+
+        # Write the changed values
+        writer.writerows(experimentInfo)
+
+    converter.convert(algorithmType, numberOfIterations, numberOfHouses)
+
+    """
         if value > bestValue:
 
             bestPlan = plan
@@ -104,7 +119,7 @@ def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
 
 
     plan.saveBestResults("randomAlgorithm", numberOfHouses, bestValue, coordinates)
-
+    
     # Output
     print("The average value was:")
     print(totalValue / numberOfIterations)
@@ -113,3 +128,4 @@ def showBestAndWorst(algorithmType, numberOfHouses, numberOfIterations):
     bestPlan.showFloorplan()
     print("The worst plan:")
     worstPlan.showFloorplan()
+"""

@@ -83,12 +83,23 @@ def main():
 
     # Run random a hundred times, calculate and print average value and
     # visualize best and worst floorplan
-    if sys.argv[1] == "lotsOfRandom":
+    if sys.argv[1] == "randomExperiment":
 
-        numberOfIterations = 100
+        numberOfIterations = 5000
 
-        top.showBestAndWorst("randomAlgorithm", numberOfHouses, numberOfIterations)
+        top.experiment("randomAlgorithm", numberOfHouses, numberOfIterations)
 
+    if sys.argv[1] == "greedyExperiment":
+
+        numberOfIterations = 500
+
+        top.experiment("greedy", numberOfHouses, numberOfIterations)
+
+    if sys.argv[1] == "hillclimberExperiment":
+
+        numberOfIterations = 500
+
+        top.experiment("hillClimber", numberOfHouses, numberOfIterations)
 
 if __name__ == "__main__":
     main()

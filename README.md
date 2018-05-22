@@ -18,7 +18,11 @@ Voert het random algoritme eenmalig uit, slaat de uitkomst op en print deze.
 Voert het greedy algoritme eenmalig uit, slaat de uitkomst op en print deze.
 - hillclimber       
 Voert het hill climber algoritme eenmalig uit, slaat de uitkomst op en print deze.
-- lotsOfRandom      
-Voert het random algoritme honder keer uit, print de gemiddelde waarde, onthoudt de beste en de slechtste en print beide.
+- randomExperiment      
+Voert het random algoritme vijfhonderd keer uit en slaat alle waardes op. 
+- greedyExperiment      
+Voert het greedy algoritme vijfhonderd keer uit en slaat alle waardes op. 
+- hillclimberExperiment      
+Voert het hillclimber algoritme vijfhonderd keer uit en slaat alle waardes op. 
 - particleswarm       
 Voert het particle swarm algoritme. (Werkt nog niet.)
