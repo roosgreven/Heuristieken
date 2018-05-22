@@ -6,9 +6,6 @@ Homework week 3: make an interactive bar chart with D3.
 
 function createPlot(algorithmToCompare, side, titleName) {
 
-	// add the title of the graph
-	document.getElementById("graphTitle" + side).innerHTML = "<h2><b>" + titleName + "</b>";
-
 	// clear all svgs
 	d3.selectAll("." + side + "Chart").remove();
 
@@ -50,9 +47,12 @@ function createPlot(algorithmToCompare, side, titleName) {
 
 		// alert if there is an error and return to stop the script
 		if (error) {
-			alert("Error: " + error);
+			alert("Data file not found or not valid: " + error);
 			return;
 		};
+
+		// add the title of the graph
+		document.getElementById("graphTitle" + side).innerHTML = "<h2><b>" + titleName + "</b>";
 
 		// call the function to draw the bar chart
 		drawBarChart(data);
@@ -69,7 +69,7 @@ function createPlot(algorithmToCompare, side, titleName) {
 
 	    // set correct domains of x and y scaler
 		x.domain(data.map(function(d) { return d.range }));
-		y.domain([d3.min(data, function(d) { return d.frequency }), d3.max(data, function(d) { return d.frequency })]);
+		y.domain([0, 23]);
 			
 		// draw x axis with value ranges and tick marks
 		chart.append("g")
@@ -100,7 +100,7 @@ function createPlot(algorithmToCompare, side, titleName) {
 				.attr("y", - margin.left / 1.5)
 				.attr("x", - height + 60)
 				.style("font", "18px sans-serif")
-				.text("Frequency");
+				.text("Frequency in %");
 			
 		// draw the bars
 		chart.selectAll(".bar")

@@ -81,25 +81,30 @@ def main():
 
         top.saveAndShowPopulation("particleSwarm", population)
 
-    # Run random a hundred times, calculate and print average value and
-    # visualize best and worst floorplan
+    # Run experiment with random, so perform algorithm 5000 times and save in csv
     if sys.argv[1] == "randomExperiment":
 
         numberOfIterations = 5000
 
-        top.experiment("randomAlgorithm", numberOfHouses, numberOfIterations)
+        top.experiment("randomAlgorithm", numberOfHouses, numberOfIterations, "randomAlgorithm")
 
     if sys.argv[1] == "greedyExperiment":
 
         numberOfIterations = 500
 
-        top.experiment("greedy", numberOfHouses, numberOfIterations)
+        top.experiment("greedy", numberOfHouses, numberOfIterations, "greedy")
 
     if sys.argv[1] == "hillclimberExperiment":
 
-        numberOfIterations = 500
+        numberOfIterations = 5000
 
-        top.experiment("hillClimber", numberOfHouses, numberOfIterations)
+        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber")
+
+    if sys.argv[1] == "simulatedannealingExperiment":
+
+        numberOfIterations = 5000
+
+        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing")
 
 if __name__ == "__main__":
     main()

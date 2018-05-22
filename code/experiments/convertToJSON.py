@@ -14,7 +14,7 @@ def convert(algorithmType, numberOfIterations, numberOfHouses):
 	# Array to store data
 	data = []
 
-	minValue = 30000000
+	minValue = 3000000000
 
 	maxValue = 0
 
@@ -33,7 +33,7 @@ def convert(algorithmType, numberOfIterations, numberOfHouses):
 				maxValue = row[1]
 
 			# Remember value if it's the minimum so far
-			elif float(row[1]) < float(minValue):
+			if float(row[1]) < float(minValue):
 				minValue = row[1]
 
 	# Open the CSV file to group the data
@@ -43,11 +43,23 @@ def convert(algorithmType, numberOfIterations, numberOfHouses):
 		# Read CSV file
 		reader = csv.reader(csvfile, delimiter = ',')
 
-		# Find place to start the chart later
-		startChart = math.floor(float(minValue) / 250000) * 250000
+		if numberOfHouses == 20:
 
-		# Find place to end the chart later
-		endChart = math.ceil(float(maxValue) / 250000) * 250000
+			# Decide when to start bar chart
+			startChart = 7500000
+
+			# Decide when to stop bar chart
+			endChart = 11500000
+
+		elif numberOfHouses == 40:
+
+			startChart = 14000000
+			endChart = 20500000
+
+		else:
+
+			startChart = 21000000
+			endChart = 28000000
 
 		# Calculate range of values
 		valueRange = endChart - startChart
@@ -110,7 +122,7 @@ def convert(algorithmType, numberOfIterations, numberOfHouses):
 
 			# Store data as dictionary in new array
 			data.append({'range': '€' + str(startChart + (i - 1) * int(oneStep)) + ' - ' + '€' + str((startChart + (i * int(oneStep)))), 
-				'frequency': eval("group" + str(i))})
+				'frequency': eval("group" + str(i)) / numberOfIterations * 100 })
 
 		# Save data in new file
 		with open('code/experiments/' + algorithmType + '_' + str(numberOfIterations) +  '_' 

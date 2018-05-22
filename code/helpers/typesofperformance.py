@@ -46,7 +46,7 @@ def saveAndShowPopulation(algorithmType, population):
     # Make visualisation
     #population.showPopulation()
 
-def experiment(algorithmType, numberOfHouses, numberOfIterations):
+def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName):
     """ Performs an algorithm of algorithmType a numberOfIterations amount of
     iterations.  Does this for the variant of numberOfHouses.  Prints the
     average value of the plan and visualizes the best and worst plan.
@@ -61,19 +61,31 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations):
 
         plan = FloorPlan(numberOfHouses)
 
-        plan = algorithm(plan)
+        if algorithmType == "hillClimber":
 
-        while len(plan.houses) < numberOfHouses:
+            plan = randomAlgorithm(plan)
+
+            while len(plan.houses) < numberOfHouses:
+
+                plan = randomAlgorithm(plan)
+
+        else: 
 
             plan = algorithm(plan)
+
+            while len(plan.houses) < numberOfHouses:
+
+                plan = algorithm(plan)
 
         # Save the plan value
         value = plan.getValue()
 
         experimentInfo.append([i + 1, value])
 
+        print("Iteration: ", i + 1)
+
     # Write all values to csv file to use for visualisation
-    with open('code/experiments/' + algorithmType + '_' + str(numberOfIterations) +  '_' 
+    with open('code/experiments/' + algorithmName + '_' + str(numberOfIterations) +  '_' 
         + str(numberOfHouses) + '.csv', 'w', newline = '') as myFile:
         
         writer = csv.writer(myFile)
@@ -81,7 +93,7 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations):
         # Write the changed values
         writer.writerows(experimentInfo)
 
-    converter.convert(algorithmType, numberOfIterations, numberOfHouses)
+    converter.convert(algorithmName, numberOfIterations, numberOfHouses)
 
     """
         if value > bestValue:

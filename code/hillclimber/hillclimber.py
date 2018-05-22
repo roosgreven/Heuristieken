@@ -27,9 +27,9 @@ def hillClimber(plan):
         probability. """
 
     # initiate simulatedAnnealing boolean
-    simulatedAnnealing = False
+    simulatedAnnealing = True
 
-    if sys.argv[1] == "simulatedannealing":
+    if sys.argv[1] == "simulatedannealing" or sys.argv[1] == "simulatedannealingExperiment":
         simulatedAnnealing = True
     else:
         simulatedAnnealing = False
