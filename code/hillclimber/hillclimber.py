@@ -34,6 +34,12 @@ def hillClimber(plan):
     else:
         simulatedAnnealing = False
 
+    # Initiate temperature for simulated annealing
+    temp = 50000.
+
+    # Initiate cooling rate for simulated annealing
+    coolingRate = 0.95
+
     # Initiate counter
     i = 0
 
@@ -52,7 +58,10 @@ def hillClimber(plan):
             index = imp.randomHouse(plan.houses)
 
             # Move a house in random direction with houseMove function
-            imp.houseMove(plan.houses[index], plan, oldValue, simulatedAnnealing)
+            if imp.houseMove(plan.houses[index], plan, oldValue, simulatedAnnealing, temp) == "Decrease Accepted":
+
+                # Decrease temperature
+                temp *= coolingRate
 
         # 25% chance that the move is a swap of two houses
         elif whichMove <= 0.75:
@@ -74,7 +83,10 @@ def hillClimber(plan):
             imp.swap(plan.houses[index1], plan.houses[index2])
 
             # Check if swap was viable, if not, this function sets houses back
-            imp.swapCheck(plan.houses[index1], plan.houses[index2], plan, oldValue, simulatedAnnealing)
+            if imp.swapCheck(plan.houses[index1], plan.houses[index2], plan, oldValue, simulatedAnnealing, temp) == "Decrease Accepted":
+
+                # Decrease temperature
+                temp *= coolingRate
 
         # 25% chance that the move is a rotation of a single house
         else:
@@ -82,7 +94,10 @@ def hillClimber(plan):
             # Select random house in houses array of current plan
             index = imp.randomHouse(plan.houses)
 
-            imp.rotateHouse(plan.houses[index], plan, oldValue, simulatedAnnealing)
+            if imp.rotateHouse(plan.houses[index], plan, oldValue, simulatedAnnealing, temp) == "Decrease Accepted":
+
+                # Decrease temperature
+                temp *= coolingRate
 
     print("hillclimber succeeded")
     return plan

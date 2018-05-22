@@ -4,6 +4,10 @@ Created on Tue May 15 14:30:23 2018
 
 Contains functions for the improvements made in hillclimber.  Possibilities:
 swap two houses, rotate a house, move a house.
+
+The simulated annealing idea for initial temperature, cooling rate and acceptance
+probability was retrieved from http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6.
+Initial temperature and cooling rate is found in hillclimber.py.
 """
 
 import classes.houses as hs
@@ -12,6 +16,7 @@ import helpers.findclosesthouse as fch
 import helpers.constraints as con
 import random
 import randomalgorithm.randomalgorithm
+import math
 
 def randomHouse(houseArray):
     """ Returns index of random house from house array in floorplan. """
@@ -23,7 +28,7 @@ def randomHouse(houseArray):
 
     return int(index)
 
-def houseMove(houseToBeMoved, plan, oldValue, simulatedAnnealing):
+def houseMove(houseToBeMoved, plan, oldValue, simulatedAnnealing, temp):
     """ First checks the value of the plan as it is. Then, moves a house in a
         random direction, using a distance between 0.0 and 1.0.
         The function checks whether the house move is viable.
@@ -63,18 +68,22 @@ def houseMove(houseToBeMoved, plan, oldValue, simulatedAnnealing):
                     # Set house back at old position
                     houseToBeMoved.coordinates(oldx1, oldy1)
 
-            elif simulatedAnnealing == True:
+            elif simulatedAnnealing == True and temp > 1:
 
-                probability = round(random.random(), 2)
+                probability = (oldValue - newValue)/temp
 
-                # In 40% of the cases, the value decrease is accepted
-                if probability < 0.6:
+                # In some of the cases, the value decrease is not accepted
+                if probability <= random.random():
 
                     # If the house rotation has decreased plan value
                     if not newValue >= oldValue:
 
                         # Set house back at old position
                         houseToBeMoved.coordinates(oldx1, oldy1)
+
+                # Value reducing move is accepted, so cool temperature
+                else:
+                    return ("Decrease Accepted")
         else:
             # Set house back at old position
             houseToBeMoved.coordinates(oldx1, oldy1)
@@ -94,7 +103,7 @@ def swap(house1, house2):
     house2.coordinates(house1.x1, house1.y1)
     house1.coordinates(tempX, tempY)
 
-def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing):
+def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing, temp):
     """ Checks if swap was viable for both houses and whether
         plan value was improved or the same. If not, houses are set back to
         old positions. """
@@ -115,18 +124,22 @@ def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing):
                 if not newValue >= oldValue:
                     swap(house2, house1)
 
-            elif simulatedAnnealing == True:
+            elif simulatedAnnealing == True and temp > 1:
 
-                probability = round(random.random(), 2)
+                probability = (oldValue - newValue)/temp
 
-                # In 40 % of the cases, the value decrease is accepted
-                if probability < 0.6:
+                # In some of the cases, the value decrease is not accepted
+                if probability < random.random():
 
                     # If the house rotation has decreased plan value
                     if not newValue >= oldValue:
 
                         # Swap house back
                         swap(house2, house1)
+
+                # Value reducing move is accepted, so cool temperature
+                else:
+                    return ("Decrease Accepted")
 
         else:
             swap(house2, house1)
@@ -152,18 +165,22 @@ def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing):
                 if not newValue >= oldValue:
                     swap(house2, house1)
 
-            elif simulatedAnnealing == True:
+            elif simulatedAnnealing == True and temp > 1:
 
-                probability = round(random.random(), 2)
+                probability = (oldValue - newValue)/temp
 
-                # In 40 % of the cases, the value decrease is accepted
-                if probability < 0.6:
+                # In some of the cases, the value decrease is not accepted
+                if probability < random.random():
 
                     # If the house rotation has decreased plan value
                     if not newValue >= oldValue:
 
                         # Swap house back
                         swap(house2, house1)
+
+                # Value reducing move is accepted, so cool temperature
+                else:
+                    return ("Decrease Accepted")
 
         else:
             swap(house2, house1)
@@ -173,7 +190,7 @@ def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing):
         swap(house2, house1)
 
 
-def rotateHouse(house, plan, oldValue, simulatedAnnealing):
+def rotateHouse(house, plan, oldValue, simulatedAnnealing, temp):
 
     # Rotate house
     house.rotate()
@@ -183,9 +200,9 @@ def rotateHouse(house, plan, oldValue, simulatedAnnealing):
 
         distance = fch.findClosestHouse(plan, house)
 
-        if distance > 0:
+        newValue = plan.getValue()
 
-            newValue = plan.getValue()
+        if distance > 0:
 
             # Do not accept decrease in value
             if simulatedAnnealing == False:
@@ -197,18 +214,22 @@ def rotateHouse(house, plan, oldValue, simulatedAnnealing):
                     house.rotate()
 
             # Do accept decrease in value with certain probability
-            elif simulatedAnnealing == True:
+        elif simulatedAnnealing == True and temp > 1:
 
-                probability = round(random.random(), 2)
+                probability = (oldValue - newValue)/temp
 
-                # In 40 % of the cases, the value decrease is accepted
-                if probability < 0.6:
+                # In some of the cases, the value decrease is not accepted
+                if probability < random.random():
 
                     # If the house rotation has decreased plan value
                     if not newValue >= oldValue:
 
                         # Rotate house back
                         house.rotate()
+
+                # Value reducing move is accepted, so cool temperature
+                else:
+                    return ("Decrease Accepted")
 
         else:
             # Rotate house back
