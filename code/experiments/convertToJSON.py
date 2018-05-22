@@ -109,7 +109,7 @@ def convert(algorithmType, numberOfIterations, numberOfHouses):
 		for i in range(1, 21):
 
 			# Store data as dictionary in new array
-			data.append({'range': str(startChart + (i - 1) * int(oneStep)) + ' - ' + str((startChart + (i * int(oneStep)))), 
+			data.append({'range': '€' + str(startChart + (i - 1) * int(oneStep)) + ' - ' + '€' + str((startChart + (i * int(oneStep)))), 
 				'frequency': eval("group" + str(i))})
 
 		# Save data in new file

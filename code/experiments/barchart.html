@@ -3,17 +3,57 @@
 	<head>
 		<script src = "https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src = "barchart.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel = "stylesheet" type = "text/css" href = "barchart.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<title>Amstelhaege experiments</title>
 	</head>
 
 	<body>
 
-		<h1 class = "header">Bar chart of holiday destinations of the Dutch, 2016</h1>
+		<h1 class = "header">Compare experiments with algorithms for Amstelhaege</h1>
 
 		<h2>Jitse Schol, Nathalie van Sterkenburg, Roos Greven, Amstelhaege</h2>
+		<div id = leftChart> 
+			<div class = "dropdown dropdown-left">
+				<button class = "btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+					Choose experiment 
+					<span class = "caret"></span>
+				</button>
+				<ul class = "dropdown-menu">
+					<li onclick = "createPlot('randomAlgorithm_5000_20', 'left', 
+					'Random algorithm, 20 houses, 5000 iterations')"><a href = "#">Random - 20 houses</a></li>
+					<li onclick = "createPlot('randomAlgorithm_5000_40', 'left', 
+					'Random algorithm, 40 houses, 5000 iterations')"><a href = "#">Random - 40 houses</a></li>
+					<li onclick = "createPlot('randomAlgorithm_5000_60', 'left', 
+					'Random algorithm, 60 houses, 5000 iterations')"><a href = "#">Random - 60 houses</a></li>
+				</ul>
+			</div> 
+			<div id = "graphTitleleft"></div>
+			<svg class = "leftChart"></svg>
+		</div>
 
-		<svg class = "chart"></svg>
+		<div id = rightChart> 
+
+			<div class = "dropdown dropdown-right">
+				<button class = "btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+					Choose experiment 
+					<span class = "caret"></span>
+				</button>
+				<ul class = "dropdown-menu">
+					<li onclick = "createPlot('randomAlgorithm_5000_20', 'right', 
+					'Random algorithm, 20 houses, 5000 iterations')"><a href = "#">Random - 20 houses</a></li>
+					<li onclick = "createPlot('randomAlgorithm_5000_40', 'right', 
+					'Random algorithm, 40 houses, 5000 iterations')"><a href = "#">Random - 40 houses</a></li>
+					<li onclick = "createPlot('randomAlgorithm_5000_60', 'right', 
+					'Random algorithm, 40 houses, 5000 iterations')"><a href = "#">Random - 60 houses</a></li>
+				</ul>
+			</div> 
+
+			<div id = "graphTitleright"></div>
+			<svg class = "rightChart"></svg>
+		</div>
 
 	</body>
 

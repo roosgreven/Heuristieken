@@ -1,9 +1,41 @@
 /*
 Name: Roos Greven
-11436700
-Homework week 3: make an interactive bar chart with D3. 
 Stylesheet 
 */
+
+.dropdown-left {
+	float: left;
+	width: 500px;
+	margin-left: 45px;
+}
+
+.dropdown-right {
+	display: inline-block;
+	float: right;
+	margin-right: 400px;
+}
+
+#graphTitleleft {
+	float: left;
+	margin-left: 60px;
+}
+
+#graphTitleright {
+	float: left;
+	margin-left: 60px;
+}
+
+
+#leftChart {
+	width: 550px;
+	float: left;
+}
+
+#rightChart {
+	float: right;
+	margin-right: 100px;
+	width: 550px;
+}
 
 h1 {
 	font: 25px sans-serif;

@@ -4,15 +4,23 @@ Name: Roos Greven
 Homework week 3: make an interactive bar chart with D3.
 */
 
-window.onload = function() {
+function createPlot(algorithmToCompare, side, titleName) {
+
+	// add the title of the graph
+	document.getElementById("graphTitle" + side).innerHTML = "<h2><b>" + titleName + "</b>";
+
+	// clear all svgs
+	d3.selectAll("." + side + "Chart").remove();
+
+	d3.select("#" + side + "Chart").append("svg").attr("class", side + "Chart")
 
 	// set margins, width and height
-	var margin = {top: 50, right: 30, bottom: 150, left: 80},
-		width = 960 - margin.left - margin.right,
-		height = 600 - margin.top - margin.bottom;
+	var margin = {top: 50, right: 30, bottom: 170, left: 80},
+		width = 550 - margin.left - margin.right,
+		height = 500 - margin.top - margin.bottom;
 
 	// attribute width and height to chart
-	var chart = d3.select(".chart")
+	var chart = d3.select("." + side + "Chart")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		// append g to set the chart at the right spot
@@ -38,7 +46,7 @@ window.onload = function() {
 		.orient("left");
 
 	// load the data 
-	d3.json("randomAlgorithm_5000_20.json", function(error, data) {
+	d3.json(algorithmToCompare + ".json", function(error, data) {
 
 		// alert if there is an error and return to stop the script
 		if (error) {
@@ -58,23 +66,16 @@ window.onload = function() {
 
 	*/
 	var drawBarChart = function(data) {
-		/*
-		// sort the data descending
-	    data.sort(function(a, b) {
-	    	return b.value - a.value;
-		});
-		*/
 
 	    // set correct domains of x and y scaler
 		x.domain(data.map(function(d) { return d.range }));
 		y.domain([d3.min(data, function(d) { return d.frequency }), d3.max(data, function(d) { return d.frequency })]);
 			
-		// draw x axis with names of countries and tick marks
+		// draw x axis with value ranges and tick marks
 		chart.append("g")
 			.attr("class", "x axis")
 			.attr("transform", "translate(0," + height + ")")
 			.call(xAxis)
-			// rotate the country names
 			.selectAll("text")	
 				.style("text-anchor", "end")
 				.attr("dx", "-.8em")
@@ -85,20 +86,17 @@ window.onload = function() {
 		chart.append("text")
 			// set at the right position
 			.attr("x", width / 2.5)
-			.attr("y", height + (margin.bottom / 1.25))
+			.attr("y", height + margin.bottom / 1.05)
 			.style("font", "18px sans-serif")
 			.text("Values");
 			
-		// draw y axis with numbers and tick marks
+		// draw y axis with numbers, tick marks and name y axis
 		chart.append("g")
 			.attr("class", "y axis")
 			.call(yAxis)
-			// add name for y axis
 			.append("text")
 				.attr("class", "values")
-				// rotate the text
 				.attr("transform", "rotate (-90)")
-				// set at the right position
 				.attr("y", - margin.left / 1.5)
 				.attr("x", - height + 60)
 				.style("font", "18px sans-serif")
@@ -107,41 +105,29 @@ window.onload = function() {
 		// draw the bars
 		chart.selectAll(".bar")
 			.data(data)
-		// add rectangles for as many bars as there is data
-		.enter().append("rect")
-			.attr("class", "bar")
-			// set x and y at the correct scaled spot for datapoints
-			.attr("y", function(d) { return y(d.frequency) })
-			.attr("x", function(d) { return x(d.range) })
-			// set width and height for the bars
-			.attr("width", x.rangeBand())
-			.attr("height", function(d) { return height - y(d.frequency) })
-			// function for when mouse hovers over bar
-			.on("mouseover", function(d) {
-				// add text at correct spot
-					chart.append("text")
-					// make id to be able to remove it later
-					.attr("id", "interactivity")
-					// 15 px above the bars
-					.attr("y", y(d.frequency) - 15)
-					// in middle of the bar
-					.attr("x", x(d.range) + 6)
-					.style("text-anchor", "start")
-					// set correct font and size
-					.style("font", "10px sans-serif")
-					// add the correct value
-					.text(d.frequency);
-				// fill the bar with another color
-				d3.select(this)
-					.style("fill", "darkblue")
-			})
-			// function for when mouse is not on bar anymore
-			.on("mouseout", function(d) {
-				// fill the bar with the correct color again
-				d3.select(this)
-					.style("fill", "steelblue")
-				// remove the text
-				d3.select("#interactivity").remove();
-			});
+			.enter().append("rect")
+				.attr("class", "bar")
+				.attr("y", function(d) { return y(d.frequency) })
+				.attr("x", function(d) { return x(d.range) })
+				.attr("width", x.rangeBand())
+				.attr("height", function(d) { return height - y(d.frequency) })
+				// function for changes when mouse hovers over bar
+				.on("mouseover", function(d) {
+						chart.append("text")
+						.attr("id", "interactivity")
+						.attr("y", y(d.frequency) - 15)
+						.attr("x", x(d.range) + 10)
+						.style("text-anchor", "middle")
+						.style("font", "10px sans-serif")
+						.text(d.frequency);
+					d3.select(this)
+						.style("fill", "darkblue")
+				})
+				// function to go back to normal when mousehover is over
+				.on("mouseout", function(d) {
+					d3.select(this)
+						.style("fill", "steelblue")
+					d3.select("#interactivity").remove();
+				});
 	};
 };
