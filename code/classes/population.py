@@ -44,8 +44,10 @@ class Population:
             
             if theValue >= plan.pBestValue:
                 
-                plan.changeBest()
-                plan.pBestValue = theValue
+                if plan.checkWaterAndBoundary():
+                    
+                    plan.changeBest()
+                    plan.pBestValue = theValue
             
             if theValue >= gBestValue:
                 
