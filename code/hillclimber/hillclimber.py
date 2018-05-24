@@ -52,7 +52,7 @@ def hillClimber(plan):
         whichMove = round(random.random(), 2)
 
         # 50% chance that it is a coordinate change of a single house
-        if whichMove <= 0.50:
+        if whichMove <= 0.6:
 
             # Select random house in houses array of current plan
             index = imp.randomHouse(plan.houses)
@@ -64,7 +64,7 @@ def hillClimber(plan):
                 temp *= coolingRate
 
         # 25% chance that the move is a swap of two houses
-        elif whichMove <= 0.75:
+        elif whichMove <= 0.8:
 
             # Select random house in houses array of current plan as index 1
             index1 = imp.randomHouse(plan.houses)

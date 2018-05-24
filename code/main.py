@@ -90,7 +90,7 @@ def main():
 
     if sys.argv[1] == "greedyExperiment":
 
-        numberOfIterations = 500
+        numberOfIterations = 50
 
         top.experiment("greedy", numberOfHouses, numberOfIterations, "greedy")
 
