@@ -28,3 +28,7 @@ Alle code staat in de folder code. In deze folder bevindt zich ook een folder me
 # Gebruik
 In de folder code staat een README met daarin uitgebreidere informatie over het uitvoeren van de code.
 
+# Auteurs
+- Roos Greven
+- Jitse Schol
+- Nathalie van Sterkenburg
