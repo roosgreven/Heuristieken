@@ -4,20 +4,17 @@
 Contains a greedy algorithm to solve Amstelhaege.  It generates a list with all
 possible coordinates a house can have and iterates through this list for every
 house to find the highest value place.  But, whenever a house gets placed, this
-reduces the number of places the next house has.  The coordinates that are
-impossible then get removed form the list.  Still needs a way to check if no house
-is in another houses mandatory freespace.
+reduces the number of places the next house has.  
 """
 
 import helpers.coordinates as co
 
 def greedy(plan):
     """ Performs a greedy algorithm.  Places the water randomly and places each
-    house in an optimal place. houseNumber is the number of houses that have to
-    be placed.  plan is the empty floorplan that will be filled.
-
+    house in an optimal place. 
+    
     Args:
-        plan: floorplan with the wanted number of houses.
+        plan: empty floorplan.
 
     """
 

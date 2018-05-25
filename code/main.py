@@ -15,9 +15,6 @@ def main():
     """Performs desired algorithm for desired number of houses, handles output
     and saves best outcome.
 
-    Calls:
-        the wanted algorithm or experiment with the correct parameters
-    
     """
 
     # Check if user input was correct
@@ -25,8 +22,6 @@ def main():
 
     # Number of houses is third argument of command line
     numberOfHouses = int(sys.argv[2])
-
-    iterations = int(sys.argv[3])
 
     # argv[1] will decide what algorithm will be run in what way, usage of
     # argv[1] is included in the README
@@ -36,7 +31,6 @@ def main():
 
         plan = FloorPlan(numberOfHouses)
 
-        top.saveAndShow("greedy", plan)
         top.saveAndShow("greedy", plan, None)
 
     # Run random, save and show result
@@ -44,7 +38,6 @@ def main():
 
         plan = FloorPlan(numberOfHouses)
 
-        top.saveAndShow("randomAlgorithm", plan)
         top.saveAndShow("randomAlgorithm", plan, None)
 
     # Run hill climber, save and show result
@@ -55,7 +48,7 @@ def main():
         plan = randomAlgorithm(plan)
 
         # False stands for no simulated annealing
-        top.saveAndShow("hillClimber", plan, iterations)
+        top.saveAndShow("hillClimber", plan, int(sys.argv[3]))
 
     # Run hill climber, save and show result
     elif sys.argv[1] == "simulatedannealing":
@@ -65,7 +58,7 @@ def main():
         plan = randomAlgorithm(plan)
 
         # False stands for no simulated annealing
-        top.saveAndShow("hillClimber", plan, iterations)
+        top.saveAndShow("hillClimber", plan, int(sys.argv[3]))
 
     # Run particle swarm, save and show result
     elif sys.argv[1] == "particleswarm":
@@ -76,7 +69,7 @@ def main():
 
         population.makeRandomPopulation(numberOfHouses)
 
-        top.saveAndShowPopulation("particleSwarm", population, iterations)
+        top.saveAndShowPopulation("particleSwarm", population, int(sys.argv[3]))
 
     # Run experiment with random, so perform algorithm 5000 times and save in csv
     elif sys.argv[1] == "randomExperiment":
@@ -96,14 +89,14 @@ def main():
 
         numberOfIterations = 1000
 
-        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber", iterations)
+        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber", int(sys.argv[3]))
 
     # Run experiment with simulated annealing, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "simulatedannealingExperiment":
 
         numberOfIterations = 1000
 
-        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing", iterations)
+        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing", int(sys.argv[3]))
     
     else:
         
