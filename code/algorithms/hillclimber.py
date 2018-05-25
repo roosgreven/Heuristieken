@@ -1,5 +1,5 @@
 """
-1 May 2018.
+25 May 2018.
 
 Will contain a hill climbing algorithm.  Will first run the random algorithm
 and with the solution, will start making random adjustments and only saving
@@ -12,11 +12,14 @@ import sys
 
 def hillClimber(plan, iterations):
     """ Hillclimber function that will increase the value of the given plan step
-        by step. It starts off by selecting a random house and then it will
-        either rotate the house, swap the house with another or move the house.
-        After this, the function checks whether this is a viable option and
-        whether the value of the plan has increased. If this is all true, then
-        the move updates the plan. The second argument, simulatedAnnealing, can
+        by step. Selects a random house and either rotates the house, swaps the 
+        house with another or moves the house. Checks whether this is a viable option 
+        and whether the value of the plan has increased. If so, the move updates the 
+        plan. 
+
+        Args: 
+            plan: floorplan with the correct number of houses. 
+            The second argument, simulatedAnnealing, can
         also be entered by the user. If this is the case, the hillclimber
         function will also accept a decrease in value of the plan with a certain
         probability. """

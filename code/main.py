@@ -1,5 +1,5 @@
 """
-27 April 2018
+25 may 2018
 
 Runs the algorithms to solve Amstelhaege.  
 """
@@ -12,8 +12,12 @@ from classes.floorplan import FloorPlan
 from classes.population import Population
 
 def main():
-    """ Performs desired algorithm for desired number of houses, handles output
+    """Performs desired algorithm for desired number of houses, handles output
     and saves best outcome.
+
+    Calls:
+        the wanted algorithm or experiment with the correct parameters
+    
     """
 
     # Check if user input was correct
@@ -21,6 +25,8 @@ def main():
 
     # Number of houses is third argument of command line
     numberOfHouses = int(sys.argv[2])
+
+    iterations = int(sys.argv[3])
 
     # argv[1] will decide what algorithm will be run in what way, usage of
     # argv[1] is included in the README
@@ -30,6 +36,7 @@ def main():
 
         plan = FloorPlan(numberOfHouses)
 
+        top.saveAndShow("greedy", plan)
         top.saveAndShow("greedy", plan, None)
 
     # Run random, save and show result
@@ -37,6 +44,7 @@ def main():
 
         plan = FloorPlan(numberOfHouses)
 
+        top.saveAndShow("randomAlgorithm", plan)
         top.saveAndShow("randomAlgorithm", plan, None)
 
     # Run hill climber, save and show result
@@ -46,10 +54,8 @@ def main():
 
         plan = randomAlgorithm(plan)
 
-        print("iterations: ", int(sys.argv[3]))
-
         # False stands for no simulated annealing
-        top.saveAndShow("hillClimber", plan, int(sys.argv[3]))
+        top.saveAndShow("hillClimber", plan, iterations)
 
     # Run hill climber, save and show result
     elif sys.argv[1] == "simulatedannealing":
@@ -59,7 +65,7 @@ def main():
         plan = randomAlgorithm(plan)
 
         # False stands for no simulated annealing
-        top.saveAndShow("hillClimber", plan, int(sys.argv[3]))
+        top.saveAndShow("hillClimber", plan, iterations)
 
     # Run particle swarm, save and show result
     elif sys.argv[1] == "particleswarm":
@@ -70,7 +76,11 @@ def main():
 
         population.makeRandomPopulation(numberOfHouses)
 
+<<<<<<< HEAD
+        top.saveAndShowPopulation("particleSwarm", population, iterations)
+=======
         top.saveAndShowPopulation("particleSwarm", population, int(sys.argv[3]))
+>>>>>>> 712e3686d62a8571b7fc4649bf5836af4d9f7613
 
     # Run experiment with random, so perform algorithm 5000 times and save in csv
     elif sys.argv[1] == "randomExperiment":
@@ -90,14 +100,14 @@ def main():
 
         numberOfIterations = 1000
 
-        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber")
+        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber", iterations)
 
     # Run experiment with simulated annealing, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "simulatedannealingExperiment":
 
         numberOfIterations = 1000
 
-        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing")
+        top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing", iterations)
     
     else:
         
