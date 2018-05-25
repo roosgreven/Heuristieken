@@ -15,9 +15,6 @@ def main():
     """Performs desired algorithm for desired number of houses, handles output
     and saves best outcome.
 
-    Calls:
-        the wanted algorithm or experiment with the correct parameters
-    
     """
 
     # Check if user input was correct
