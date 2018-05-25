@@ -2,7 +2,7 @@ import sys
 
 def sysArguments():
     """ Function that checks if the right type and right amount of arguments
-        are given.
+        are given. If not, terminates the code.
         """
 	    
     # If not enough command arguments were provided
