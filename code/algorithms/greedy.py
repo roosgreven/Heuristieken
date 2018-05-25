@@ -15,6 +15,10 @@ def greedy(plan):
     """ Performs a greedy algorithm.  Places the water randomly and places each
     house in an optimal place. houseNumber is the number of houses that have to
     be placed.  plan is the empty floorplan that will be filled.
+
+    Args:
+        plan: floorplan with the wanted number of houses.
+
     """
 
     # List of all possible coordinates is generated

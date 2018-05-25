@@ -1,6 +1,9 @@
 
 """
 Checks if system arguments were correct.
+
+Calls:
+	main, if system arguments are correct.
 """
 
 import sys
@@ -10,7 +13,7 @@ def sysArguments():
     # If not enough command arguments were provided
 	if len(sys.argv) != 3:
 		
-		if sys.argv[1] != "hillclimber" and sys.argv[1] != "simulatedannealing" and sys.argv[1] != "particleswarm":
+		if sys.argv[1] != "hillclimber" and sys.argv[1] != "simulatedannealing" and sys.argv[1] != "particleswarm" and sys.argv[1] != "hillclimberExperiment" and sys.argv[1] != "simulatedannealingExperiment":
 			print("Error: usage of program should be: filename function numberOfHouses")
 
 			exit(1)

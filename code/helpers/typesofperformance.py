@@ -70,7 +70,7 @@ def saveAndShowPopulation(algorithmType, population):
         
         print("Failed to find better floorplan.")
 
-def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName):
+def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName, iterations):
     """ Performs an algorithm of algorithmType a numberOfIterations amount of
     iterations.  Does this for the variant of numberOfHouses.  Prints the
     average value of the plan and visualizes the best and worst plan.
@@ -89,13 +89,13 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName)
 
             plan = randomAlgorithm(plan)
 
-            plan = algorithm(plan)
+            plan = algorithm(plan, iterations)
 
             while len(plan.houses) < numberOfHouses:
 
                 plan = randomAlgorithm(plan)
 
-                plan = algorithm(plan)
+                plan = algorithm(plan, iterations)
 
         else: 
 
