@@ -6,7 +6,6 @@ and with the solution, will start making random adjustments and only saving
 those that are improvements.
 """
 
-from classes.floorplan import FloorPlan
 import random
 import helpers.improvements as imp
 import sys
@@ -95,12 +94,4 @@ def hillClimber(plan):
                 # Decrease temperature
                 temp *= coolingRate
 
-    print("hillclimber succeeded")
     return plan
-
-
-
-if __name__ == "__main__":
-    plan = hillClimber(20)
-
-    FloorPlan.showFloorplan()

@@ -13,58 +13,35 @@ import random
 def particleSwarm(population):
     """ Performs the algorithm. """
     
+    # weighing factors for pBest and gBest
     c1, c2 = 0.0005, 0.0005
     
     for i in range(500):
         
-        # The current overall best is established
+        # The current overall best and all personal bests are updated
         population.checkForPAndGBest()
         
+        # The initial gBest is saved to check if improvement was made
         if i == 0:
-            population.firstFBest = population.gBest.getValue()
+            population.firstGBest = population.gBest.getValue()
             
+        # Each plan is updated
         for plan in population.plans:
             
             for j in range(plan.numberOfHouses):
                 
                 house = plan.houses[j]
                 
-                #print(house.vx, house.vy)
-                
                 bestHouse = population.gBest.houses[j]
-                """
-                if counter == 0:
-                    
-                    print("een iteratie")
-                    print(bestHouse.x1)
-                    print(bestHouse.vx)
-                    print(house.xBest)
-                    print(house.x1)
-                    print(house.vx)
-                    print(c1 * random.random() * (house.xBest - house.x1))
-                    print(c2 * random.random() * (bestHouse.x1 - house.x1))
-                counter += 1
-                """
+                
+                # The increase in speed is determined for each house
                 vx = c1 * random.random() * (house.xBest - house.x1) + c2 * random.random() * (bestHouse.x1 - house.x1)
                 
                 vy = c1 * random.random() * (house.yBest - house.y1) + c2 * random.random() * (bestHouse.y1 - house.y1)
                     
+                # The speed is added and the coordinates updated
                 house.speed(vx, vy)
                 
                 house.coordinates(house.x1 + house.vx, house.y1 + house.vy)
     
-    return population
-    """
-    print("the horrible house")
-    for house in population.plans[0].houses:
-        
-        print(house.vx)
-        print(house.vy)
-        
-    print("the best house")
-    for house in population.gBest.houses:
-        
-        print(house.vx)
-        print(house.vy)
-                
-    """
+    return population      

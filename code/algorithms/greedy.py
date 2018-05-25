@@ -17,54 +17,36 @@ def greedy(plan):
     be placed.  plan is the empty floorplan that will be filled.
     """
 
+    # List of all possible coordinates is generated
     plan.createCoordinates()
 
     plan.makePonds()
 
-    # First house hasn't been placed yet
-    firstHouse = False
-    """
-    while firstHouse == False:
-
-        # Get random coordinates
-        x = round(random.random() * plan.width, 1)
-        y = round(random.random() * plan.length, 1)
-
-        # Create house
-        house1 = hs.Maison(x, y)
-
-        distance = fch.findClosestHouse(plan.houses, house1)
-
-        # Check if coordinates don't cross boundaries
-        if distance > house1.freeSpace:
-
-            # Save house with these coordinates
-            plan.houses.append(house1)
-            firstHouse = True
-    """
     # Places the houses with a greedy algorithm
     for i in range(plan.numberOfHouses):
 
-        # Decide what type of house will be placed. A testhouse is also made to
-        # check for each coordinate if it's better than the current one. If it is,
-        # the better coordinate will be saved
-
+        # Initiate house
         bestX, bestY = 0, 0
 
         house = plan.makeHouse(bestX, bestY)
 
+        # Find best coordinates for house
         bestX, bestY, distance = co.findCoordinates(plan, house)
 
+        # This is the best distance for the house, if this distance isn't good
+        # enough, no distance is
         if distance < house.freeSpace:
             print("Error, no solution.")
 
+        # House is added to array
         house.coordinates(bestX, bestY)
-        print("distance: ", distance)
-
         if distance > 0:
             plan.houses.append(house)
-        print("house ", len(plan.houses))
+            
+        print("houses placed: ", len(plan.houses))
 
+        # Coordinates that are now impossible for other houses are removed from
+        # list
         co.removeCoordinates(plan, house)
 
     return plan

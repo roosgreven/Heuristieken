@@ -43,8 +43,9 @@ def saveAndShowPopulation(algorithmType, population):
     population = algorithm(population)
 
     # If the algorithm found a better gbest, a visualisation is made
-    #if population.gBest.getValue() > population.firstGBest:
-    if True:
+    if population.gBest.getValue() > population.firstGBest:
+        print(population.gBest.getValue())
+        print(population.firstGBest)
         
         population.gBest.saveFloorplan(algorithmType, len(population.gBest.houses))
         

@@ -40,19 +40,9 @@ def randomAlgorithm(plan):
             distance = fch.findClosestHouse(plan, randomHouse)
 
             if not distance < randomHouse.freeSpace:
+                
                 # Add randomly placed house
                 plan.houses.append(randomHouse)
                 i += 1
 
-    print("Number of times iterated through loop:")
-    print(j)
-
     return plan
-
-
-
-if __name__ == "__main__":
-    plan = randomAlgorithm(60)
-
-    # Make visualisation
-    plan.showFloorplan()
