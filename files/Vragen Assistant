@@ -92,14 +92,13 @@ Documenteren van een experiment:
 Constraints case weghalen om te kijken of het interessanter wordt, zoals huisverdeling maison, bungalow, eengezinswoning.
  
 
-Hillclimber opschonen
+Hillclimber opschonen --> Nathalie
 Docstrings aanpassen --> Roos (wat wordt meegegeven en wat wordt de output)
-Hillclimber iteraties meegeven
+Hillclimber iteraties meegeven --> Done
 In Greedy: The coordinates that are impossible then get removed form the list.  Still needs a way to check if no house is in another houses mandatory freespace.
-README (meer to the point, minder verhalend. Python 3.6 is 3.6.6. HTML en visualisaties)
-Requirements (lijstje met alle modules en welke versies (pip freeze))
+README (meer to the point, minder verhalend. Python 3.6 is 3.6.6. HTML en visualisaties) --> Roos
+Requirements (lijstje met alle modules en welke versies (pip freeze)) --> Roos
 Particle Swarm --> Nathalie
-Vrijstand beste waardes
 
 Presentatie:
 Onszelf voorstellen
