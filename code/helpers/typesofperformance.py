@@ -16,6 +16,16 @@ import sys
 def saveAndShow(algorithmType, plan, iterations):
     """ Performs an algorithm of algorithmType on the given plan and both saves
     and shows it.
+
+    Arg1:
+        algorithmType: type of algorithm performed, string
+
+    Arg2: 
+        plan: current floorplan
+    
+    Arg3:
+        iterations: number of iterations to perform, int
+        
     """
 
     algorithm = globals()[algorithmType]
@@ -54,6 +64,15 @@ def saveAndShow(algorithmType, plan, iterations):
 def saveAndShowPopulation(algorithmType, population, iterations):
     """ Perfroms a population based algorithm of algorithmType on the given
     plan and bot saves and shows it.
+
+    Arg1:
+        algorithmType: type of algorithm performed, string.
+
+    Arg2:
+        population: population used. 
+
+    Arg3: 
+        iterations: number of iterations to perform, int.
     """
 
     algorithm = globals()[algorithmType]
