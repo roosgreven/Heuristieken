@@ -13,7 +13,7 @@ def sysArguments():
     # If not enough command arguments were provided
     if len(sys.argv) != 3:
         
-        if sys.argv[1] != "hillclimber" and sys.argv[1] != "simulatedannealing" and sys.argv[1] != "particleswarm":
+        if sys.argv[1] != "hillclimber" and sys.argv[1] != "simulatedannealing" and sys.argv[1] != "particleswarm" and sys.argv[1] != "hillclimberExperiment" and sys.argv[1] != "simulatedannealingExperiment":
             print("Error: usage of program should be: filename function numberOfHouses")
 
             exit(1)
@@ -24,7 +24,7 @@ def sysArguments():
             
     if len(sys.argv) == 3:
 		
-        if sys.argv[1] != "random" and sys.argv[1] != "greedy":
+        if sys.argv[1] != "random" and sys.argv[1] != "greedy" and sys.argv[1] != "randomExperiment" and sys.argv[1] != "greedyExperiment":
             print("Error: usage of program should be: filename function numberOfHouses [iterations]")
             exit(1)
             
