@@ -35,14 +35,10 @@ def randomAlgorithm(plan):
         j += 1
 
         # Check if there's overlap, if not, add house to array
-        if con.noWaterAndBoundary(randomHouse, plan):
-
-            distance = fch.findClosestHouse(plan, randomHouse)
-
-            if not distance < randomHouse.freeSpace:
+        if con.checkIfPossible(house, plan):
                 
-                # Add randomly placed house
-                plan.houses.append(randomHouse)
-                i += 1
+            # Add randomly placed house
+            plan.houses.append(randomHouse)
+            i += 1
 
     return plan

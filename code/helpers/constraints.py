@@ -5,6 +5,7 @@ isn't enough free space for the house next to the neighbourhood boundaries.
 """
 
 import helpers.shortestdistance as sd
+import helpers.findclosesthouse as fch
 
 def noWaterAndBoundary(chosenObject, plan):
     """ Returns False if two houses overlap. """
@@ -28,3 +29,16 @@ def noWaterAndBoundary(chosenObject, plan):
         return False
 
     return True
+
+def checkIfPossible(house, plan):
+    """ Checks if a house does not violate any constraints. """
+    
+    if noWaterAndBoundary(house, plan):
+        
+        distance = fch.findClosestHouse(plan, house)
+
+        if distance > 0:
+            
+            return True
+        
+    return False

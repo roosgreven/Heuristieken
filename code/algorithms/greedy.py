@@ -33,15 +33,15 @@ def greedy(plan):
         # Find best coordinates for house
         bestX, bestY, distance = co.findCoordinates(plan, house)
 
-        # This is the best distance for the house, if this distance isn't good
-        # enough, no distance is
-        if distance < house.freeSpace:
-            print("Error, no solution.")
-
         # House is added to array
         house.coordinates(bestX, bestY)
         if distance > 0:
             plan.houses.append(house)
+        
+        # In case there is nog place where the house fits
+        else:
+            print("Error: no solution found.")
+        
             
         print("houses placed: ", len(plan.houses))
 

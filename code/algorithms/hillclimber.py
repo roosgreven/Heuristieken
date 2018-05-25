@@ -28,17 +28,13 @@ def hillClimber(plan, iterations):
 
     if sys.argv[1] == "simulatedannealing" or sys.argv[1] == "simulatedannealingExperiment":
         simulatedAnnealing = True
+        temp = 50000.
     else:
         simulatedAnnealing = False
-
-    # Initiate temperature for simulated annealing
-    temp = 50000.
+        temp = 0.
 
     # Initiate cooling rate for simulated annealing
     coolingRate = 0.95
-
-    # Initiate counter
-    i = 0
 
     for i in range(iterations):
 
@@ -55,9 +51,11 @@ def hillClimber(plan, iterations):
             index = imp.randomHouse(plan.houses)
 
             # Move a house in random direction with houseMove function
-            if imp.houseMove(plan.houses[index], plan, oldValue, simulatedAnnealing, temp) == "Decrease Accepted":
+            imp.houseMove(plan.houses[index], plan, oldValue, temp)
 
-                # Decrease temperature
+            # Decrease temperature in case of simulated annealing
+            if simulatedAnnealing == True:
+               
                 temp *= coolingRate
 
         # 25% chance that the move is a swap of two houses
@@ -80,9 +78,11 @@ def hillClimber(plan, iterations):
             imp.swap(plan.houses[index1], plan.houses[index2])
 
             # Check if swap was viable, if not, this function sets houses back
-            if imp.swapCheck(plan.houses[index1], plan.houses[index2], plan, oldValue, simulatedAnnealing, temp) == "Decrease Accepted":
-
-                # Decrease temperature
+            imp.swapCheck(plan.houses[index1], plan.houses[index2], plan, oldValue, temp)
+ 
+            # Decrease temperature in case of simulated annealing
+            if simulatedAnnealing == True:
+               
                 temp *= coolingRate
 
         # 25% chance that the move is a rotation of a single house
@@ -91,9 +91,12 @@ def hillClimber(plan, iterations):
             # Select random house in houses array of current plan
             index = imp.randomHouse(plan.houses)
 
-            if imp.rotateHouse(plan.houses[index], plan, oldValue, simulatedAnnealing, temp) == "Decrease Accepted":
-
-                # Decrease temperature
+            # Rotate house if possible
+            imp.rotateHouse(plan.houses[index], plan, oldValue, temp)
+            
+            # Decrease temperature in case of simulated annealing
+            if simulatedAnnealing == True:
+               
                 temp *= coolingRate
 
     return plan
