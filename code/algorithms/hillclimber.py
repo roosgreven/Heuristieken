@@ -21,6 +21,8 @@ def hillClimber(plan, iterations):
         function will also accept a decrease in value of the plan with a certain
         probability. """
 
+    print(iterations)
+
     # initiate simulatedAnnealing boolean
     simulatedAnnealing = True
 

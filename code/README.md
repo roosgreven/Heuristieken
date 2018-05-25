@@ -3,8 +3,9 @@ In deze folder staat alle code die is gebruikt om de casus Amstelhaege op te los
 
 # Gebruik
 Aanroepen van de functie gaat via het format:
-python Heuristieken\code\main.py TYPEOFALGORITHM NUMBEROFHOUSES 
+python Heuristieken\code\main.py TYPEOFALGORITHM NUMBEROFHOUSES [ITERATIONS]
 
+ITERATIONS wordt alleen geaccepteerd bij het aanroepen van hillclimber, simulated annealing en particle swarm. 
 Als NUMBEROFHOUSES worden de getallen 20, 40 en 60 geaccepteerd. Dit is het aantal huizen dat in de wijk zal worden geplaatst.
 Voor TYPEOFALGORITHM bestaan de volgende mogelijkheden:
 - random            

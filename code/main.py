@@ -46,8 +46,10 @@ def main():
 
         plan = randomAlgorithm(plan)
 
+        print("iterations: ", int(sys.argv[3]))
+
         # False stands for no simulated annealing
-        top.saveAndShow("hillClimber", plan, int(sys.argv[2]))
+        top.saveAndShow("hillClimber", plan, int(sys.argv[3]))
 
     # Run hill climber, save and show result
     elif sys.argv[1] == "simulatedannealing":
@@ -57,7 +59,7 @@ def main():
         plan = randomAlgorithm(plan)
 
         # False stands for no simulated annealing
-        top.saveAndShow("hillClimber", plan, int(sys.argv[2]))
+        top.saveAndShow("hillClimber", plan, int(sys.argv[3]))
 
     # Run particle swarm, save and show result
     elif sys.argv[1] == "particleswarm":
