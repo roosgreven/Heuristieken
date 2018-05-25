@@ -74,5 +74,22 @@ class Population:
         # Each plan is updated
         for plan in self.plans:
             
-            plan.updatePlanInPopulation(self.c1, self.c2)
+            # Each house is updated
+            for j in range(plan.numberOfHouses):
+                    
+                house = plan.houses[j]
+                    
+                bestHouse = self.gBest.houses[j]
+                    
+                # The new speed is determined for each house
+                vx = house.vx + self.c1 * random.random() * (house.xBest - house.x1) + self.c2 * random.random() * (bestHouse.x1 - house.x1)
+                    
+                vy = house.vy + self.c1 * random.random() * (house.yBest - house.y1) + self.c2 * random.random() * (bestHouse.y1 - house.y1)
+                        
+                # The speed is added and the coordinates updated
+                house.speed(vx, vy)
+                house.coordinates(house.x1 + vx, house.y1 + vy)
+                    
+                # Check if the house still follows the constraints
+                sh.handleImpossibleMove(house, plan)
             

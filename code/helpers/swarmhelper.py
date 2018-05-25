@@ -1,13 +1,12 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri May 25 22:52:39 2018
-
-@author: Gebruiker
-"""
-
 import helpers.constraints as con
 
 def handleImpossibleMove(house, plan):
+    """ Helper function that checks if a house is within the constraints. If
+        not, it finds a place where the house can stand.
+
+        Args: 
+            house: the house that has to be within the constraints. 
+            plan: the floorplan that the house is in. """
     
     if not con.checkIfPossible(house, plan):
         

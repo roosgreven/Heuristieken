@@ -1,16 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue May 15 16:35:11 2018
-
-Performs a particle swarm algorithm.  There's multiple floorplans, each house
-of each floorplan has a speed that depends on the overall best value and the
-floorplans personal best value.  The speed is used to update the population
-and direct it to the best possible solution.
-"""
-
 def particleSwarm(population, iterations):
-    """ Performs the algorithm. """
+    """ Particle swarm function that will increase the value of the given plan by
+        step by step moving each house in the direction of the best known 
+        floorplan. 
+
+        Args: 
+            population: a list of floorplans with the correct number of houses. 
+            iterations: the number of times the population is updated during
+        the algorithm. """
     
+    # The population is updated in each iteration
     for i in range(iterations):
             
         population.updatePopulation()
