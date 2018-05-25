@@ -3,10 +3,26 @@ Name: Roos Greven
 Stylesheet 
 */
 
+#leftChart {
+	width: 550px;
+	float: left;
+}
+
 .dropdown-left {
 	float: left;
 	width: 500px;
 	margin-left: 45px;
+}
+
+#graphTitleleft {
+	float: left;
+	margin-left: 60px;
+}
+
+#rightChart {
+	float: right;
+	margin-right: 100px;
+	width: 550px;
 }
 
 .dropdown-right {
@@ -15,26 +31,9 @@ Stylesheet
 	margin-right: 400px;
 }
 
-#graphTitleleft {
-	float: left;
-	margin-left: 60px;
-}
-
 #graphTitleright {
 	float: left;
 	margin-left: 60px;
-}
-
-
-#leftChart {
-	width: 550px;
-	float: left;
-}
-
-#rightChart {
-	float: right;
-	margin-right: 100px;
-	width: 550px;
 }
 
 h1 {

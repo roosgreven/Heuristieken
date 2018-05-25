@@ -136,43 +136,14 @@ class FloorPlan:
         for house in self.houses:
             
             house.changeBest()
-
-
+        
     def saveFloorplan(self, algorithmType, numberOfHouses):
-        """ For now: Overwrites old floorplan with new one.
-
-        Future: Checks if the value of the Floorplan is higher than the current value.  If so, the
+        """ Checks if the value of the Floorplan is higher than the current best value.  If so, the
         floorplan will overwrite the old floorplan.
         """
 
-        # Initialize empty list
-        coordinates = []
-
         totalValue = self.getValue()
 
-        # Append total value to coordinates list
-        coordinates.append(["totalValue", totalValue])
-
-        # Add header rows to csv file
-        coordinates.append(["Type", "x1", "x2", "y1", "y2"])
-
-        # Iterate over ponds array of plan
-        for pond in self.ponds:
-
-            # Append coordinates of each pond to coordinates array
-            coordinates.append(["Water", pond.x1, pond.x2, pond.y1, pond.y2])
-
-        # Iterate over houses array in plan
-        for house in self.houses:
-
-            # Append coordinates of each house to coordinates array
-            coordinates.append(["House",house.x1, house.x2, house.y1, house.y2])
-
-        self.saveBestResults(algorithmType, numberOfHouses, totalValue, coordinates)
-
-        
-    def saveBestResults(self, algorithmType, numberOfHouses, totalValue, coordinates):
-        
         # Open file specific for this algorithm and this number of houses
         with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'r') as myFile:
             
@@ -183,13 +154,33 @@ class FloorPlan:
         # Check if this value is better than best ever achieved
         if bestThisAlgorithm < totalValue: 
 
+            # Initialize empty list
+            coordinates = []
+
+            # Append total value to coordinates list
+            coordinates.append(["totalValue", totalValue])
+
+            # Add header rows to csv file
+            coordinates.append(["Type", "x1", "x2", "y1", "y2"])
+
+            # Iterate over ponds array of plan
+            for pond in self.ponds:
+
+                # Append coordinates of each pond to coordinates array
+                coordinates.append(["Water", pond.x1, pond.x2, pond.y1, pond.y2])
+
+            # Iterate over houses array in plan
+            for house in self.houses:
+
+                # Append coordinates of each house to coordinates array
+                coordinates.append(["House", house.x1, house.x2, house.y1, house.y2])
+
             # Open and read file with all highscores
             with open('code/results/allBests.csv', 'r') as myFile:
                 reader = csv.reader(myFile, delimiter = ',')
                 
                 # List the file
                 listedValues = list(reader)
-                print(listedValues[0])
 
             # Loop over all items in the file
             for item in listedValues:
@@ -206,7 +197,7 @@ class FloorPlan:
                 writer.writerows(listedValues)
 
             # Open csv for specific algorithm to write new floorplan to
-            with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'w') as myFile:
+            with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'w', newline = '') as myFile:
                 writer = csv.writer(myFile)
 
                 # Write total value and coordinates of houses and water to csv

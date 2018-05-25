@@ -14,27 +14,12 @@ def convert(algorithmType, numberOfIterations, numberOfHouses):
 	# Array to store data
 	data = []
 
-	minValue = 3000000000
-
-	maxValue = 0
-
 	# Open the CSV file to find minimum and maximum data
 	with open('code/experiments/' + algorithmType + '_' + str(numberOfIterations) +  '_' 
         + str(numberOfHouses) + '.csv', newline='') as csvfile:
 
 		# Read CSV file
 		reader = csv.reader(csvfile, delimiter = ',')
-
-		#Lloop over all lines in the file
-		for row in reader:
-
-			# Remember value if it's the maximum so far
-			if float(row[1]) > float(maxValue):
-				maxValue = row[1]
-
-			# Remember value if it's the minimum so far
-			if float(row[1]) < float(minValue):
-				minValue = row[1]
 
 	# Open the CSV file to group the data
 	with open('code/experiments/' + algorithmType + '_' + str(numberOfIterations) +  '_' 
@@ -132,7 +117,5 @@ def convert(algorithmType, numberOfIterations, numberOfHouses):
 			json.dump(data, outfile)
 		
 		print("startchart: ", startChart, "endChart: ", endChart)
-
-		print("maxvalue: ", maxValue, "minvalue: ", minValue) 
 
 		print("value range: ", valueRange, "oneSteps: ", oneStep)

@@ -83,13 +83,13 @@ def main():
 
     elif sys.argv[1] == "hillclimberExperiment":
 
-        numberOfIterations = 5000
+        numberOfIterations = 100
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber")
 
     elif sys.argv[1] == "simulatedannealingExperiment":
 
-        numberOfIterations = 5000
+        numberOfIterations = 100
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing")
     

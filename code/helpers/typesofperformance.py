@@ -74,9 +74,13 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName)
 
             plan = randomAlgorithm(plan)
 
+            plan = algorithm(plan)
+
             while len(plan.houses) < numberOfHouses:
 
                 plan = randomAlgorithm(plan)
+
+                plan = algorithm(plan)
 
         else: 
 
@@ -88,6 +92,8 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName)
 
         # Save the plan value
         value = plan.getValue()
+
+        plan.saveFloorplan(algorithmType, numberOfHouses)
 
         experimentInfo.append([i + 1, value])
 
