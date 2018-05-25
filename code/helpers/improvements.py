@@ -67,7 +67,25 @@ def checkIfAccepted(newValue, oldValue, temp):
         return True
     
 def checkIfStay(house, plan, oldValue, temp):
-    """ Checks if a house can stay at it's current position. """
+    """ Checks if a house can stay at it's current position. 
+
+    Arg1: 
+        house: house to check
+
+    Arg2: 
+        plan: current floorplan
+
+    Arg3:
+        oldValue: value before change
+
+    Arg4:
+        temp: temperature
+
+    Return: 
+        True: if move is accepted
+        False: if move is not accepted
+
+    """
     
     # Check if there's overlap with water and boundaries
     if con.checkIfPossible(house, plan):
@@ -83,7 +101,16 @@ def checkIfStay(house, plan, oldValue, temp):
     return False
 
 def move(house):
-    """ Slightly moves a house. """
+    """ Slightly moves a house. 
+
+    Arg1: 
+        house: house to move
+
+    Return:
+        oldx1: x1-coordinate before change
+        oldy1: y1-coordinate before change
+
+    """
     
     # Save current coordinates
     oldx1 = house.x1
@@ -108,7 +135,21 @@ def houseMove(house, plan, oldValue, temp):
         The function checks whether the house move is viable.
         After the move has been made, it compares the plan value of the old
         situation and the new situation.
-        The house will be moved back to its old position if the value has decreased. """
+        The house will be moved back to its old position if the value has decreased. 
+
+        Arg1: 
+            house: house to check
+
+        Arg2: 
+            plan: current floorplan
+
+        Arg3:
+            oldValue: value before change
+
+        Arg4:
+            temp: temperature
+
+        """
     
     # Save current coordinates
     oldx1, oldy1 = move(house)
@@ -119,7 +160,15 @@ def houseMove(house, plan, oldValue, temp):
         house.coordinates(oldx1, oldy1)
     
 def swap(house1, house2):
-    """ Swaps the lower left coordinates of two houses. """
+    """ Swaps the lower left coordinates of two houses. 
+
+        Arg1: 
+            house1: first house to swap
+
+        Arg2: 
+            house2: house to swap house with
+
+    """
 
     tempX = house2.x1
     tempY = house2.y1
@@ -130,7 +179,24 @@ def swap(house1, house2):
 def swapCheck(house1, house2, plan, oldValue, temp):
     """ Checks if swap was viable for both houses and whether
         plan value was improved or the same. If not, houses are set back to
-        old positions. """
+        old positions. 
+
+        Arg1: 
+            house1: first house to swap
+
+        Arg2: 
+            house2: house to swap house with
+
+        Arg3: 
+            plan: current floorplan
+
+        Arg4:
+            oldValue: value before change
+
+        Arg5:
+            temp: temperature
+            
+        """
 
     # Check if the houses will stay in their current position
     if not (checkIfStay(house1, plan, oldValue, temp) and checkIfStay(house2, plan, oldValue, temp)):
@@ -139,6 +205,20 @@ def swapCheck(house1, house2, plan, oldValue, temp):
         swap(house2, house1)
 
 def rotateHouse(house, plan, oldValue, temp):
+    """ Rotates the house. 
+
+        Arg1: 
+            house: house to check
+
+        Arg2: 
+            plan: current floorplan
+
+        Arg3:
+            oldValue: value before change
+
+        Arg4:
+            temp: temperature
+    """
     
     # Rotate house
     house.rotate()
