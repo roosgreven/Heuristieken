@@ -15,7 +15,11 @@ def noWaterAndBoundary(chosenObject, plan):
     Arg1:
         plan: current floorplan 
 
-    Returns False if two houses overlap. """
+    Return: 
+        False: if two houses overlap.
+        True: nothing overlaps 
+
+    """
 
     # Check for overlap with each pond
     for water in plan.ponds:
@@ -38,7 +42,16 @@ def noWaterAndBoundary(chosenObject, plan):
     return True
 
 def checkIfPossible(house, plan):
-    """ Checks if a house does not violate any constraints. """
+    """ Checks if a house does not violate any constraints. 
+
+    Arg1:
+        plan: current floorplan.
+
+    Return:
+        True: if nothing overlaps
+        False: if something overlaps
+
+    """
     
     if noWaterAndBoundary(house, plan):
         
