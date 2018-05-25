@@ -1,7 +1,6 @@
 """
 25 May 2018.
-
-Will contain a hill climbing algorithm.  Will first run the random algorithm
+Contqains a hill climbing algorithm.  Will first run the random algorithm
 and with the solution, will start making random adjustments and only saving
 those that are improvements.
 """
@@ -11,18 +10,16 @@ import helpers.improvements as imp
 import sys
 
 def hillClimber(plan, iterations):
-    """ Hillclimber function that will increase the value of the given plan step
-        by step. Selects a random house and either rotates the house, swaps the 
-        house with another or moves the house. Checks whether this is a viable option 
+    """ Increases value of the given plan stepby step. Selects a random house and either 
+        rotates, swaps with another or moves the house. Checks whether this is a viable option 
         and whether the value of the plan has increased. If so, the move updates the 
-        plan. 
+        plan. Performs simulated annealing algorithm if system argument is simulated annealing. 
 
-        Args: 
+        Arg1: 
             plan: floorplan with the correct number of houses. 
-            The second argument, simulatedAnnealing, can
-        also be entered by the user. If this is the case, the hillclimber
-        function will also accept a decrease in value of the plan with a certain
-        probability. """
+        Arg2:
+            iterations: number of iterations to perform
+    """
 
     # Checks if the algorithm is simulated annealing or hill climber, simulated
     # annealing gets a temperature, hill climber temperature is set to zero

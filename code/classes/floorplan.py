@@ -30,6 +30,12 @@ class FloorPlan:
     smallestLength = 7.5
 
     def __init__(self, houseNumber):
+        """ Specifies houses for floorplan.
+
+        Arg1:
+            houseNumber: number of houses to place
+
+        """
 
         # The total number of houses and number for each type
         self.numberOfHouses = houseNumber
@@ -52,6 +58,7 @@ class FloorPlan:
         """ Creates a list of all possible coordinates in the neighbourhood.
         Coordinates too close to the boundary to ever place a house on them, are
         not added.
+
         """
 
         self.coordinates = []
@@ -61,6 +68,9 @@ class FloorPlan:
                 self.coordinates.append([x, y])
 
     def makePonds(self):
+        """ Makes waters.
+
+        """
 
         while len(self.ponds) < self.numberOfPonds:
             """ Place the ponds. """
@@ -72,7 +82,14 @@ class FloorPlan:
             self.waterPlacement(x, y)
 
     def waterPlacement(self, x, y):
-        """ Places water at random location. x and y form the random coordinate. """
+        """ Places water at random location. 
+
+        Arg1:
+            x: x-coordinate to make water
+        Arg2:
+            y: y-coordinate to make water
+
+        """
 
         # Initiate random water pond
         waterPond = wt.Pond(x, y)
@@ -82,7 +99,12 @@ class FloorPlan:
             self.ponds.append(waterPond)
 
     def randomCoordinates(self):
-        """ Sets random coordinates x and y. """
+        """ Sets random coordinates x and y. 
+            
+            Return:
+                x: x-coordinate 
+                y: y-coordinate
+        """
 
         # Random coordinates
         x = round(random.random() * self.width, 1)
@@ -90,7 +112,17 @@ class FloorPlan:
         return x, y
 
     def makeHouse(self, x, y):
-        """ Initiates new house to place at position (x,y). """
+        """ Initiates new house to place at position 
+            
+            Arg1:
+                x: x-coordinate to place house
+            Arg2: 
+                y: y-coordinate to place house
+
+            Return:
+                house: house that was made
+
+        """
 
         # Decide what type of house will be placed
         if len(self.houses) < self.numberOfMaisons:
@@ -102,12 +134,19 @@ class FloorPlan:
         else:
             house = hs.Eengezins(x, y)
 
+        # Fifty percent change that a house rotates
         if random.random() > 0.5:
             house.rotate()
 
         return house
     
     def checkWaterAndBoundary(self):
+        """ Checks if water is not over boundaries.
+
+            Return:
+                True/False: False if water or boundary is crossed, True if not
+
+        """
         
         for house in self.houses:
             
@@ -118,7 +157,11 @@ class FloorPlan:
         return True
 
     def getValue(self):
-        """ Total value of neighbourhood is calculated. """
+        """ Total value of neighbourhood is calculated. 
+            
+            Return: 
+                totalValue: total value of all houses. 
+        """
 
         totalValue = 0
 
@@ -131,6 +174,7 @@ class FloorPlan:
     def changeBest(self):
         """ The best x1 and y1 value are updated for each house. Used in the
         particle swarm algorithm.
+
         """
         
         for house in self.houses:
@@ -138,8 +182,14 @@ class FloorPlan:
             house.changeBest()
         
     def saveFloorplan(self, algorithmType, numberOfHouses):
-        """ Checks if the value of the Floorplan is higher than the current best value.  If so, the
+        """ Checks if the value of this Floorplan is higher than the current best value.  If so, the
         floorplan will overwrite the old floorplan.
+
+        Arg1:
+            algorithmType: type of algorithm that was performed on this floorplan.
+        Arg2: 
+            numberOfHouses: number of houses in this floorplan.
+
         """
 
         totalValue = self.getValue()
@@ -224,6 +274,7 @@ class FloorPlan:
     def showFloorplan(self):
         """ Prints total value of a Floorplan and generates a visual floorplan
         with all houses and ponds. 
+        
         """
 
         totalValue = 0

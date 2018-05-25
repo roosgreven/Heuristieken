@@ -1,4 +1,6 @@
 """
+25 May 2018.
+
 Contains three functions that check if the constraints are met.  noWater returns
 False when the house overlaps with water, checkBoundaries returns False if there 
 isn't enough free space for the house next to the neighbourhood boundaries.  
@@ -8,7 +10,12 @@ import helpers.shortestdistance as sd
 import helpers.findclosesthouse as fch
 
 def noWaterAndBoundary(chosenObject, plan):
-    """ Returns False if two houses overlap. """
+    """ Checks if boundaries and water are hit. 
+
+    Arg1:
+        plan: current floorplan 
+
+    Returns False if two houses overlap. """
 
     # Check for overlap with each pond
     for water in plan.ponds:

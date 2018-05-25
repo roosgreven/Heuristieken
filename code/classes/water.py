@@ -9,12 +9,29 @@ class Water:
     """ Contains the coordinates of a pond """
     
     def __init__(self, x1, y1):
+        """ Initiates coordinates.
+
+        Arg1:
+            x1: x-coordinate lower left corner
+
+        Arg2:
+            y1: y-coordinate lower left corner
+
+        """
 
         self.coordinates(x1, y1)
 
 
     def coordinates(self, x1, y1):
-        """ Calculates the waters coordinates """
+        """ Calculates the waters coordinates 
+
+        Arg1:
+            x1: x-coordinate lower left corner
+            
+        Arg2:
+            y1: y-coordinate lower left corner
+
+        """
 
         self.x1 = x1
         self.x2 = x1 + self.width
