@@ -13,8 +13,6 @@ import helpers.constraints as con
 import classes.houses as hs
 import classes.water as wt
 import matplotlib.pyplot as plt
-import helpers.findclosesthouse as fch
-import helpers.constraints as con
 
 class FloorPlan:
     """ Has a list of houses and specifics for the neighbourhood. """

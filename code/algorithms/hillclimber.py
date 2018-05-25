@@ -6,12 +6,8 @@ and with the solution, will start making random adjustments and only saving
 those that are improvements.
 """
 
-import classes.houses as hs
 from classes.floorplan import FloorPlan
-import helpers.findclosesthouse as fch
-import helpers.constraints as con
 import random
-import randomalgorithm.randomalgorithm
 import helpers.improvements as imp
 import sys
 

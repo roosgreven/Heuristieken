@@ -5,7 +5,7 @@ Created on Tue May 15 16:29:16 2018
 Contains a class with floorplans in it.
 """
 
-from randomalgorithm.randomalgorithm import randomAlgorithm
+from algorithms.randomalgorithm import randomAlgorithm
 from classes.floorplan import FloorPlan
 import copy
 import matplotlib.pyplot as plt
@@ -20,6 +20,7 @@ class Population:
         self.plans = []
         
         self.gBest = FloorPlan(houseNumber)
+        self.firstGBest = 0
         
     def makeRandomPopulation(self, houseNumber):
         """ Fills the floorplans using the random algorithm. """

@@ -10,13 +10,9 @@ probability was retrieved from http://www.theprojectspot.com/tutorial-post/simul
 Initial temperature and cooling rate is found in hillclimber.py.
 """
 
-import classes.houses as hs
-from classes.floorplan import FloorPlan
 import helpers.findclosesthouse as fch
 import helpers.constraints as con
 import random
-import randomalgorithm.randomalgorithm
-import math
 
 def randomHouse(houseArray):
     """ Returns index of random house from house array in floorplan. """

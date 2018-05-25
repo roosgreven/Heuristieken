@@ -9,14 +9,6 @@ impossible then get removed form the list.  Still needs a way to check if no hou
 is in another houses mandatory freespace.
 """
 
-import classes.houses as hs
-from classes.floorplan import FloorPlan
-import helpers.findclosesthouse as fch
-import helpers.constraints as con
-import classes.water as wt
-import random
-import numpy as np
-import randomalgorithm as water
 import helpers.coordinates as co
 
 def greedy(plan):
@@ -76,9 +68,3 @@ def greedy(plan):
         co.removeCoordinates(plan, house)
 
     return plan
-
-if __name__ == "__main__":
-    plan = greedy(60)
-
-    # Make visualisation
-    plan.showFloorplan()

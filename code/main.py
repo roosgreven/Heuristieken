@@ -7,9 +7,7 @@ function will be changed for different desired outcomes, but will become fully
 automated eventually.  For now the function also saves the outcome in a csv file.
 """
 
-from randomalgorithm.randomalgorithm import randomAlgorithm
-from greedy.greedy import greedy
-from hillclimber.hillclimber import hillClimber
+from algorithms.randomalgorithm import randomAlgorithm
 import helpers.maininput as maininput
 import sys
 import helpers.typesofperformance as top
@@ -44,14 +42,14 @@ def main():
         top.saveAndShow("greedy", plan)
 
     # Run random, save and show result
-    if sys.argv[1] == "random":
+    elif sys.argv[1] == "random":
 
         plan = FloorPlan(numberOfHouses)
 
         top.saveAndShow("randomAlgorithm", plan)
 
     # Run hill climber, save and show result
-    if sys.argv[1] == "hillclimber":
+    elif sys.argv[1] == "hillclimber":
 
         plan = FloorPlan(numberOfHouses)
 
@@ -61,7 +59,7 @@ def main():
         top.saveAndShow("hillClimber", plan)
 
     # Run hill climber, save and show result
-    if sys.argv[1] == "simulatedannealing":
+    elif sys.argv[1] == "simulatedannealing":
 
         plan = FloorPlan(numberOfHouses)
 
@@ -71,7 +69,7 @@ def main():
         top.saveAndShow("hillClimber", plan)
 
     # Run particle swarm, save and show result
-    if sys.argv[1] == "particleswarm":
+    elif sys.argv[1] == "particleswarm":
 
         planNumber = 100
 
@@ -82,29 +80,32 @@ def main():
         top.saveAndShowPopulation("particleSwarm", population)
 
     # Run experiment with random, so perform algorithm 5000 times and save in csv
-    if sys.argv[1] == "randomExperiment":
+    elif sys.argv[1] == "randomExperiment":
 
         numberOfIterations = 5000
-
         top.experiment("randomAlgorithm", numberOfHouses, numberOfIterations, "randomAlgorithm")
 
-    if sys.argv[1] == "greedyExperiment":
+    elif sys.argv[1] == "greedyExperiment":
 
-        numberOfIterations = 50
+        numberOfIterations = 500
 
         top.experiment("greedy", numberOfHouses, numberOfIterations, "greedy")
 
-    if sys.argv[1] == "hillclimberExperiment":
+    elif sys.argv[1] == "hillclimberExperiment":
 
         numberOfIterations = 5000
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber")
 
-    if sys.argv[1] == "simulatedannealingExperiment":
+    elif sys.argv[1] == "simulatedannealingExperiment":
 
         numberOfIterations = 5000
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing")
+    
+    else:
+        
+        print("Error: unknown function: refer to README for accepted functions")
 
 if __name__ == "__main__":
     main()

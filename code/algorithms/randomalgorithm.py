@@ -8,12 +8,8 @@ needs a way to check if all houses were actually placed in the given number of
 iteratations and if not handle accordingly.
 """
 
-from classes.floorplan import FloorPlan
 import helpers.findclosesthouse as fch
-import random
-import matplotlib.pyplot as plt
 import helpers.constraints as con
-import classes.water as wt
 
 def randomAlgorithm(plan):
     """ Performs a random algorithm, first placing water, then placing houses.

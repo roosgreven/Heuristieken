@@ -15,18 +15,14 @@ def particleSwarm(population):
     
     c1, c2 = 0.0005, 0.0005
     
-    population.plans[0].showFloorplan()
-    
-    for i in range(2000):
+    for i in range(500):
         
         # The current overall best is established
         population.checkForPAndGBest()
         
         if i == 0:
-            population.gBest.showFloorplan()
+            population.firstFBest = population.gBest.getValue()
             
-        counter = 0
-        
         for plan in population.plans:
             
             for j in range(plan.numberOfHouses):
@@ -56,8 +52,8 @@ def particleSwarm(population):
                 house.speed(vx, vy)
                 
                 house.coordinates(house.x1 + house.vx, house.y1 + house.vy)
-    population.plans[0].showFloorplan()
-    population.gBest.showFloorplan()
+    
+    return population
     """
     print("the horrible house")
     for house in population.plans[0].houses:

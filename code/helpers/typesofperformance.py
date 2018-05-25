@@ -4,12 +4,11 @@ making a visualisation for the outcome, or performing the algorithm a hundred
 times and saving the best one.
 """
 
-from randomalgorithm.randomalgorithm import randomAlgorithm
-from greedy.greedy import greedy
-from hillclimber.hillclimber import hillClimber
-from particleswarm.particleswarm import particleSwarm
+from algorithms.randomalgorithm import randomAlgorithm
+from algorithms.greedy import greedy
+from algorithms.hillclimber import hillClimber
+from algorithms.particleswarm import particleSwarm
 from classes.floorplan import FloorPlan
-import helpers.improvements as imp
 import experiments.convertToJSON as converter
 import csv
 
@@ -43,8 +42,17 @@ def saveAndShowPopulation(algorithmType, population):
     # Perform the algorithm
     population = algorithm(population)
 
-    # Make visualisation
-    #population.showPopulation()
+    # If the algorithm found a better gbest, a visualisation is made
+    #if population.gBest.getValue() > population.firstGBest:
+    if True:
+        
+        population.gBest.saveFloorplan(algorithmType, len(population.gBest.houses))
+        
+        population.gBest.showFloorplan()
+        
+    else:
+        
+        print("Failed to find better floorplan.")
 
 def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName):
     """ Performs an algorithm of algorithmType a numberOfIterations amount of
@@ -94,50 +102,3 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName)
         writer.writerows(experimentInfo)
 
     converter.convert(algorithmName, numberOfIterations, numberOfHouses)
-
-    """
-        if value > bestValue:
-
-            bestPlan = plan
-            bestValue = value
-
-        if value < worstValue:
-
-            worstPlan = plan
-            worstValue = value
-
-        totalValue += value
-
-    # Initialize empty list
-    coordinates = []
-
-    # Append total value to coordinates list
-    coordinates.append(["totalValue", bestValue])
-
-    # Add header rows to csv file
-    coordinates.append(["Type", "x1", "x2", "y1", "y2"])
-
-    # Iterate over ponds array of plan
-    for pond in bestPlan.ponds:
-
-        # Append coordinates of each pond to coordinates array
-        coordinates.append(["Water", pond.x1, pond.x2, pond.y1, pond.y2])
-
-    # Iterate over houses array in plan
-    for house in bestPlan.houses:
-
-        # Append coordinates of each house to coordinates array
-        coordinates.append(["House",house.x1, house.x2, house.y1, house.y2])
-
-
-    plan.saveBestResults("randomAlgorithm", numberOfHouses, bestValue, coordinates)
-    
-    # Output
-    print("The average value was:")
-    print(totalValue / numberOfIterations)
-
-    print("The best plan:")
-    bestPlan.showFloorplan()
-    print("The worst plan:")
-    worstPlan.showFloorplan()
-"""

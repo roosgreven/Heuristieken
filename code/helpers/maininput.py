@@ -4,8 +4,6 @@ Checks if system arguments were correct.
 """
 
 import sys
-from randomalgorithm.randomalgorithm import randomAlgorithm
-from greedy.greedy import greedy
 
 def sysArguments():
 
