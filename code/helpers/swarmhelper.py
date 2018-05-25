@@ -11,4 +11,13 @@ def handleImpossibleMove(house, plan):
     
     if not con.checkIfPossible(house, plan):
         
-        house.coordinates(house.x1 - house.vx, house.y1 - house.vy)
+        vx = house.vx
+        vy = house.vy
+        
+        house.speed(-vx, -vy)
+        house.coordinates(house.x1 - 2 * vx, house.y1 - 2 * vy)
+        
+        if not con.checkIfPossible(house, plan):
+            
+            house.speed(0, 0)
+            house.coordinates(house.x1 + vx, house.y1 + vy)

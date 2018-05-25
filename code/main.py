@@ -64,8 +64,9 @@ def main():
     elif sys.argv[1] == "particleswarm":
 
         planNumber = 100
+        c1, c2 = 0.005, 0.0005
 
-        population = Population(planNumber, numberOfHouses)
+        population = Population(planNumber, numberOfHouses, c1, c2)
 
         population.makeRandomPopulation(numberOfHouses)
 
