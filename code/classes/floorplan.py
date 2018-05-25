@@ -24,7 +24,7 @@ class FloorPlan:
 
     # The smallest freespace (eengezins), combination of freespace and length
     # (eengezins) and length (bungalow). Used to remove coordinates where a
-    # house can't possibly be placed
+    # house can"t possibly be placed
     smallestFree = 2.
     smallestLengthPlusFree = 8. + smallestFree
     smallestLength = 7.5
@@ -145,10 +145,10 @@ class FloorPlan:
         totalValue = self.getValue()
 
         # Open file specific for this algorithm and this number of houses
-        with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'r') as myFile:
+        with open("code/results/" + algorithmType + "_" + str(numberOfHouses) + ".csv", "r") as myFile:
             
             # read CSV file and save best value ever achieved
-            reader = csv.reader(myFile, delimiter = ',')
+            reader = csv.reader(myFile, delimiter = ",")
             bestThisAlgorithm = float(list(reader)[0][1])
 
         # Check if this value is better than best ever achieved
@@ -176,8 +176,8 @@ class FloorPlan:
                 coordinates.append(["House", house.x1, house.x2, house.y1, house.y2])
 
             # Open and read file with all highscores
-            with open('code/results/allBests.csv', 'r') as myFile:
-                reader = csv.reader(myFile, delimiter = ',')
+            with open("code/results/allBests.csv", "r") as myFile:
+                reader = csv.reader(myFile, delimiter = ",")
                 
                 # List the file
                 listedValues = list(reader)
@@ -190,30 +190,30 @@ class FloorPlan:
                     item[1] = totalValue
 
             # Open file with all best values to write score to
-            with open('code/results/allBests.csv', 'w', newline = '') as myFile:
+            with open("code/results/allBests.csv", "w", newline = "") as myFile:
                 writer = csv.writer(myFile)
 
                 # Write the changed values
                 writer.writerows(listedValues)
 
             # Open csv for specific algorithm to write new floorplan to
-            with open('code/results/' + algorithmType + '_' + str(numberOfHouses) + '.csv', 'w', newline = '') as myFile:
+            with open("code/results/" + algorithmType + "_" + str(numberOfHouses) + ".csv", "w", newline = "") as myFile:
                 writer = csv.writer(myFile)
 
                 # Write total value and coordinates of houses and water to csv
                 writer.writerows(coordinates)
 
             # Open file with best value ever achieved
-            with open('code/results/bestEver.csv', newline = '') as csvfile:
+            with open("code/results/bestEver.csv", newline = "") as csvfile:
                 
                 # Check save best value ever achieved
-                reader = csv.reader(csvfile, delimiter=',')
+                reader = csv.reader(csvfile, delimiter=",")
                 bestTillNow = float(list(reader)[0][1])
 
             # If this value is best ever achieved, save it in the csvfile
             if bestTillNow < totalValue: 
 
-                with open('code/results/bestEver.csv', 'w') as myFile:
+                with open("code/results/bestEver.csv", "w") as myFile:
                     writer = csv.writer(myFile)
 
                     # Write total value and coordinates of houses and water to csv
@@ -242,7 +242,7 @@ class FloorPlan:
         # These coordinates together plot the outline of the neighbourhood
         xlist = [0, self.width, self.width, 0, 0]
         ylist = [0, 0, self.length, self.length, 0]
-        plt.plot(xlist, ylist, 'm-')
+        plt.plot(xlist, ylist, "m-")
 
         for pond in self.ponds:
 
@@ -250,7 +250,7 @@ class FloorPlan:
             xlist = [pond.x1, pond.x2, pond.x2, pond.x1, pond.x1]
             ylist = [pond.y1, pond.y1, pond.y2, pond.y2, pond.y1]
 
-            plt.plot(xlist, ylist, 'b-')
+            plt.plot(xlist, ylist, "b-")
 
 
         for house in self.houses:
@@ -259,14 +259,14 @@ class FloorPlan:
             xlist = [house.x1, house.x2, house.x2, house.x1, house.x1]
             ylist = [house.y1, house.y1, house.y2, house.y2, house.y1]
             
-            color = 'y-'
+            color = "y-"
 
             if house.theType == "Eengezins":
-                color = 'r-'
+                color = "r-"
             elif house.theType == "Bungalow":
-                color = 'g-'
+                color = "g-"
             elif house.theType == "Maison":
-                color = 'c-'
+                color = "c-"
                 
             plt.plot(xlist, ylist, color)
 

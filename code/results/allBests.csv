@@ -1,9 +1,12 @@
 randomAlgorithm_20,10526474.235127252
-randomAlgorithm_40,0
-randomAlgorithm_60,0
-greedy_20,11330942.269349912
-greedy_40,0
-greedy_60,0
+randomAlgorithm_40,17750851.69313769
+randomAlgorithm_60,24538764.586041577
+greedy_20,12146402.08637189
+greedy_40,19676993.37269810
+greedy_60,25689419.5289507
 hillClimber_20,12706615.864824135
 hillClimber_40,20192279.721655764
 hillClimber_60,26982314.247779995
+simulatedannealing_20,9433007.665296495
+simulatedannealing_40,0
+simulatedannealing_60,0

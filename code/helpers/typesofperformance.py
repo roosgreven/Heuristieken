@@ -11,23 +11,38 @@ from algorithms.particleswarm import particleSwarm
 from classes.floorplan import FloorPlan
 import experiments.convertToJSON as converter
 import csv
+import sys
 
-def saveAndShow(algorithmType, plan):
+def saveAndShow(algorithmType, plan, iterations):
     """ Performs an algorithm of algorithmType on the given plan and both saves
     and shows it.
     """
 
     algorithm = globals()[algorithmType]
 
+    if algorithmType == "hillClimber":
+
+        plan = algorithm(plan, iterations)
+
+        while(len(plan.houses) < plan.numberOfHouses):
+
+            plan = algorithm(plan, iterations)
+
     # Perform the algorithm
-    plan = algorithm(plan)
-
-    while len(plan.houses) < plan.numberOfHouses:
-
+    else: 
         plan = algorithm(plan)
 
-    # Save floorplan to a csv file
-    plan.saveFloorplan(algorithmType, len(plan.houses))
+        while len(plan.houses) < plan.numberOfHouses:
+
+            plan = algorithm(plan)
+
+    if sys.argv[1] == "simulatedannealing":
+
+        plan.saveFloorplan("simulatedannealing", len(plan.houses), iterations)
+
+    else:
+         # Save floorplan to a csv file
+        plan.saveFloorplan(algorithmType, len(plan.houses))
 
     # Make visualisation
     plan.showFloorplan()
@@ -100,8 +115,8 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName)
         print("Iteration: ", i + 1)
 
     # Write all values to csv file to use for visualisation
-    with open('code/experiments/' + algorithmName + '_' + str(numberOfIterations) +  '_' 
-        + str(numberOfHouses) + '.csv', 'w', newline = '') as myFile:
+    with open("code/experiments/" + algorithmName + "_" + str(numberOfIterations) +  "_" 
+        + str(numberOfHouses) + ".csv", "w", newline = "") as myFile:
         
         writer = csv.writer(myFile)
 

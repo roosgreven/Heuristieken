@@ -10,7 +10,7 @@ import random
 import helpers.improvements as imp
 import sys
 
-def hillClimber(plan):
+def hillClimber(plan, iterations):
     """ Hillclimber function that will increase the value of the given plan step
         by step. It starts off by selecting a random house and then it will
         either rotate the house, swap the house with another or move the house.
@@ -38,7 +38,7 @@ def hillClimber(plan):
     # Initiate counter
     i = 0
 
-    for i in range(3000):
+    for i in range(iterations):
 
         # Get value of plan as it is now
         oldValue = plan.getValue()

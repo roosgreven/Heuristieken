@@ -15,6 +15,7 @@ def main():
     """ Performs desired algorithm for desired number of houses, handles output
     and saves best outcome.
     """
+
     # Check if user input was correct
     maininput.sysArguments()
 
@@ -46,7 +47,7 @@ def main():
         plan = randomAlgorithm(plan)
 
         # False stands for no simulated annealing
-        top.saveAndShow("hillClimber", plan)
+        top.saveAndShow("hillClimber", plan, int(sys.argv[2]))
 
     # Run hill climber, save and show result
     elif sys.argv[1] == "simulatedannealing":
@@ -56,7 +57,7 @@ def main():
         plan = randomAlgorithm(plan)
 
         # False stands for no simulated annealing
-        top.saveAndShow("hillClimber", plan)
+        top.saveAndShow("hillClimber", plan, int(sys.argv[2]))
 
     # Run particle swarm, save and show result
     elif sys.argv[1] == "particleswarm":
@@ -75,21 +76,24 @@ def main():
         numberOfIterations = 5000
         top.experiment("randomAlgorithm", numberOfHouses, numberOfIterations, "randomAlgorithm")
 
+    # Run experiment with greedy, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "greedyExperiment":
 
-        numberOfIterations = 500
+        numberOfIterations = 1000
 
         top.experiment("greedy", numberOfHouses, numberOfIterations, "greedy")
 
+    # Run experiment with hill climber, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "hillclimberExperiment":
 
-        numberOfIterations = 100
+        numberOfIterations = 1000
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber")
 
+    # Run experiment with simulated annealing, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "simulatedannealingExperiment":
 
-        numberOfIterations = 100
+        numberOfIterations = 1000
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing")
     
