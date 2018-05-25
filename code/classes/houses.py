@@ -5,6 +5,7 @@ Contains a house class for each house with coordinates and value.  Contains
 subclasses for each housetype with specific values.  Each housetype inherits
 from the house class.
 """
+
 import helpers.findclosesthouse as fch
 
 class House:
@@ -18,8 +19,14 @@ class House:
         self.coordinates(x1, y1)
 
     def value(self, plan):
-        """ Takes in the array of houses and uses it to calculate the shortest
-        distance for the house.  Then calculates and returns the house value.
+        """ Calculate the shortest distance for the house. 
+
+        Arg1: 
+            plan: array of houses
+
+        Return: 
+            totalValue: total value of the house.
+
         """
 
         distance = fch.findClosestHouse(plan, self)
@@ -33,8 +40,13 @@ class House:
         return totalValue
 
     def coordinates(self, x1, y1):
-        """ Calculates the houses coordinates. To do this it only needs x1 and
-        y1, the coordinate of the lower left corner.
+        """ Calculates the houses coordinates. 
+
+        Arg1:
+            x1: x-coordinate of lower left corner
+        Arg2:
+            y1: y-coordinate of lower left corner
+
         """
 
         self.x1 = x1
@@ -51,6 +63,7 @@ class House:
     def changeBest(self):
         """ Updates the best found values for x1 and y1 in the particle swarm
         algorithm.
+
         """
 
         self.xBest = self.x1
@@ -58,7 +71,9 @@ class House:
 
     def rotate(self):
         """ Swaps the value of width and length and changes coordinates
-        accordingly. """
+        accordingly. 
+
+        """
 
         self.width, self.length = self.length, self.width
         

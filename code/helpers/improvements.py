@@ -15,7 +15,15 @@ import helpers.constraints as con
 import random
 
 def randomHouse(houseArray):
-    """ Returns index of random house from house array in floorplan. """
+    """ Returns index of random house from house array in floorplan. 
+
+    Arg1: 
+        houseArray: array of houses to pick one from.
+
+    Return:
+        index: index of picked house.
+
+    """
 
     lengthHouseArray = len(houseArray) - 1
 
@@ -26,7 +34,22 @@ def randomHouse(houseArray):
 
 def checkIfAccepted(newValue, oldValue, temp):
     """ Decides if a change is accepted.  Always accepts improvements and in
-    case of simulated annealing occasionally accepts. """
+    case of simulated annealing occasionally accepts. 
+
+    Arg1: 
+        newValue: new value after change
+
+    Arg2:
+        oldValue: old value before change
+
+    Arg3:
+        temp: temperature
+
+    Return:    
+        True: if change is accepted
+        False: if change is not accepted
+
+    """
     
     if newValue < oldValue:
         

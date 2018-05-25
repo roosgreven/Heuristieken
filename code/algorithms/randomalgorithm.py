@@ -13,8 +13,10 @@ import helpers.constraints as con
 
 def randomAlgorithm(plan):
     """ Performs a random algorithm, first placing water, then placing houses.
-    houseNumber is the number of houses that have to be in the neighbourhood.
-    plan is the empty floorplan that will be filled.
+    
+    Arg1:
+        plan: empty floorplan that will be filled.
+        
     """
 
     # j checks how many times the while loop of house placement has run

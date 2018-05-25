@@ -8,7 +8,17 @@ import helpers.shortestdistance as sd
 
 def findClosestHouse(plan, chosenHouse):
     """ Finds the closes distance of a house to another house or a boundary.
-    Takes in the array of houses and the house that will be checked.
+    
+    Arg1: 
+        plan: current floorplan.
+
+    Arg2:
+        house: house to check.
+
+    Return:
+        -1: if house is too close to other house
+        distance: distance to closest house.
+        
     """
 
     # Set distance to max

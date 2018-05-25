@@ -7,7 +7,20 @@ import helpers.findclosesthouse as fch
 import numpy as np
 
 def findCoordinates(plan, house):
-    """ Finds the best coordinate to place the house. """
+    """ Finds the best coordinate to place the house. 
+
+    Arg1: 
+        plan: current floorplan.
+
+    Arg2:
+        house: house to check for overlap.
+
+    Return:
+        bestX: best x-coordinate
+        bestY: best y-coordinate
+        distance: distance to closest house.
+
+    """
     
     bestX, bestY = 0, 0
     distance = 0
@@ -37,6 +50,13 @@ def findCoordinates(plan, house):
 def removeCoordinates(plan, house):
     """ All coordinates that are unavailable because of the house, are removed 
     from the list of coordinates.
+
+    Arg1: 
+        plan: current floorplan.
+
+    Arg2:
+        house: house to check for overlap.
+
     """
     
     for x in np.arange(house.x1 - house.freeSpace - plan.smallestLength + 1, house.x2 + house.freeSpace, 0.5):

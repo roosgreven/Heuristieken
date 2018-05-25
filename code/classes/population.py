@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue May 15 16:29:16 2018
+Created on 15 May 2018
 
 Contains a class with floorplans in it.
 """
@@ -26,7 +26,12 @@ class Population:
         self.gBest = FloorPlan(houseNumber)
         
     def makeRandomPopulation(self, houseNumber):
-        """ Fills the floorplans using the random algorithm. """
+        """ Fills the floorplans using the random algorithm. 
+
+            Arg1:
+                houseNumber: number of houses.
+
+        """
         
         for i in range(self.planNumber):
             
@@ -38,7 +43,9 @@ class Population:
             
     def checkForPAndGBest(self):
         """ Check if the current population contains a new best floorplan and
-        saves it if it does. """
+        saves it if it does. 
+
+        """
         
         gBestValue = self.gBest.getValue()
         

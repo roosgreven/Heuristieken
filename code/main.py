@@ -12,7 +12,7 @@ from classes.floorplan import FloorPlan
 from classes.population import Population
 
 def main():
-    """Performs desired algorithm for desired number of houses, handles output
+    """ Performs desired algorithm for desired number of houses, handles output
     and saves best outcome.
 
     """
