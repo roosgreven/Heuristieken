@@ -11,12 +11,14 @@ and direct it to the best possible solution.
 import random
 
 def particleSwarm(population):
+def particleSwarm(population, iterations):
     """ Performs the algorithm. """
     
     # weighing factors for pBest and gBest
     c1, c2 = 0.0005, 0.0005
     
     for i in range(500):
+    for i in range(iterations):
         
         # The current overall best and all personal bests are updated
         population.checkForPAndGBest()

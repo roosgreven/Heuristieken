@@ -37,6 +37,7 @@ def main():
         plan = FloorPlan(numberOfHouses)
 
         top.saveAndShow("greedy", plan)
+        top.saveAndShow("greedy", plan, None)
 
     # Run random, save and show result
     elif sys.argv[1] == "random":
@@ -44,6 +45,7 @@ def main():
         plan = FloorPlan(numberOfHouses)
 
         top.saveAndShow("randomAlgorithm", plan)
+        top.saveAndShow("randomAlgorithm", plan, None)
 
     # Run hill climber, save and show result
     elif sys.argv[1] == "hillclimber":
@@ -74,7 +76,11 @@ def main():
 
         population.makeRandomPopulation(numberOfHouses)
 
+<<<<<<< HEAD
         top.saveAndShowPopulation("particleSwarm", population, iterations)
+=======
+        top.saveAndShowPopulation("particleSwarm", population, int(sys.argv[3]))
+>>>>>>> 712e3686d62a8571b7fc4649bf5836af4d9f7613
 
     # Run experiment with random, so perform algorithm 5000 times and save in csv
     elif sys.argv[1] == "randomExperiment":
