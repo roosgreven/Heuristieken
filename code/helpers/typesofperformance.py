@@ -24,8 +24,8 @@ def saveAndShow(algorithmType, plan, iterations):
         plan: current floorplan
     
     Arg3:
-        iterations: number of iterations to perform, int
-        
+        iterations: number of iterations to perform, integer
+
     """
 
     algorithm = globals()[algorithmType]
@@ -72,7 +72,7 @@ def saveAndShowPopulation(algorithmType, population, iterations):
         population: population used. 
 
     Arg3: 
-        iterations: number of iterations to perform, int.
+        iterations: number of iterations to perform, integer
     """
 
     algorithm = globals()[algorithmType]
@@ -106,6 +106,22 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName,
     """ Performs an algorithm of algorithmType a numberOfIterations amount of
     iterations.  Does this for the variant of numberOfHouses.  Prints the
     average value of the plan and visualizes the best and worst plan.
+
+    Arg1:
+        algorithmType: type of algorithm performed, string
+
+    Arg2: 
+        numberOfHouses: number of houses in floorplan, integer
+
+    Arg3:
+        numberOfIterations: number of iterations to perform, integer
+
+    Arg4: 
+        AlgorithmName: name of algorithm performed
+
+    Arg5:
+        iterations: iterations for hillclimber, integer
+
     """
 
     algorithm = globals()[algorithmType]
