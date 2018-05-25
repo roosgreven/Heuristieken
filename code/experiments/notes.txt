@@ -1,21 +1,33 @@
 Experiments
-Now running:
-	Hillclimber
-		50-25-25: 20, 40 and 60, 100x
-		100-0-0: 20, 40 and 60, 100x
 
 Done:
+	Random
+	Greedy
+
+	Hillclimber 
+		50-25-25:	20 (max: 12706615.86, avg: 11944732.57)
+		100-0-0: 	20 (max: 12664943.65, avg: 11967553.26)
+					40 (max: 20192279.72, avg: 19362315.12)
+		33-33-33: 	20 (max: 12735608.62, avg: 11967395.07)
+					40 (max: 20299938.23, avg: 19319321.80)
+
+Now running:
+	Hillclimber
+		100-0-0: 60, 100x (Roos)
+		33-33-33: 40 and 60, 100x (Jitse)
+		60-20-20: 20, 40 and 60, 100x (Jitse)
+
 
 Still to do:
 	Hillclimber
-		50-25-25: 20, 40 and 60, 400x
+		50-25-25: 20, 40 and 60, 500x
 		100-0-0: 20, 40 and 60, 400x
-		33-33-33: 20, 40 and 60 500x
+		33-33-33: 20, 40 and 60, 400x
 
-		with best percentage 
+		with best percentage: 
 		iterations from 0 to 6000
 	Simulated annealing
 		with best percentages from hillclimber
 		temp 3000, cooling rate 0.95
-		temp 2000, cooling
+		temp 2000, cooling rate
 

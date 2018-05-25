@@ -42,9 +42,6 @@ def hillClimber(plan):
     # Initiate cooling rate for simulated annealing
     coolingRate = 0.95
 
-    # Initiate counter
-    i = 0
-
     for i in range(iterations):
 
         # Get value of plan as it is now
