@@ -35,7 +35,7 @@ def randomAlgorithm(plan):
         j += 1
 
         # Check if there's overlap, if not, add house to array
-        if con.checkIfPossible(house, plan):
+        if con.checkIfPossible(randomHouse, plan):
                 
             # Add randomly placed house
             plan.houses.append(randomHouse)

@@ -82,14 +82,14 @@ def main():
     elif sys.argv[1] == "randomExperiment":
 
         numberOfIterations = 5000
-        top.experiment("randomAlgorithm", numberOfHouses, numberOfIterations, "randomAlgorithm")
+        top.experiment("randomAlgorithm", numberOfHouses, numberOfIterations, "randomAlgorithm", None)
 
     # Run experiment with greedy, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "greedyExperiment":
 
         numberOfIterations = 1000
 
-        top.experiment("greedy", numberOfHouses, numberOfIterations, "greedy")
+        top.experiment("greedy", numberOfHouses, numberOfIterations, "greedy", None)
 
     # Run experiment with hill climber, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "hillclimberExperiment":
@@ -101,7 +101,7 @@ def main():
     # Run experiment with simulated annealing, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "simulatedannealingExperiment":
 
-        numberOfIterations = 1000
+        numberOfIterations = 10
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing", iterations)
     

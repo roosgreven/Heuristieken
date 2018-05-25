@@ -21,6 +21,8 @@ def saveAndShow(algorithmType, plan, iterations):
     algorithm = globals()[algorithmType]
 
     if algorithmType == "hillClimber":
+        
+        plan.showFloorplan()
 
         plan = algorithm(plan, iterations)
 

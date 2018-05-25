@@ -55,7 +55,7 @@ def checkIfStay(house, plan, oldValue, temp):
         if checkIfAccepted(newValue, oldValue, temp):
             
             return True
-
+    
     # Move was not accepted
     return False
 
@@ -79,23 +79,22 @@ def move(house):
     
     return oldx1, oldy1
 
-def houseMove(houseToBeMoved, plan, oldValue, temp):
+def houseMove(house, plan, oldValue, temp):
     """ First checks the value of the plan as it is. Then, moves a house in a
         random direction, using a distance between 0.0 and 1.0.
         The function checks whether the house move is viable.
         After the move has been made, it compares the plan value of the old
         situation and the new situation.
         The house will be moved back to its old position if the value has decreased. """
-
-    # Save current coordinates
-    oldx1, oldy1 = move(houseToBeMoved)
-
-    # Check if the house will stay in it's current position
-    if not checkIfStay(houseToBeMoved, plan, oldValue, temp):
-        
-        houseToBeMoved.coordinates(oldx1, oldy1)
     
-
+    # Save current coordinates
+    oldx1, oldy1 = move(house)
+    
+    # Check if the house will stay in it's current position
+    if not checkIfStay(house, plan, oldValue, temp):
+        
+        house.coordinates(oldx1, oldy1)
+    
 def swap(house1, house2):
     """ Swaps the lower left coordinates of two houses. """
 
@@ -105,24 +104,22 @@ def swap(house1, house2):
     house2.coordinates(house1.x1, house1.y1)
     house1.coordinates(tempX, tempY)
 
-def swapCheck(house1, house2, plan, oldValue, simulatedAnnealing, temp):
+def swapCheck(house1, house2, plan, oldValue, temp):
     """ Checks if swap was viable for both houses and whether
         plan value was improved or the same. If not, houses are set back to
         old positions. """
 
     # Check if the houses will stay in their current position
-    if not (con.checkIfStay(house1, plan, oldValue, temp) and con.checkIfStay(house2, plan, oldValue, temp)):
+    if not (checkIfStay(house1, plan, oldValue, temp) and checkIfStay(house2, plan, oldValue, temp)):
         
         # Swap house back if not
         swap(house2, house1)
 
-
-def rotateHouse(house, plan, oldValue, simulatedAnnealing, temp):
-
+def rotateHouse(house, plan, oldValue, temp):
+    
     # Rotate house
     house.rotate()
-
+    
     # Check if the house will stay in it's current position
     if not checkIfStay(house, plan, oldValue, temp):
-        
         house.rotate()

@@ -24,16 +24,12 @@ def hillClimber(plan, iterations):
         function will also accept a decrease in value of the plan with a certain
         probability. """
 
-    print(iterations)
-
-    # initiate simulatedAnnealing boolean
-    simulatedAnnealing = True
-
+    # Checks if the algorithm is simulated annealing or hill climber, simulated
+    # annealing gets a temperature, hill climber temperature is set to zero
     if sys.argv[1] == "simulatedannealing" or sys.argv[1] == "simulatedannealingExperiment":
-        simulatedAnnealing = True
         temp = 50000.
+        
     else:
-        simulatedAnnealing = False
         temp = 0.
 
     # Initiate cooling rate for simulated annealing
@@ -43,63 +39,45 @@ def hillClimber(plan, iterations):
 
         # Get value of plan as it is now
         oldValue = plan.getValue()
+        
+        # Select house that will undergo change
+        index = imp.randomHouse(plan.houses)
 
         # Random number between 0 and 1, rounded to 2 decimals
         whichMove = round(random.random(), 2)
 
-        # 50% chance that it is a coordinate change of a single house
+        # A house will change coordinates
         if whichMove <= 0.6:
-
-            # Select random house in houses array of current plan
-            index = imp.randomHouse(plan.houses)
-
+            
             # Move a house in random direction with houseMove function
             imp.houseMove(plan.houses[index], plan, oldValue, temp)
 
-            # Decrease temperature in case of simulated annealing
-            if simulatedAnnealing == True:
-               
-                temp *= coolingRate
-
-        # 25% chance that the move is a swap of two houses
+        # Two houses will swap position
         elif whichMove <= 0.8:
-
-            # Select random house in houses array of current plan as index 1
-            index1 = imp.randomHouse(plan.houses)
-
-            # Select random house in houses array of current plan as index 2
+            
+            # Select additional house to be swapped
             index2 = imp.randomHouse(plan.houses)
 
-            # While house indexes are the same
-            while(index1 == index2):
+            # Can't risk swapping a house with itself
+            while(index == index2):
 
                 # Call random house function for new index2
                 index2 = imp.randomHouse(plan.houses)
 
 
             # Call swap function that swaps two houses
-            imp.swap(plan.houses[index1], plan.houses[index2])
+            imp.swap(plan.houses[index], plan.houses[index2])
 
             # Check if swap was viable, if not, this function sets houses back
-            imp.swapCheck(plan.houses[index1], plan.houses[index2], plan, oldValue, temp)
- 
-            # Decrease temperature in case of simulated annealing
-            if simulatedAnnealing == True:
-               
-                temp *= coolingRate
+            imp.swapCheck(plan.houses[index], plan.houses[index2], plan, oldValue, temp)
 
-        # 25% chance that the move is a rotation of a single house
+        # A house will be rotated 90 degrees
         else:
-
-            # Select random house in houses array of current plan
-            index = imp.randomHouse(plan.houses)
-
+            
             # Rotate house if possible
             imp.rotateHouse(plan.houses[index], plan, oldValue, temp)
-            
-            # Decrease temperature in case of simulated annealing
-            if simulatedAnnealing == True:
-               
-                temp *= coolingRate
-
+        
+        # Decrease temperature
+        temp *= coolingRate
+        
     return plan
