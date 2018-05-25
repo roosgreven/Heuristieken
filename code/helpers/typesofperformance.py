@@ -20,8 +20,10 @@ def saveAndShow(algorithmType, plan, iterations):
 
     algorithm = globals()[algorithmType]
 
+    # Performs iterating algorithm
     if algorithmType == "hillClimber":
         
+        # Show floorplan before performing algorithm
         plan.showFloorplan()
 
         plan = algorithm(plan, iterations)
@@ -30,20 +32,20 @@ def saveAndShow(algorithmType, plan, iterations):
 
             plan = algorithm(plan, iterations)
 
-    # Perform the algorithm
+    # Perform constructive
     else: 
+        
         plan = algorithm(plan)
 
         while len(plan.houses) < plan.numberOfHouses:
 
             plan = algorithm(plan)
 
+    # Save floorplan to a csv file
     if sys.argv[1] == "simulatedannealing":
-            
         plan.saveFloorplan("simulatedannealing", len(plan.houses))
 
     else:
-        # Save floorplan to a csv file
         plan.saveFloorplan(algorithmType, len(plan.houses))
 
     # Make visualisation
@@ -55,12 +57,21 @@ def saveAndShowPopulation(algorithmType, population, iterations):
     """
 
     algorithm = globals()[algorithmType]
+    
+    # Get gBest at start
+    population.checkForPAndGBest()
+    firstGBest = population.gBest
+
+    firstGBest.showFloorplan()
 
     # Perform the algorithm
     population = algorithm(population, iterations)
+    
+    population.plans[0].showFloorplan()
 
     # If the algorithm found a better gbest, a visualisation is made
-    if population.gBest.getValue() > population.firstGBest:
+    if population.gBest.getValue() > firstGBest.getValue():
+        
         print(population.gBest.getValue())
         print(population.firstGBest)
         

@@ -20,7 +20,6 @@ class Population:
         self.plans = []
         
         self.gBest = FloorPlan(houseNumber)
-        self.firstGBest = 0
         
     def makeRandomPopulation(self, houseNumber):
         """ Fills the floorplans using the random algorithm. """

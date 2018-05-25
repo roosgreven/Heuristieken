@@ -101,7 +101,7 @@ def main():
     # Run experiment with simulated annealing, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "simulatedannealingExperiment":
 
-        numberOfIterations = 10
+        numberOfIterations = 1000
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing", iterations)
     
