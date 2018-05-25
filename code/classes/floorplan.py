@@ -13,6 +13,7 @@ import helpers.constraints as con
 import classes.houses as hs
 import classes.water as wt
 import matplotlib.pyplot as plt
+import helpers.swarmhelper as sh
 
 class FloorPlan:
     """ Has a list of houses and specifics for the neighbourhood. """
@@ -180,6 +181,29 @@ class FloorPlan:
         for house in self.houses:
             
             house.changeBest()
+            
+    def updatePlanInPopulation(self, c1, c2):
+        """ Updates a plan in a population by adjusting the speed of every
+        house and adding it to the coordinates. """
+        
+        # Each house is updated
+        for j in range(self.numberOfHouses):
+                
+            house = self.houses[j]
+                
+            bestHouse = self.gBest.houses[j]
+                
+            # The new speed is determined for each house
+            vx = house.vx + c1 * random.random() * (house.xBest - house.x1) + c2 * random.random() * (bestHouse.x1 - house.x1)
+                
+            vy = house.vy + c1 * random.random() * (house.yBest - house.y1) + c2 * random.random() * (bestHouse.y1 - house.y1)
+                    
+            # The speed is added and the coordinates updated
+            house.speed(vx, vy)
+            house.coordinates(house.x1 + vx, house.y1 + vy)
+                
+            # Check if the house still follows the constraints
+            sh.handleImpossibleMove(house, self)
         
     def saveFloorplan(self, algorithmType, numberOfHouses):
         """ Checks if the value of this Floorplan is higher than the current best value.  If so, the

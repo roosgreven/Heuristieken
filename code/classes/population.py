@@ -9,18 +9,21 @@ from algorithms.randomalgorithm import randomAlgorithm
 from classes.floorplan import FloorPlan
 import copy
 import matplotlib.pyplot as plt
+import random
+import helpers.swarmhelper as sh
 
 class Population:
     """ Has a list (a population) of floorplans. """
     
-    def __init__(self, planNumber, houseNumber):
+    def __init__(self, planNumber, houseNumber, c1, c2):
         
         self.planNumber = planNumber
+        self.c1 = c1
+        self.c2 = c2
         
         self.plans = []
         
         self.gBest = FloorPlan(houseNumber)
-        self.firstGBest = 0
         
     def makeRandomPopulation(self, houseNumber):
         """ Fills the floorplans using the random algorithm. 
@@ -64,4 +67,12 @@ class Population:
                     self.gBest = copy.deepcopy(plan)
                 
                     gBestValue = theValue
-                
+                    
+    def updatePopulation(self):
+        """ Updates each plan in a population. """
+        
+        # Each plan is updated
+        for plan in self.plans:
+            
+            plan.updatePlanInPopulation(self.c1, self.c2)
+            

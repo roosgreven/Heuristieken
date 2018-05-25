@@ -57,8 +57,8 @@ class House:
     def speed(self, vx, vy):
         """ Updates the speed of a house in the particle swarm alogrithm. """
 
-        self.vx += vx
-        self.vy += vy
+        self.vx = vx
+        self.vy = vy
 
     def changeBest(self):
         """ Updates the best found values for x1 and y1 in the particle swarm
