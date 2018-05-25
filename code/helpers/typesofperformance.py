@@ -38,7 +38,7 @@ def saveAndShow(algorithmType, plan, iterations):
 
     if sys.argv[1] == "simulatedannealing":
 
-        plan.saveFloorplan("simulatedannealing", len(plan.houses), iterations)
+        plan.saveFloorplan("simulatedannealing", len(plan.houses))
 
     else:
          # Save floorplan to a csv file
@@ -47,7 +47,7 @@ def saveAndShow(algorithmType, plan, iterations):
     # Make visualisation
     plan.showFloorplan()
 
-def saveAndShowPopulation(algorithmType, population):
+def saveAndShowPopulation(algorithmType, population, iterations):
     """ Perfroms a population based algorithm of algorithmType on the given
     plan and bot saves and shows it.
     """
@@ -55,7 +55,7 @@ def saveAndShowPopulation(algorithmType, population):
     algorithm = globals()[algorithmType]
 
     # Perform the algorithm
-    population = algorithm(population)
+    population = algorithm(population, iterations)
 
     # If the algorithm found a better gbest, a visualisation is made
     if population.gBest.getValue() > population.firstGBest:
