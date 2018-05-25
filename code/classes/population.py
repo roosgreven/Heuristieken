@@ -8,7 +8,6 @@ Contains a class with floorplans in it.
 from algorithms.randomalgorithm import randomAlgorithm
 from classes.floorplan import FloorPlan
 import copy
-import matplotlib.pyplot as plt
 import random
 import helpers.swarmhelper as sh
 
@@ -44,7 +43,6 @@ class Population:
     def checkForPAndGBest(self):
         """ Check if the current population contains a new best floorplan and
         saves it if it does. 
-
         """
         
         gBestValue = self.gBest.getValue()

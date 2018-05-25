@@ -1,15 +1,13 @@
-"""
-24 April 2018.
-
-Calculates the shortest distance between two houses. To do this, it is first
-determined between which walls or whichs corners the shortest distance is
-located.
-"""
-
 def shortest(house1, house2):
-    """ Takes in two houses and determines where and what the shortest distance
-    between them is.
-    """
+    """ Function that calculates the shortest distance between two houses. 
+
+        Args: 
+            house1, house 2: the houses between which the distance has to be
+            calculated. 
+        
+        Returns:
+            distance between the two houses. Negative if the houses are inside
+        eachother. """
     
     # x coordinate 1 of house 1
     x1h1 = house1.x1

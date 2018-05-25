@@ -1,14 +1,9 @@
-
-"""
-Checks if system arguments were correct.
-
-Calls:
-	main, if system arguments are correct.
-"""
-
 import sys
 
 def sysArguments():
+    """ Function that checks if the right type and right amount of arguments
+        are given.
+        """
 	    
     # If not enough command arguments were provided
     if len(sys.argv) != 3:
