@@ -76,11 +76,7 @@ def main():
 
         population.makeRandomPopulation(numberOfHouses)
 
-<<<<<<< HEAD
         top.saveAndShowPopulation("particleSwarm", population, iterations)
-=======
-        top.saveAndShowPopulation("particleSwarm", population, int(sys.argv[3]))
->>>>>>> 712e3686d62a8571b7fc4649bf5836af4d9f7613
 
     # Run experiment with random, so perform algorithm 5000 times and save in csv
     elif sys.argv[1] == "randomExperiment":

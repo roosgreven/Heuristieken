@@ -37,10 +37,11 @@ def saveAndShow(algorithmType, plan, iterations):
             plan = algorithm(plan)
 
     if sys.argv[1] == "simulatedannealing":
-
+            
+        plan.saveFloorplan("simulatedannealing", len(plan.houses))
 
     else:
-         # Save floorplan to a csv file
+        # Save floorplan to a csv file
         plan.saveFloorplan(algorithmType, len(plan.houses))
 
     # Make visualisation
