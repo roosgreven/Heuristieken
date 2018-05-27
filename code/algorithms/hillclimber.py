@@ -76,5 +76,5 @@ def hillClimber(plan, iterations):
         
         # Decrease temperature
         temp *= coolingRate
-        
+    
     return plan

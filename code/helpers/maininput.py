@@ -8,7 +8,7 @@ def sysArguments():
     # If not enough command arguments were provided
     if len(sys.argv) != 3:
         
-        if sys.argv[1] != "hillclimber" and sys.argv[1] != "simulatedannealing" and sys.argv[1] != "particleswarm" and sys.argv[1] != "hillclimberExperiment" and sys.argv[1] != "simulatedannealingExperiment":
+        if sys.argv[1] != "hillclimber" and sys.argv[1] != "simulatedannealing" and sys.argv[1] != "particleswarm" and sys.argv[1] != "hillclimberExperiment" and sys.argv[1] != "simulatedannealingExperiment" and sys.argv[1] != "particleswarmExperiment":
             print("Error: usage of program should be: filename function numberOfHouses")
 
             exit(1)
