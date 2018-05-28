@@ -21,6 +21,8 @@ def hillClimber(plan, iterations):
             iterations: number of iterations to perform
     """
 
+    print("hillclimberiteration: ", iterations)
+
     # Checks if the algorithm is simulated annealing or hill climber, simulated
     # annealing gets a temperature, hill climber temperature is set to zero
 
@@ -78,5 +80,5 @@ def hillClimber(plan, iterations):
         
         # Decrease temperature
         temp *= coolingRate
-        
+    
     return plan

@@ -105,3 +105,4 @@ ENV/
 
 # DS Store
 .DS_Store
+code/results/allBests.csv

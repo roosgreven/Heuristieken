@@ -9,6 +9,7 @@ from algorithms.greedy import greedy
 from algorithms.hillclimber import hillClimber
 from algorithms.particleswarm import particleSwarm
 from classes.floorplan import FloorPlan
+from classes.population import Population
 import experiments.convertToJSON as converter
 import csv
 import sys
@@ -171,4 +172,70 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName,
         # Write the changed values
         writer.writerows(experimentInfo)
 
+<<<<<<< HEAD
     #converter.convert(algorithmName, numberOfIterations, numberOfHouses)
+=======
+    converter.convert(algorithmName, numberOfIterations, numberOfHouses)
+    
+def swarmExperiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName, iterations):
+    """ Performs an algorithm of algorithmType a numberOfIterations amount of
+    iterations.  Does this for the variant of numberOfHouses.  Saves the value
+    of each plan.
+
+    Arg1:
+        algorithmType: type of algorithm performed, string
+
+    Arg2: 
+        numberOfHouses: number of houses in floorplan, integer
+
+    Arg3:
+        numberOfIterations: number of iterations to perform, integer
+
+    Arg4: 
+        AlgorithmName: name of algorithm performed
+
+    Arg5:
+        iterations: iterations for hillclimber, integer
+
+    """
+
+    algorithm = globals()[algorithmType]
+
+    experimentInfo = []
+
+    # Perform the algorithm numberOfIterations amount of times
+    for i in range(numberOfIterations):
+
+        planNumber = 100
+        c1, c2 = 0.005, 0.0005
+
+        population = Population(planNumber, numberOfHouses, c1, c2)
+
+        population.makeRandomPopulation(numberOfHouses)
+        
+        # Get gBest at start
+        population.checkForPAndGBest()
+        firstGBest = population.gBest
+        
+        # Perform the algorithm
+        population = algorithm(population, iterations)
+
+        # Save the plan value
+        firstValue = firstGBest.getValue()
+        value = population.gBest.getValue()
+
+        population.gBest.saveFloorplan(algorithmType, numberOfHouses)
+
+        experimentInfo.append([i + 1, firstValue, value])
+
+        print("Iteration: ", i + 1)
+
+    # Write all values to csv file to use for visualisation
+    with open("code/experiments/" + algorithmName + "_" + str(numberOfIterations) +  "_" 
+        + str(numberOfHouses) + ".csv", "w", newline = "") as myFile:
+        
+        writer = csv.writer(myFile)
+
+        # Write the changed values
+        writer.writerows(experimentInfo)
+>>>>>>> b7b140a98dda8cffc9ac6c1b2c5831ff4e60f714

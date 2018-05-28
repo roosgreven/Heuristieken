@@ -88,16 +88,31 @@ def main():
     # Run experiment with hill climber, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "hillclimberExperiment":
 
+<<<<<<< HEAD
         numberOfIterations = 600
+=======
+        numberOfIterations = 201
+>>>>>>> b7b140a98dda8cffc9ac6c1b2c5831ff4e60f714
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "hillClimber", int(sys.argv[3]))
 
     # Run experiment with simulated annealing, so perform algorithm 1000 times and save in csv
     elif sys.argv[1] == "simulatedannealingExperiment":
 
+<<<<<<< HEAD
         numberOfIterations = 600
+=======
+        numberOfIterations = 500
+>>>>>>> b7b140a98dda8cffc9ac6c1b2c5831ff4e60f714
 
         top.experiment("hillClimber", numberOfHouses, numberOfIterations, "simulatedannealing", int(sys.argv[3]))
+        
+    # Run experiment with simulated annealing, so perform algorithm 1000 times and save in csv
+    elif sys.argv[1] == "particleswarmExperiment":
+
+        numberOfIterations = 500
+
+        top.swarmExperiment("particleSwarm", numberOfHouses, numberOfIterations, "particleSwarm", int(sys.argv[3]))
     
     else:
         
