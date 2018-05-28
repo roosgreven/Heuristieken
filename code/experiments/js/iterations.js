@@ -145,7 +145,7 @@ function createPlot(titleName, numberOfHouses) {
 				.attr("y", -100)
 				.attr("x", - height + (height / 2.5))
 				.style("font", "18px sans-serif")
-				.text("Value in \u20ac");
+				.text("Value in millions \u20ac");
 
 		// add group elements to the chart for the lines
 		var series = chart.selectAll(".series")

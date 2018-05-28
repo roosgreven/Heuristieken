@@ -199,7 +199,7 @@ function createPlot(titleName, numberOfHouses) {
 			.attr("x", width / 2.5)
 			.attr("y", height + margin.bottom / 1.5)
 			.style("font", "18px sans-serif")
-			.text("Value in millions");
+			.text("Value in millions \u20ac");
 			
 		// draw y axis with numbers, tick marks and name y axis
 		chart.append("g")

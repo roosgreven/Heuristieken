@@ -22,7 +22,7 @@
                             <ul class="nav navbar-nav">
                             	<li><a href="index.html">General comparison</a></li>
                                 <li><a href="hillclimberPercentages.html">Hillclimber percentages</a></li>
-                                <li><a href="iterations.html">Hillclimber iterations</a></li>
+                                <li><a href="iterations.html">Number of Iterations</a></li>
                                 <li><a href="simulatedannealing.html">Simulated annealing variations</a></li>
                                 <li><a href="water.html">Water experiments</a></li>
                             </ul>
@@ -41,15 +41,19 @@
 						<span class = "caret"></span>
 					</button>
 					<ul class = "dropdown-menu">
-						<li onclick = "createPlot('20 houses, 1000 iterations, Random, Greedy and Hillclimber', '20')"><a href = "#">20 houses</a></li>
-						<li  onclick = "createPlot('40 houses, 1000 iterations, Random, Greedy and Hillclimber', '40')"><a href = "#">40 houses</a></li>
-						<li  onclick = "createPlot('60 houses, 1000 iterations, Random, Greedy and Hillclimber', '60')"><a href = "#">60 houses</a></li>
+						<li onclick = "createPlot('20 houses', '20')"><a href = "#">20 houses</a></li>
+						<li  onclick = "createPlot('40 houses', '40')"><a href = "#">40 houses</a></li>
+						<li  onclick = "createPlot('60 houses', '60')"><a href = "#">60 houses</a></li>
 						
 					</ul>
 				</div> 
 				<div id = "graphTitle"></div>
 				<svg class = "chart"></svg>
 			</div>
+
+			<div id = "img">
+			</div>
+			
 		</div>
 
 	</body>

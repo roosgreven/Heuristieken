@@ -154,6 +154,10 @@ function createPlot(titleName, numberOfHouses) {
 		// add the title of the graph
 		document.getElementById("graphTitle").innerHTML = "<h2><b>" + titleName + "</b>";
 
+		// add image of the best value
+		document.getElementById("img").innerHTML = "<h2>Best neigbourhood ever found, found with formula temp_i = temp_i - 1 * coolingrate</h2>"
+		+ "<img src = '../images/simulatedannealing" + String(numberOfHouses) + ".jpg'>";
+
 		// call the function to draw the bar chart
 		drawBarChart(dataArray, valueRanges);
 	});
@@ -202,7 +206,7 @@ function createPlot(titleName, numberOfHouses) {
 			.attr("x", width / 2.5)
 			.attr("y", height + margin.bottom / 1.5)
 			.style("font", "18px sans-serif")
-			.text("Value in millions");
+			.text("Value in millions \u20ac");
 			
 		// draw y axis with numbers, tick marks and name y axis
 		chart.append("g")
