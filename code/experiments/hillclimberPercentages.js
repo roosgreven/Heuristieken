@@ -17,7 +17,7 @@ function createPlot(titleName, numberOfHouses) {
 	d3.select("#chart").append("svg").attr("class", "chart")
 
 	// set margins, width and height
-	var margin = {top: 50, right: 30, bottom: 170, left: 80},
+	var margin = {top: 50, right: 200, bottom: 170, left: 80},
 		width = 800 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
 
@@ -259,10 +259,10 @@ function createPlot(titleName, numberOfHouses) {
 
 		// add an svg for the legend
 		var theLegend = chart.append("svg")
-			.attr("width", width)
+			.attr("width", width + 250)
 			.attr("height", height)
 			.append("g")
-				.attr("transform", "translate(50, 50)");
+				.attr("transform", "translate(" + width + ", 50)");
 
 		// add space for legend and set it at the right spot
 		var legend = theLegend.selectAll(".legend")

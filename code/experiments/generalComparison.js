@@ -12,7 +12,7 @@ function createPlot(titleName, numberOfHouses) {
 	d3.select("#chart").append("svg").attr("class", "chart")
 
 	// set margins, width and height
-	var margin = {top: 50, right: 30, bottom: 170, left: 80},
+	var margin = {top: 50, right: 200, bottom: 170, left: 80},
 		width = 800 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
 
@@ -130,8 +130,26 @@ function createPlot(titleName, numberOfHouses) {
 			// loop over all values in algorithms
 			Object.keys(counts[key]).forEach(function(d) {
 
-				// convert frequencies to percentages
-				counts[key][d] = parseFloat((counts[key][d] / 10).toFixed(1));
+				if (key == "Random") {
+
+					// convert frequencies to percentages
+					counts[key][d] = parseFloat((counts[key][d] / 50).toFixed(1));
+				}
+				else if (key == "Greedy") {
+
+					// convert frequencies to percentages
+					counts[key][d] = parseFloat((counts[key][d] / 12).toFixed(1));
+				}
+				else if (key == "Particle Swarm") {
+
+					// convert frequencies to percentages
+					counts[key][d] = parseFloat(counts[key][d].toFixed(1));
+				}
+				else {
+
+					// convert frequencies to percentages
+					counts[key][d] = parseFloat((counts[key][d] / 10).toFixed(1));
+				}
 
 				// add range and percentage as object to an array
 				thisArray.push({"range": d, "percentage": counts[key][d]});
@@ -160,8 +178,6 @@ function createPlot(titleName, numberOfHouses) {
 
 	*/
 	function drawBarChart(data, valueRanges) {
-
-		console.log(data)
 
 		// set domains of x and y scalers
 		x.domain(valueRanges);
@@ -250,10 +266,10 @@ function createPlot(titleName, numberOfHouses) {
 
 		// add an svg for the legend
 		var theLegend = chart.append("svg")
-			.attr("width", width)
+			.attr("width", width + 250)
 			.attr("height", height)
 			.append("g")
-				.attr("transform", "translate(50, 50)");
+				.attr("transform", "translate(" + width + ", 70)");
 
 		// add space for legend and set it at the right spot
 		var legend = theLegend.selectAll(".legend")
