@@ -6,6 +6,8 @@ Wij hebben er in onze case voor gekozen om altijd vier waters met een vaste vorm
 - 4 waters van 40x36
 Alle waarden die uit de runs kwamen zijn weergegeven in een bar chart.
 
+Het resultaat is hier te zien: https://roosgreven.github.io/Heuristieken/code/experiments/html/water.html
+
 ## Resultaat
 In de bar chart is te zien dat alle uitkomsten erg dicht bij elkaar liggen. Het lijkt dus niet veel uit te maken hoeveel waters er op de kaart liggen. Wat wel opvalt, is dat de waarde voor een hoger aantal waters, toch net iets hoger ligt dan die voor een lager aantal waters. Maar dit is niet duidelijk genoeg om een eenduidige conclusie te trekken, daarvoor zal er meer geëxperimenteerd moeten worden. 
 Maar aangezien het er toch op lijkt dat het aantal water niet veel uitmaakt, is het misschien interessanter om te onderzoeken wat voor invloed de vorm van het water heeft. De waters waarmee dit experiment is uitgevoerd waren allemaal vrij vierkant, misschien dat wat plattere rechthoeken een betere waarde opleveren?
