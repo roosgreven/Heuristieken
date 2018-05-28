@@ -3,37 +3,17 @@ Name: Roos Greven
 Stylesheet 
 */
 
-#leftChart {
-	width: 550px;
+#chart {
 	float: left;
 }
 
-.dropdown-left {
-	float: left;
+.dropdown{
 	width: 500px;
 	margin-left: 45px;
 }
 
-#graphTitleleft {
-	float: left;
-	margin-left: 60px;
-}
-
-#rightChart {
-	float: right;
-	margin-right: 100px;
-	width: 550px;
-}
-
-.dropdown-right {
-	display: inline-block;
-	float: right;
-	margin-right: 400px;
-}
-
-#graphTitleright {
-	float: left;
-	margin-left: 60px;
+#graphTitle {
+	margin-left: 175px;
 }
 
 h1 {

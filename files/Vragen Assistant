@@ -91,14 +91,11 @@ Documenteren van een experiment:
   Bijvoorbeeld random 1000x runnen en dan resultaten bespreken
 Constraints case weghalen om te kijken of het interessanter wordt, zoals huisverdeling maison, bungalow, eengezinswoning.
  
-
-Hillclimber opschonen --> Nathalie
-Docstrings aanpassen --> Roos (wat wordt meegegeven en wat wordt de output)
-Hillclimber iteraties meegeven --> Done
-In Greedy: The coordinates that are impossible then get removed form the list.  Still needs a way to check if no house is in another houses mandatory freespace.
-README (meer to the point, minder verhalend. Python 3.6 is 3.6.6. HTML en visualisaties) --> Roos
-Requirements (lijstje met alle modules en welke versies (pip freeze)) --> Roos
-Particle Swarm --> Nathalie
+Extra iteraties in bar chart
+Linechart voor hillclimber en simulated annealing, elke huizenvariant
+Particle swarm en sim annealing in general comparison
+Grafiek voor simulated annealing
+Grafiekjes voor water variatie
 
 Presentatie:
 Onszelf voorstellen

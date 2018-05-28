@@ -23,6 +23,8 @@ def hillClimber(plan, iterations):
 
     # Checks if the algorithm is simulated annealing or hill climber, simulated
     # annealing gets a temperature, hill climber temperature is set to zero
+
+    print("Hillclimberiterations: ", iterations)
     if sys.argv[1] == "simulatedannealing" or sys.argv[1] == "simulatedannealingExperiment":
         temp = 50000.
         

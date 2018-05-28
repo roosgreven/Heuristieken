@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src = "https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src = "simulatedannealing.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel = "stylesheet" type = "text/css" href = "generalStyle.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>Amstelhaege experiments</title>
+	</head>
+
+	<body>
+		<div class = "container">
+			<nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        
+                        <a class="navbar-brand" href="barchart.html">Amstelhaege</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar">
+                            <ul class="nav navbar-nav">
+                            	<li><a href="index.html">General comparison</a></li>
+                                <li><a href="hillclimberPercentages.html">Hillclimber percentages</a></li>
+                                <li><a href="iterations.html">Hillclimber iterations</a></li>
+                                <li><a href="simulatedannealing.html">Simulated annealing variations</a></li>
+                            </ul>
+
+                    </div>
+                </div>
+            </nav>
+
+			<h1 class = "header">Compare variations in percentages of moving, rotating or swapping houses in hillclimber algorithm</h1>
+
+			<h2>Jitse Schol, Nathalie van Sterkenburg, Roos Greven, Amstelhaege</h2>
+			<div id = chart> 
+				<div class = "dropdown">
+					<button class = "btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+						Choose experiment 
+						<span class = "caret"></span>
+					</button>
+					<ul class = "dropdown-menu">
+						<li onclick = "createPlot('20 houses, 1000 iterations', '20')"><a href = "#">20 houses</a></li>
+						<li  onclick = "createPlot('40 houses, 1000 iterations', '40')"><a href = "#">40 houses</a></li>
+						<li  onclick = "createPlot('60 houses, 1000 iterations','60')"><a href = "#">60 houses</a></li>
+						
+					</ul>
+				</div> 
+				<div id = "graphTitle"></div>
+				<svg class = "chart"></svg>
+			</div>
+		</div>
+
+	</body>
+
+</html>s

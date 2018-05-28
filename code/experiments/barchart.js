@@ -69,7 +69,7 @@ function createPlot(algorithmToCompare, side, titleName) {
 
 	    // set correct domains of x and y scaler
 		x.domain(data.map(function(d) { return d.range }));
-		y.domain([0, 35]);
+		y.domain([0, 45]);
 			
 		// draw x axis with value ranges and tick marks
 		chart.append("g")
@@ -87,7 +87,7 @@ function createPlot(algorithmToCompare, side, titleName) {
 			.attr("x", width / 2.5)
 			.attr("y", height + margin.bottom / 1.05)
 			.style("font", "18px sans-serif")
-			.text("Values");
+			.text("Value in millions");
 			
 		// draw y axis with numbers, tick marks and name y axis
 		chart.append("g")

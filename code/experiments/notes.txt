@@ -5,34 +5,43 @@ Done:
 	Greedy
 
 	Hillclimber 
-		50-25-25:	20 (max: 12706615.86, avg: 11944732.57) 100x
-		100-0-0: 	20 (max: 12664943.65, avg: 11967553.26) 100x
-					40 (max: 20192279.72, avg: 19362315.12) 100x
-					60 (max: 26778885.34, avg: 25981540.87) 100x
-		33-33-33: 	20 (max: 12735608.62, avg: 11967395.07) 100x
-					40 (max: 20299938.23, avg: 19319321.80) 100x
-					60 (max: 26562825.93, avg: 26000711.17) 100x
-		60-20-20:	20 (max: 12698962.42, avg: 11942803.46) 100x
-					40 (max: 20486542.51, avg: 19441488.33) 100x
-					60 (max: 26684187.39, avg: 25968085.57) 100x
+		50-25-25:	20 (max: 12706615.86, avg: 11944732.57) 1000x	in one file
+					40 1000x	in one file
+					60 500x
+		100-0-0: 	20 (max: 12664943.65, avg: 11967553.26) 1000x
+		in one file 40 (max: 20192279.72, avg: 19362315.12) 1000x
+					60 (max: 26778885.34, avg: 25981540.87) 1000x
+		33-33-33: 	20 (max: 12735608.62, avg: 11967395.07) 1000x
+					40 (max: 20299938.23, avg: 19319321.80) 1000x
+					60 (max: 26562825.93, avg: 26000711.17) 1000x
+		60-20-20:	20 (max: 12858366.58, avg: 11929927.31) 1000x 
+		in one file	40 (max: 20446415.50, avg: 19322895.82) 1000x	
+					60 (max: 26684187.39, avg: 25968085.57) 1000x
 
 Now running:
 	Hillclimber
-		100-0-0: 60, 100x (Roos)
-		33-33-33: 40, 100x (Jitse)
+		60-20-20: 60, 500x (Jitse)
+
+		iterations from 0 to 6000: 
+			20 houses done
+			40 Roos
+			To do: 	60 --> Jitse
+					20, 40 and 60
+	Simulated annealing
+		iterations from 0 to 6000:
+			40 houses Jip
+			60 houses Jip
+			To do: 20, 20, 40 and 60
 
 
 Still to do:
 	Hillclimber
-		50-25-25: 20, 40 and 60, 500x
-		100-0-0: 20, 40 and 60, 400x
-		33-33-33: 20, 40 and 60, 400x
 
 		with best percentage: 
 		iterations from 0 to 6000
 	
 	Simulated annealing
-		with best percentages from hillclimber
-		temp 3000, cooling rate 0.95
-		temp 2000, cooling rate
+		with best percentages from hillclimber: 60-20-20
+		Nathalie
+		
 

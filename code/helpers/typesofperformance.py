@@ -137,13 +137,13 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName,
 
             plan = randomAlgorithm(plan)
 
-            plan = algorithm(plan, iterations)
+            plan = algorithm(plan, i + i * 9)
 
             while len(plan.houses) < numberOfHouses:
 
                 plan = randomAlgorithm(plan)
 
-                plan = algorithm(plan, iterations)
+                plan = algorithm(plan, i + i * 9)
 
         else: 
 
@@ -163,7 +163,7 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName,
         print("Iteration: ", i + 1)
 
     # Write all values to csv file to use for visualisation
-    with open("code/experiments/" + algorithmName + "_" + str(numberOfIterations) +  "_" 
+    with open("experiments/" + algorithmName + "_" + str(numberOfIterations) +  "_" 
         + str(numberOfHouses) + ".csv", "w", newline = "") as myFile:
         
         writer = csv.writer(myFile)
@@ -171,4 +171,4 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName,
         # Write the changed values
         writer.writerows(experimentInfo)
 
-    converter.convert(algorithmName, numberOfIterations, numberOfHouses)
+    #converter.convert(algorithmName, numberOfIterations, numberOfHouses)
