@@ -47,7 +47,8 @@ function createPlot(titleName, numberOfHouses) {
 		.orient("left");
 
 	// load the data 
-	d3.json("../data/generalComparison/20houses.json", function(error, data) {
+	d3.json('../data/generalComparison/' + String(numberOfHouses) + 
+		"houses" + ".json", function(error, data) {
 
 		// alert if there is an error and return to stop the script
 		if (error) {

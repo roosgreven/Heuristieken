@@ -61,7 +61,7 @@ function createPlot(titleName, numberOfHouses) {
 		.orient("left");
 
 	// load json data
-	d3.json(String(numberOfHouses) + "_iterations" + ".json", function(error, data) {
+	d3.json("../data/iterations/" + String(numberOfHouses) + "_iterations.json", function(error, data) {
 
 		// when there is an error, throw error and stop script
 		if (error) {

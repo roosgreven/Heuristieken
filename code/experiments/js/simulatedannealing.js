@@ -52,7 +52,8 @@ function createPlot(titleName, numberOfHouses) {
 		.orient("left");
 
 	// load the data 
-	d3.json(String(numberOfHouses) + "simulatedannealing.json", function(error, data) {
+	d3.json("../data/simulatedannealing/" + String(numberOfHouses) + 
+		"simulatedannealing.json", function(error, data) {
 
 		// alert if there is an error and return to stop the script
 		if (error) {
