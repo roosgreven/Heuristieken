@@ -138,13 +138,13 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName,
 
             plan = randomAlgorithm(plan)
 
-            plan = algorithm(plan, iterations)
+            plan = algorithm(plan, i + i * 9)
 
             while len(plan.houses) < numberOfHouses:
 
                 plan = randomAlgorithm(plan)
 
-                plan = algorithm(plan, iterations)
+                plan = algorithm(plan, i + i * 9)
 
         else: 
 
