@@ -172,9 +172,6 @@ def experiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName,
         # Write the changed values
         writer.writerows(experimentInfo)
 
-<<<<<<< HEAD
-    #converter.convert(algorithmName, numberOfIterations, numberOfHouses)
-=======
     converter.convert(algorithmName, numberOfIterations, numberOfHouses)
     
 def swarmExperiment(algorithmType, numberOfHouses, numberOfIterations, algorithmName, iterations):
@@ -238,4 +235,3 @@ def swarmExperiment(algorithmType, numberOfHouses, numberOfIterations, algorithm
 
         # Write the changed values
         writer.writerows(experimentInfo)
->>>>>>> b7b140a98dda8cffc9ac6c1b2c5831ff4e60f714
