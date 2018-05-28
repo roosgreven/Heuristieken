@@ -53,7 +53,7 @@ function createPlot(titleName, numberOfHouses) {
 
 	// load the data 
 	d3.json("../data/hillclimberPercentages/" + String(numberOfHouses) + 
-		"hillClimber.json", function(error, data) {
+		"hillclimber.json", function(error, data) {
 
 		// alert if there is an error and return to stop the script
 		if (error) {

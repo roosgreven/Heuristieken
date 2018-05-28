@@ -1,5 +1,10 @@
 /* 
-
+This function sets variables for width and height, makes scalers
+	of the bar chart. Loads the data and converts the data into 
+	a more workable set.
+	Args:
+		titleName: name of the title of the graph 
+		numberOfHouses: number of houses in the neighbourhood
 */
 
 function createPlot(titleName, numberOfHouses) {

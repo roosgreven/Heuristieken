@@ -1,15 +1,11 @@
-/* 
-Name: Roos Greven
-11436700
-Homework week 5: make an interactive line graph with D3.
-*/
 
 /* 
-This function creates the plot, draws the lines, 
-makes it interactive by displaying values and drawing 
-a line and a circle and adds the legend. Takes in a year,
-which is later used to load the correct dataset. Finally
-calls a function to draw the lines.
+This function sets variables for width and height, makes scalers
+of the line chart, draws the lines
+
+Args:
+	titleName: name of the title of the graph 
+	numberOfHouses: number of houses in the neighbourhood
 */ 
 function createPlot(titleName, numberOfHouses) {
 
