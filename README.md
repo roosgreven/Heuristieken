@@ -21,7 +21,7 @@ Begint met een lijst van oplossingen en probeert de waarde voor iedere oplossing
 
 ## Visualisaties
 
-https://roosgreven.github.io/Heuristieken/code/experimenten/index.html
+https://roosgreven.github.io/Heuristieken/code/experiments/index.html
 
 # Vereisten
 De code is geschreven in Python 3.6. Alle packages die nodig zijn om de code te runnen, staat in het bestand requirements.txt
