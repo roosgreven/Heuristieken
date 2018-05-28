@@ -1,1 +1,6 @@
-het werkt niet
+# Waarom Particle Swarm Niet Werkt
+Bij het particle swarm algoritme, wordt in iedere iteratie ieder huis in een populatie van floorplans een stukje verplaatst. Hoe een huis verplaatst is afhankelijk van de beste waarde die al zijn gevonden, om de kans zo groot mogelijk te maken dat er een betere waarde wordt gevonden. Dit blijkt alleen erg moeilijk omdat er al snel minstens één huis niet meer aan de constraints voldoet, waardoor er ook geen betere waarde meer kan worden gevonden. We hebben het algoritme daarom zo aangepast dat huizen worden gestopt als ze een constraint dreigen te overtreden.  
+Iedere particle swarm begint met een populatie random gegenereerde algoritmen die onderling al een beste waarde hebben, en om te kijken of de particle swarm resultaten heeft opgeleverd ten opzichte van de random populaties is iedere variant 100 keer gerund. Van iedere run werd bijgehouden of de best gevonden waarde beter was dan de beste waarde waarmee de populatie is gestart. Bij iedere run werden alle huizen steeds 500 keer verplaatst. Het resultaat staat in de afbeelding "bar chart particle swarm".
+
+## Resultaat  
+Uit de bar chart wordt meteen duidelijk dat er geen enkel resultaat geboekt is. Voor iedere variant was er voor 100 uit 100 runs geen verbetering na het uitvoeren van de particle swarm. De particle swarm voegt dus niks toe. Het zou wel mogelijk kunnen zijn om met meer heuristieken en meer gerichte bewegingen toch op verbeteringen uit te komen, maar dat moet dan in een vervolgonderzoek gebeuren.
