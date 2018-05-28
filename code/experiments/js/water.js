@@ -223,7 +223,7 @@ function createPlot(titleName, numberOfHouses) {
 			chart.selectAll(".bar" + sorts.indexOf(data.sort))
 			.data(data.values)
 			.enter().append("rect")
-				.attr("class", "bar" + sorts.indexOf(data.sort))
+				.attr("class", "bar" + sorts.indexOf(data.sort)) 
 				.attr("y", function(d) { return y(d.percentage)})
 				.attr("x", function(d) { 
 					return x(d.range) + x.rangeBand() / sorts.length * sorts.indexOf(data.sort) - (width / 20 / 2)
