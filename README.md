@@ -20,12 +20,7 @@ Begint met een random oplossing en brengt willekeurige veranderingen aan. Verand
 Begint met een lijst van oplossingen en probeert de waarde voor iedere oplossing te verhogen. Ieder huis in iedere oplossingen wordt langzaam verplaatst, dit gebeurt met een snelheid die afhangt van het best behaalde resultaat door de hele lijst, en het best behaalde resultaat door de oplossing waar het huis zelf toe behoord. Doordat de snelheid wordt bepaald door de best gevonden waarden, valt het te verwachten dat de verplaatsing naar een betere oplossing leidt.
 
 ## Visualisaties
-
-<<<<<<< HEAD
 https://roosgreven.github.io/Heuristieken/
-=======
-https://roosgreven.github.io/Heuristieken/code/experiments/index.html
->>>>>>> 5847995be8b1f3cd15b4be53f852a45053f8869e
 
 # Vereisten
 De code is geschreven in Python 3.6. Alle packages die nodig zijn om de code te runnen, staat in het bestand requirements.txt
